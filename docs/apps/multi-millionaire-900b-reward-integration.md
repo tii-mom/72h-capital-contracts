@@ -97,6 +97,8 @@ The deployed `SeasonClaim` proof format is a single cell containing consecutive 
 
 Before a real public 90B reward root is registered, the remaining blocker is not proof depth but the mainnet funding route. The currently deployed mainnet `SeasonVault` is already funded and cannot be retargeted to a new claim contract after funding starts. A mainnet plan must therefore explicitly choose and audit how production rewards fund `SeasonClaimV2`.
 
+Current candidate route: `SeasonClaimV2LegacyBridge` lets the existing legacy `SeasonClaim` register a single bridge leaf, lets the bridge claim that legacy leaf, then forwards the received 72H to `SeasonClaimV2`. `SeasonClaimV2` sends an authenticated `ConfirmSeasonClaimFunding` receipt, so bridge forwarding is not finalized by unauthenticated Jetton excesses. This route keeps the deployed `SeasonVault -> SeasonClaim` path intact, but public `SeasonClaimV2` roots should be registered only after the bridge has delivered the full season amount unless a later audited partial-funding claim design is added.
+
 Any final production route must preserve:
 
 - the current leaf domain: `appId`, Jetton Master, claim contract address, `seasonId`, recipient wallet, four pool amounts, computed total

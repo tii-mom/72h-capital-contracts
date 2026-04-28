@@ -141,6 +141,16 @@ contract SeasonClaimV2 {
         require(msg.amount > 0, "funding must be positive");
         require(msg.sender == self.seasonVault, "season vault funding only");
         self.funded72H += msg.amount;
+
+        send(SendParameters {
+            to: msg.sender,
+            value: ton("0.005"),
+            bounce: false,
+            body: ConfirmSeasonClaimFunding {
+                queryId: msg.queryId,
+                amount72H: msg.amount,
+            }.toCell(),
+        });
     }
 
     receive(msg: RegisterClaimRound) {

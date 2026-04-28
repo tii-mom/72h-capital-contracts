@@ -62,6 +62,12 @@
       "mode": "full"
     },
     {
+      "name": "SeasonClaimV2LegacyBridge",
+      "path": "./contracts/SeasonClaimV2LegacyBridge.tact",
+      "output": "./build/tact/SeasonClaimV2LegacyBridge",
+      "mode": "full"
+    },
+    {
       "name": "SeasonClaimV2BounceMock",
       "path": "./contracts/testnet/SeasonClaimV2BounceMock.tact",
       "output": "./build/tact/SeasonClaimV2BounceMock",

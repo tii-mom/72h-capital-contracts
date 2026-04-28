@@ -50,6 +50,11 @@ message(0x72060006) ConfirmSeasonFundTransfer {
     amount72H: Int as coins;
 }
 
+message(0x7207000b) ConfirmSeasonClaimFunding {
+    queryId: Int as uint64;
+    amount72H: Int as coins;
+}
+
 message(0x595f07bc) JettonBurn {
     queryId: Int as uint64;
     amount: Int as coins;

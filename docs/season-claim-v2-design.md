@@ -54,27 +54,46 @@ This supports deep Merkle paths while keeping the leaf schema, root hash, and cl
 - correct bounce sender with wrong amount does not roll back
 - correct bounce sender with correct amount rolls back
 
-## Testnet Evidence
+## Prior Testnet Evidence
 
-Latest focused SeasonClaimV2 testnet rehearsal:
+Focused SeasonClaimV2 testnet rehearsal before the bridge receipt change:
 
 - Evidence: `deployments/season-claim-v2.testnet.latest.json`
 - Timestamped evidence: `deployments/season-claim-v2.testnet.2026-04-28T09-25-57-992Z.json`
 - Deployed testnet SeasonClaimV2: `kQAZgDqwx5LJFseLP0Tf8XQITz5nMKa41taB17zp2jWdiJko`
-- Testnet code hash: `9a9488a0e2ba150ac6e2e0b9bc4feec93b5a7439059096de202543a3a46ea2c1`
+- Historical testnet code hash: `9a9488a0e2ba150ac6e2e0b9bc4feec93b5a7439059096de202543a3a46ea2c1`
 - Rehearsed path: deploy, set Jetton wallet, fund through real V2 testnet Jetton transfer notification, register 128-leaf ref-chain root, unlock, claim, sweep expired season, and true bounced transfer rollback through a testnet-only bouncing Jetton wallet mock.
 - Misti all-detectors output: `audit-artifacts/misti-seasonclaim-v2-post-p3-bounce-2026-04-28.json/warnings.json`
 - Misti high-severity run: exit code 0, no high/critical findings.
+
+The bridge candidate adds an authenticated `ConfirmSeasonClaimFunding` receipt to `SeasonClaimV2`, so the current local `SeasonClaimV2` code hash is now `99b63712844f6032a34b10e52b2e8daa0eebc2e265603cc2176a5df7f6e02c26`. This supersedes the historical standalone testnet evidence for mainnet planning. A fresh bridge-focused testnet rehearsal is required before any mainnet deployment plan.
 
 ## Mainnet Planning Caveat
 
 The currently deployed mainnet `SeasonVault` is already funded and its route setter is locked once funding or allocation is non-zero. A standalone `SeasonClaimV2` deployment does not automatically redirect the existing 90B SeasonVault inventory. Before mainnet use, the deployment plan must explicitly define the funding route for `SeasonClaimV2` rather than assuming the deployed `SeasonVault` can be retargeted.
 
+## Legacy Bridge Candidate
+
+`SeasonClaimV2LegacyBridge` is implemented as a migration candidate in `contracts/SeasonClaimV2LegacyBridge.tact`.
+
+The bridge avoids changing the already-funded mainnet `SeasonVault` route:
+
+1. Existing `SeasonVault` finalizes a season into the deployed legacy `SeasonClaim`.
+2. The owner registers the legacy `SeasonClaim` root as a single leaf for the bridge contract address.
+3. The bridge claims that single legacy leaf using the existing `ClaimSeasonReward` message.
+4. The bridge accepts only the legacy `SeasonClaim` Jetton transfer notification from its configured Jetton wallet.
+5. The bridge forwards received 72H to `SeasonClaimV2`.
+6. `SeasonClaimV2` sends `ConfirmSeasonClaimFunding` back to the bridge, and the bridge finalizes forwarded accounting only on that authenticated confirmation.
+
+This gives an auditable route from the existing 90B inventory into `SeasonClaimV2` without retargeting `SeasonVault`. The current bridge is conservative: because `SeasonClaimV2` still requires a season to be fully funded before `RegisterSeasonClaim`, public V2 roots should be registered only after the bridge has delivered the full season amount. Supporting progressive 20/40/60/80/100 V2 public claims from partial bridge funding would require a separate audited `SeasonClaimV2` accounting change.
+
+Current local bridge code hash: `82f322cee7dbffe85c2295d43f06734475fa19512651389de93266f8f9ac148a`.
+
 ## Next Steps
 
 Before production use:
 
-1. Get audit signoff on the post-P3 implementation and testnet evidence.
-2. Confirm the production funding route for `SeasonClaimV2`, given the deployed mainnet `SeasonVault` route lock.
-3. Generate a mainnet deployment or migration plan only after the funding route is selected and audited.
+1. Get audit signoff on the post-P3 implementation, testnet evidence, and `SeasonClaimV2LegacyBridge`.
+2. If bridge route is accepted, run a focused testnet bridge rehearsal against deployed testnet contracts.
+3. Generate a mainnet deployment or migration plan only after the bridge route is audited.
 4. Update public docs/website JSON only after mainnet deployment is complete.
