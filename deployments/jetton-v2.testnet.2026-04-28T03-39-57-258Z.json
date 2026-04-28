@@ -1,0 +1,21 @@
+{
+  "network": "testnet",
+  "sentAt": "2026-04-28T03:39:57.258Z",
+  "loadedEnvFiles": [
+    ".env.local"
+  ],
+  "deployer": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+  "initialSupplyOwner": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+  "jettonMaster": "kQDJqdAP9DR5NGV7EDg6T78EuNqmuKsbpEhQJSrFxTm8rjtK",
+  "metadataUri": "https://72h.lol/testnet/72h-v2-season-reward-confirm-2026-04-28.json",
+  "codeHashes": {
+    "minterHex": "779489f7cadb181403156694116baa342c0fe32c0cf5ce3b84a1ef4e652ed5e9",
+    "walletHex": "ba2918c8947e9b25af9ac1b883357754173e5812f807a3d6e642a14709595395"
+  },
+  "finalGetter": {
+    "totalSupplyRaw": "100000000000000000000",
+    "mintable": false,
+    "adminAddress": null,
+    "walletCodeHashHex": "ba2918c8947e9b25af9ac1b883357754173e5812f807a3d6e642a14709595395"
+  }
+}

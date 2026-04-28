@@ -1,0 +1,27 @@
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+coverage/
+
+# Local OS/editor noise
+.DS_Store
+*.swp
+*.swo
+
+# Secrets and local runtime config
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*mnemonic*
+*secret*
+*private*
+
+# Logs and temporary files
+*.log
+*.tmp
+tmp/
+.cache/

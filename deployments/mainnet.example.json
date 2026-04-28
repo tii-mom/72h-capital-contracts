@@ -1,0 +1,46 @@
+{
+  "network": "mainnet",
+  "rpcUrlEnv": "TON_MAINNET_RPC_URL",
+  "deployerAddressEnv": "TON_MAINNET_DEPLOYER_ADDRESS",
+  "deployerMnemonicEnv": "TON_MAINNET_DEPLOYER_MNEMONIC",
+  "jetton": {
+    "masterAddressEnv": "TON_MAINNET_72H_JETTON_MASTER_ADDRESS",
+    "approvedMasterAddress": "EQDvE0ffdwvOhILjRJKFd2bIU9t5H9bG3-SKRidqavZjRsw8",
+    "mainnetMasterRequired": true,
+    "decimals": 9,
+    "symbol": "72H",
+    "note": "Must be the 72H Jetton master contract, not the admin wallet."
+  },
+  "governance": {
+    "mode": "single-admin",
+    "adminAddressEnv": "TON_MAINNET_ADMIN_ADDRESS",
+    "adminSignatureThreshold": 1,
+    "emergencyPause": "single-admin",
+    "adminAddress": "UQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQfRq"
+  },
+  "reserveLiquidity": {
+    "initialPerApp72H": "720000",
+    "initialTotal72H": "2160000",
+    "fundingTxEnv": [
+      "TON_MAINNET_RESERVE_LIQUIDITY_TX_72HOURS",
+      "TON_MAINNET_RESERVE_LIQUIDITY_TX_WAN",
+      "TON_MAINNET_RESERVE_LIQUIDITY_TX_MULTI_MILLIONAIRE"
+    ]
+  },
+  "contracts": {
+    "AdminAuthority": "EQCjQ4J6ihxsqkG95Ew6k-8j-2o9Ydn8NFVHQgxbR1p_zWlU",
+    "AdminMultisig": "EQCjQ4J6ihxsqkG95Ew6k-8j-2o9Ydn8NFVHQgxbR1p_zWlU",
+    "CapitalRegistry": "EQBARc6Ef43_v75iZ9PSluSbWzAbVe2s38a0zHsd1hAo_mp0",
+    "Treasury": "EQDh_LPIxN_Iv9CXRHq4PXPaXlIzQVBaWrbhiZu2P-AlysbP",
+    "ReserveVaults": {
+      "72hours": "EQAZcHCNzRnwUcomL--P8w0GT3YHtdwJtySmY0p1Hn7KLMwv",
+      "wan": "EQAoR6DMoSkelHjA39WOsfX5MBQULFHL3bmnx7VQvTfA5PKL",
+      "multi-millionaire": "EQBmEX9BgkY19jx7elubd3sO13uWRO0DxAoh4hAr1p0RTaHf"
+    },
+    "AlphaVaults": {
+      "72hours": "EQAdorr611RoCb6l5Krbe9j83azcpOfEWkbrnBd5gT3J4hlS",
+      "wan": "EQDG9HKBNdGYU5wtC7TSJ6rXS5eeCaEquL_xiS08WmoSviWb",
+      "multi-millionaire": "EQCvawL5h7tJtSjvZR42jBJd97MFmVrL8WGgBtqrjVDSYN2j"
+    }
+  }
+}

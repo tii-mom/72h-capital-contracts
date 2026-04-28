@@ -1,0 +1,15 @@
+{
+  "name": "72H",
+  "symbol": "72H",
+  "decimals": "9",
+  "description": "72H致力于让更多普通人成为加密开发者。创新的“72 小时赛季机制”：每个赛季 18 轮，每轮 4 小时，固定赛季库存会根据公开轮次结果，在持币者奖励和生态基金之间流转。",
+  "image": "ipfs://REPLACE_WITH_FINAL_72H_LOGO",
+  "website": "https://72h.lol",
+  "telegram": "https://t.me/the_72h",
+  "twitter": "https://x.com/72hour_s",
+  "social": [
+    "https://72h.lol",
+    "https://t.me/the_72h",
+    "https://x.com/72hour_s"
+  ]
+}

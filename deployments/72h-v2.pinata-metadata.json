@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-04-27T09:52:43.711Z",
+  "logo": {
+    "path": "/Users/yudeyou/Desktop/72hours/public/brand/72hours-logo.png",
+    "cid": "QmNzFgWkVCxuJJBym1hoDq5tG4PwFBT8mUMMXdPefb23S4",
+    "uri": "ipfs://QmNzFgWkVCxuJJBym1hoDq5tG4PwFBT8mUMMXdPefb23S4",
+    "gatewayUrl": "https://gateway.pinata.cloud/ipfs/QmNzFgWkVCxuJJBym1hoDq5tG4PwFBT8mUMMXdPefb23S4",
+    "size": 820089,
+    "timestamp": "2026-04-27T09:25:57.529Z"
+  },
+  "metadata": {
+    "path": "/Users/yudeyou/Desktop/72h-capital-contracts/metadata/72h-v2.metadata.final.json",
+    "cid": "QmZkjBvKmHhsh56bPbbnwgPL8844eP5Btke6edbRGjPZNw",
+    "uri": "ipfs://QmZkjBvKmHhsh56bPbbnwgPL8844eP5Btke6edbRGjPZNw",
+    "gatewayUrl": "https://gateway.pinata.cloud/ipfs/QmZkjBvKmHhsh56bPbbnwgPL8844eP5Btke6edbRGjPZNw",
+    "size": 595,
+    "timestamp": "2026-04-27T09:52:43.378Z"
+  }
+}

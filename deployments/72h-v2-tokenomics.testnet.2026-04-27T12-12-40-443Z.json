@@ -1,0 +1,131 @@
+{
+  "generatedAt": "2026-04-27T12:10:40.053Z",
+  "network": "testnet",
+  "loadedEnvFiles": [
+    ".env.local"
+  ],
+  "mode": "send",
+  "jettonSource": "latest",
+  "deployer": "kQAdIa43mJB8FcNL8UFBobJh6_nzGxBMzfNK062t1hfHhrqZ",
+  "deployerWalletId": 698983193,
+  "jettonMaster": "kQCpEO_aQFojbFWaMMTmxrBNP7LX2MX-0xLmzNMV5_5IYpIg",
+  "metadataUri": "ipfs://QmZkjBvKmHhsh56bPbbnwgPL8844eP5Btke6edbRGjPZNw",
+  "codeHashes": {
+    "minterHex": "6bb0d7057db450efbec90d03ac47de45a22e418fd5151cf96cd9440a43e8a91e",
+    "walletHex": "ba2918c8947e9b25af9ac1b883357754173e5812f807a3d6e642a14709595395",
+    "tokenomics": {
+      "SeasonVault": "c9ecd38ff94fe5bbab31ddf3e17766c4425e71eabe411f099d3fdaf07f2170f5",
+      "SeasonClaim": "f06e0622c42af438cd2716d19df39a9fbd4a1a6872c44cb4764dbfcfc55937ef",
+      "FundVesting": "534712dfb009d42ab84b6eedac3c72b67a1786b50dec3b993ed1e5e1c3eb72f8",
+      "DevelopmentFund": "296ab711d6d2a526759f91be955f37942d1ac21ecc886d66981f573e3de214c0",
+      "PresaleVault": "ce41db077a1a752a2b886a99f3c6d0aae7dbd49f1dc284fb6cbbbc34fc206ce9",
+      "EcosystemTreasury": "28595bba95e73a723327b016d269de1a81c55df45e5db621ac82a55e5aefcb94",
+      "TeamVesting": "a0bd84bb9a344558b2a2d5e70a19435d233fe57b9940fa199dd1b127d74cc911"
+    }
+  },
+  "wallets": {
+    "ownerJettonWallet": "kQAJFdF55OFwdOPNWKqnE0Y-g0xQx7hNFli0y9iav0h--5nl",
+    "developmentFundWallet": "kQB31HYfGtzDDa-cudZolA6g1gNcoxZsxeQoEM4lmhhuo3Yh",
+    "teamWallet": "kQDqA19b4tBQKi7Z_0NS08eWzq-FZ-wsRU4QfzEEKwcouS6a",
+    "proceedsWallet": "kQBGY56JY9gy1V-vnnyOpGoJXLWAcm3LKNAdl9OKShuCe1JP",
+    "earlyUsersWallet": "kQDqA19b4tBQKi7Z_0NS08eWzq-FZ-wsRU4QfzEEKwcouS6a",
+    "contractJettonWallets": {
+      "SeasonVault": "kQDUnuDl4tpccMNbNhj93cpV05AdDC_pSKwjNJtA4IIH5Ael",
+      "SeasonClaim": "kQBOGLbLe52rDTqk5jKe9zeh4R8ZdReKQoPekdPCU9nzMxKs",
+      "FundVesting": "kQDoI-M9pzmEhoC-2EAr1B-Xe6b5gEtpQ8a6msVL86YOjOVc",
+      "DevelopmentFund": "kQD9lzfwKRPQ1rdXYXaoI8a8B_1DM4OTUMQ9_GHS9fgnPd8h",
+      "PresaleVault": "kQDX2tx9TgCpBCp-dDDiTmyRyIJvidKSwkH6z4qyyuyATE8s",
+      "EcosystemTreasury": "kQDXRtXQJa0morSEP7syqDqMf-Six7ne-r3LpeZG49tZUJsR",
+      "TeamVesting": "kQAbRPVCwtkGF5d12NYbcX9oFW5OjGG-vbD_HkQfNBsWJtib"
+    }
+  },
+  "contracts": {
+    "SeasonVault": "kQDIx1tLYFKfXeyjqHNZZlswjcYSBWvtUIT6DCIdV93is0Se",
+    "SeasonClaim": "kQCXJUM9TFbUpH8xY4Hj-feKOkNKt8G3iy8XC-g4j3rUhSLf",
+    "FundVesting": "kQBEPhmC-45J6agxJ9TdjKCKdzvWxJhGSBE4iJncKPjaaY2M",
+    "DevelopmentFund": "kQCR9OGkCmoD5E5ODeTfIvFBn9KAYNcVy3qlmIdoQWz7qV5h",
+    "PresaleVault": "kQBqZq424AFVO_pHzXLy50HP6oKROBcx0DK43hAyt0V2RiGj",
+    "EcosystemTreasury": "kQBkH_CBKNG9GQm9yWRZ3kcvDsi4ZZ6IF1MQujIN5shWujYt",
+    "TeamVesting": "kQALy_jJVcG2lkpSDK4Fv92nr0Q2g2u3eSKKOUBtI_3ECfxl"
+  },
+  "allocationsRaw": {
+    "SeasonVault": "90000000000000000000",
+    "PresaleVault": "4500000000000000000",
+    "EcosystemTreasury": "4500000000000000000",
+    "DevelopmentFund": "500000000000000000",
+    "TeamVesting": "300000000000000000",
+    "earlyUsersWallet": "200000000000000000"
+  },
+  "presale": {
+    "tokensPerTonRaw": [
+      "10072000000000",
+      "7200000000000",
+      "3500000000000"
+    ],
+    "walletCapRaw": "7200000000000000"
+  },
+  "completedAt": "2026-04-27T12:12:40.443Z",
+  "actions": [
+    {
+      "label": "open presale",
+      "seqnoBefore": 41,
+      "seqnoAfter": 42,
+      "at": "2026-04-27T12:11:05.174Z"
+    },
+    {
+      "label": "close presale",
+      "seqnoBefore": 42,
+      "seqnoAfter": 43,
+      "at": "2026-04-27T12:11:35.581Z"
+    },
+    {
+      "label": "ordinary wallet transfer 1 72H",
+      "seqnoBefore": 43,
+      "seqnoAfter": 44,
+      "at": "2026-04-27T12:11:57.801Z"
+    },
+    {
+      "label": "burn 1 72H from deployer wallet",
+      "seqnoBefore": 44,
+      "seqnoAfter": 45,
+      "at": "2026-04-27T12:12:19.804Z"
+    }
+  ],
+  "finalGetter": {
+    "master": {
+      "totalSupply": "99999999999000000000",
+      "mintable": false,
+      "adminAddress": null
+    },
+    "SeasonVault": {
+      "funded72H": "90000000000000000000",
+      "allocated72H": "1000000000000000000",
+      "userRewardAllocated72H": "500000000000000000",
+      "fundAllocated72H": "500000000000000000"
+    },
+    "SeasonClaim": {
+      "funded72H": "500000000000000000",
+      "claimed72H": "100000000000000000"
+    },
+    "FundVesting": {
+      "funded72H": "500000000000000000",
+      "withdrawn72H": "100000000000000000"
+    },
+    "DevelopmentFund": {
+      "funded72H": "5009989928000000000",
+      "withdrawn72H": "1000000000"
+    },
+    "PresaleVault": {
+      "funded72H": "4500000000000000000",
+      "sold72H": "10072000000000"
+    },
+    "EcosystemTreasury": {
+      "funded72H": "4500000000000000000",
+      "released72H": "10000000000000000"
+    },
+    "TeamVesting": {
+      "funded72H": "300000000000000000",
+      "released72H": "100000000000000000"
+    }
+  }
+}

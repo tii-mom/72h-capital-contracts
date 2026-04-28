@@ -1,0 +1,70 @@
+{
+  "network": "testnet",
+  "createdAt": "2026-04-24T03:08:49.372Z",
+  "sent": true,
+  "loadedEnvFiles": [
+    ".env.local"
+  ],
+  "rpcUrl": "https:...sonRPC",
+  "deployer": {
+    "configuredAddress": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+    "derivedWalletV4": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+    "walletMatchesConfigured": true,
+    "balanceTon": "5017.105262414"
+  },
+  "contracts": {
+    "TestJetton72H": "kQCxm_w2ynPHIm0k4NyFpfxj1rUlnwGgejBiI0m9Q7R10mYi",
+    "CapitalRegistry": "kQBARc6Ef43_v75iZ9PSluSbWzAbVe2s38a0zHsd1hAo_tH-",
+    "ReserveVaults": {
+      "72hours": "kQBcO6e9MTgjKJ1ODqz65XzWI4cxKok4qhJPaFQmeqkUEjxA",
+      "wan": "kQDa7rBz4n1_wMEHeZd4QPa1RHU18ZndQtFlP2OILYAOw5y8",
+      "multi-millionaire": "kQDlkTOaViRGyXZ0pHYanqmy_hv1lw85WLfWCaFQEpdiC1xF"
+    },
+    "ReserveVaultJettonWallets": {
+      "72hours": "kQD8KAvj11Qw6MD6kTRMCgYZ7fSe0dZBfYlDa6n_U9vyK-XX",
+      "wan": "kQAgZyfd3kDm4UN3bDZEMJbxlZ8U9zyCmgKWWENTYBxgpNQq",
+      "multi-millionaire": "kQCYXjOFk8YKVnDdN-d5mZnMamdaqMkzuJj-FawXS39boB9z"
+    }
+  },
+  "states": {
+    "TestJetton72H": {
+      "label": "TestJetton72H",
+      "address": "kQCxm_w2ynPHIm0k4NyFpfxj1rUlnwGgejBiI0m9Q7R10mYi",
+      "state": "active",
+      "balanceTon": "0.0411044"
+    },
+    "CapitalRegistry": {
+      "label": "CapitalRegistry",
+      "address": "kQBARc6Ef43_v75iZ9PSluSbWzAbVe2s38a0zHsd1hAo_tH-",
+      "state": "active",
+      "balanceTon": "0.370803478"
+    },
+    "ReserveVault(72hours)": {
+      "label": "ReserveVault(72hours)",
+      "address": "kQBcO6e9MTgjKJ1ODqz65XzWI4cxKok4qhJPaFQmeqkUEjxA",
+      "state": "active",
+      "balanceTon": "0.0291352"
+    },
+    "ReserveVault(wan)": {
+      "label": "ReserveVault(wan)",
+      "address": "kQDa7rBz4n1_wMEHeZd4QPa1RHU18ZndQtFlP2OILYAOw5y8",
+      "state": "active",
+      "balanceTon": "0.0291352"
+    },
+    "ReserveVault(multi-millionaire)": {
+      "label": "ReserveVault(multi-millionaire)",
+      "address": "kQDlkTOaViRGyXZ0pHYanqmy_hv1lw85WLfWCaFQEpdiC1xF",
+      "state": "active",
+      "balanceTon": "0.0291352"
+    }
+  },
+  "apiEnv": {
+    "H72H_CAPITAL_NETWORK_MODE": "testnet",
+    "H72H_ENABLE_TESTNET_TACT_MESSAGES": "true",
+    "H72H_TESTNET_RPC_URL": "https://testnet.toncenter.com/api/v2/jsonRPC",
+    "H72H_TESTNET_72H_JETTON_MASTER_ADDRESS": "kQCxm_w2ynPHIm0k4NyFpfxj1rUlnwGgejBiI0m9Q7R10mYi",
+    "H72H_TESTNET_RESERVE_VAULT_72HOURS_ADDRESS": "kQBcO6e9MTgjKJ1ODqz65XzWI4cxKok4qhJPaFQmeqkUEjxA",
+    "H72H_TESTNET_RESERVE_VAULT_WAN_ADDRESS": "kQDa7rBz4n1_wMEHeZd4QPa1RHU18ZndQtFlP2OILYAOw5y8",
+    "H72H_TESTNET_RESERVE_VAULT_MULTI_MILLIONAIRE_ADDRESS": "kQDlkTOaViRGyXZ0pHYanqmy_hv1lw85WLfWCaFQEpdiC1xF"
+  }
+}

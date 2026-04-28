@@ -1,0 +1,28 @@
+{
+  "network": "testnet",
+  "sentAt": "2026-04-27T10:16:55.861Z",
+  "recoveredAfterRpcRateLimit": true,
+  "loadedEnvFiles": [
+    ".env.local"
+  ],
+  "deployer": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+  "initialSupplyOwner": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+  "jettonMaster": "kQAy6mCOJu_uHtT4MldWLYUhL85ZTGnFqJb7EarBNi3c1-Pf",
+  "metadataUri": "ipfs://QmZkjBvKmHhsh56bPbbnwgPL8844eP5Btke6edbRGjPZNw",
+  "codeHashes": {
+    "minterHex": "6bb0d7057db450efbec90d03ac47de45a22e418fd5151cf96cd9440a43e8a91e",
+    "walletHex": "ba2918c8947e9b25af9ac1b883357754173e5812f807a3d6e642a14709595395"
+  },
+  "finalGetter": {
+    "totalSupplyRaw": "100000000000000000000",
+    "mintable": false,
+    "adminAddress": null,
+    "walletCodeHashHex": "ba2918c8947e9b25af9ac1b883357754173e5812f807a3d6e642a14709595395"
+  },
+  "walletSeqnos": {
+    "deployBefore": 1271,
+    "deployAfter": 1272,
+    "mintAfter": 1273,
+    "dropAdminAfter": 1274
+  }
+}

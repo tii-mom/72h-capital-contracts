@@ -1,0 +1,155 @@
+{
+  "network": "testnet",
+  "createdAt": "2026-04-25T06:33:53.732Z",
+  "sent": true,
+  "loadedEnvFiles": [
+    ".env.local"
+  ],
+  "rpcUrl": "https:...sonRPC",
+  "deployer": {
+    "configuredAddress": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+    "derivedWalletV4": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+    "walletMatchesConfigured": true,
+    "balanceTon": "5014.972968167"
+  },
+  "governance": {
+    "signerSource": "single-admin",
+    "signers": [
+      "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl"
+    ]
+  },
+  "contracts": {
+    "TestJetton72H": "kQCxm_w2ynPHIm0k4NyFpfxj1rUlnwGgejBiI0m9Q7R10mYi",
+    "AdminAuthority": "kQCjQ4J6ihxsqkG95Ew6k-8j-2o9Ydn8NFVHQgxbR1p_zdLe",
+    "AdminMultisig": "kQCjQ4J6ihxsqkG95Ew6k-8j-2o9Ydn8NFVHQgxbR1p_zdLe",
+    "CapitalRegistry": "kQC9e5L3196LgKS-1KIZKryJPkZ8RDdgCkKEsIlOe1vQX_YF",
+    "Treasury": "kQDh_LPIxN_Iv9CXRHq4PXPaXlIzQVBaWrbhiZu2P-Alyn1F",
+    "ReserveVaults": {
+      "72hours": "kQBLNN8yPjZkJScpdLEHtKWK2SVo1AQdcXRq101quxehCuO-",
+      "wan": "kQBqfKlyTlpEzcGOQP9KI1Cm1RB05yaOBxO_4CibuxgyUf5T",
+      "multi-millionaire": "kQD1deHkTIB023tn3dryEI0_CIpY2DuBDO1PfUdqHEkUce5b"
+    },
+    "ReserveVaultJettonWallets": {
+      "72hours": "kQDtsxTuF8mD5Q32HGTpTPd9Mi-ddYUE0KHcf1MAdhZdTaKW",
+      "wan": "kQBucjyICFObOniY1lSaJf4C1hdJL2sacY8cb6qp8aBJJUx5",
+      "multi-millionaire": "kQC6YtvidvCTfrTiC5PcQ22NSWXbFsnhXjQl8Xo_crblNp3G"
+    },
+    "AppRewardPools": {
+      "72hours": "kQCm8florP84b0TPy9KzxgRSct8S5-69vzAaptifzTKvlmQD",
+      "wan": "kQA_kns2TrFNS_45x_CCMRVHc2cxNn0tG79HR1qvlfvCztuU",
+      "multi-millionaire": "kQB4JINiTmXFqoG1dZ7QTGsm_UQM2b-BJrYVRGxiv--_HQYY"
+    },
+    "AppRewardPoolJettonWallets": {
+      "72hours": "kQDNh0wz36uBJFrYsxS6-B8QwJGlYeVDR2Xr8r0JBDDZ9neh",
+      "wan": "kQCDvHgR_gsi2sWz90vDYz05sun-e7aveV7XD7KObtDqOTKg",
+      "multi-millionaire": "kQCJ_lIL0ljJ0lWGk-7Fz4aHvuEEvKDMVX4qLqeVG9Aq_Gsv"
+    },
+    "AlphaVaults": {
+      "72hours": "kQC4DsAl5pk5BWd41eZqZcs91MVJFt96MQARm0s0wLFZTtZM",
+      "wan": "kQBQHba8T6A6F-pN8VmfU1u14XcsIntn4cVgujCoD1MZJfX2",
+      "multi-millionaire": "kQBCj5KTlqvkoCk1jcfQZi35rAQaNm_-yjjzB9-GP07CVlr7"
+    },
+    "AlphaVaultJettonWallets": {
+      "72hours": "kQCVTvh0bUKhPTC9hVowoXJNe7-CvkjT7pQ04zRKHgUVQCsY",
+      "wan": "kQDDw0W-Yzq6WqXP-08OaCxA3v6UZVwc_GOfKUsEayRphLj9",
+      "multi-millionaire": "kQBAoGnZcNBIqzbk5uTYPawgqjJpNNGPGbRe396Wfm12VDlE"
+    }
+  },
+  "states": {
+    "AdminAuthority": {
+      "label": "AdminAuthority",
+      "address": "kQCjQ4J6ihxsqkG95Ew6k-8j-2o9Ydn8NFVHQgxbR1p_zdLe",
+      "state": "active",
+      "balanceTon": "0.0359536"
+    },
+    "TestJetton72H": {
+      "label": "TestJetton72H",
+      "address": "kQCxm_w2ynPHIm0k4NyFpfxj1rUlnwGgejBiI0m9Q7R10mYi",
+      "state": "active",
+      "balanceTon": "0.06737343"
+    },
+    "CapitalRegistry": {
+      "label": "CapitalRegistry",
+      "address": "kQC9e5L3196LgKS-1KIZKryJPkZ8RDdgCkKEsIlOe1vQX_YF",
+      "state": "active",
+      "balanceTon": "0.19957423"
+    },
+    "Treasury": {
+      "label": "Treasury",
+      "address": "kQDh_LPIxN_Iv9CXRHq4PXPaXlIzQVBaWrbhiZu2P-Alyn1F",
+      "state": "active",
+      "balanceTon": "0.033808"
+    },
+    "ReserveVault(72hours)": {
+      "label": "ReserveVault(72hours)",
+      "address": "kQBLNN8yPjZkJScpdLEHtKWK2SVo1AQdcXRq101quxehCuO-",
+      "state": "active",
+      "balanceTon": "0.051096052"
+    },
+    "ReserveVault(wan)": {
+      "label": "ReserveVault(wan)",
+      "address": "kQBqfKlyTlpEzcGOQP9KI1Cm1RB05yaOBxO_4CibuxgyUf5T",
+      "state": "active",
+      "balanceTon": "0.051096046"
+    },
+    "ReserveVault(multi-millionaire)": {
+      "label": "ReserveVault(multi-millionaire)",
+      "address": "kQD1deHkTIB023tn3dryEI0_CIpY2DuBDO1PfUdqHEkUce5b",
+      "state": "active",
+      "balanceTon": "0.051096056"
+    },
+    "AppRewardPool(72hours)": {
+      "label": "AppRewardPool(72hours)",
+      "address": "kQCm8florP84b0TPy9KzxgRSct8S5-69vzAaptifzTKvlmQD",
+      "state": "active",
+      "balanceTon": "0.057129352"
+    },
+    "AppRewardPool(wan)": {
+      "label": "AppRewardPool(wan)",
+      "address": "kQA_kns2TrFNS_45x_CCMRVHc2cxNn0tG79HR1qvlfvCztuU",
+      "state": "active",
+      "balanceTon": "0.057129353"
+    },
+    "AppRewardPool(multi-millionaire)": {
+      "label": "AppRewardPool(multi-millionaire)",
+      "address": "kQB4JINiTmXFqoG1dZ7QTGsm_UQM2b-BJrYVRGxiv--_HQYY",
+      "state": "active",
+      "balanceTon": "0.057129359"
+    },
+    "AlphaVault(72hours)": {
+      "label": "AlphaVault(72hours)",
+      "address": "kQC4DsAl5pk5BWd41eZqZcs91MVJFt96MQARm0s0wLFZTtZM",
+      "state": "active",
+      "balanceTon": "0.011654"
+    },
+    "AlphaVault(wan)": {
+      "label": "AlphaVault(wan)",
+      "address": "kQBQHba8T6A6F-pN8VmfU1u14XcsIntn4cVgujCoD1MZJfX2",
+      "state": "active",
+      "balanceTon": "0.011654"
+    },
+    "AlphaVault(multi-millionaire)": {
+      "label": "AlphaVault(multi-millionaire)",
+      "address": "kQBCj5KTlqvkoCk1jcfQZi35rAQaNm_-yjjzB9-GP07CVlr7",
+      "state": "active",
+      "balanceTon": "0.011654"
+    }
+  },
+  "apiEnv": {
+    "H72H_CAPITAL_NETWORK_MODE": "testnet",
+    "H72H_ENABLE_TESTNET_TACT_MESSAGES": "true",
+    "H72H_TESTNET_RPC_URL": "https://testnet.toncenter.com/api/v2/jsonRPC",
+    "H72H_TESTNET_72H_JETTON_MASTER_ADDRESS": "kQCxm_w2ynPHIm0k4NyFpfxj1rUlnwGgejBiI0m9Q7R10mYi",
+    "H72H_TESTNET_ADMIN_AUTHORITY_ADDRESS": "kQCjQ4J6ihxsqkG95Ew6k-8j-2o9Ydn8NFVHQgxbR1p_zdLe",
+    "H72H_TESTNET_TREASURY_ADDRESS": "kQDh_LPIxN_Iv9CXRHq4PXPaXlIzQVBaWrbhiZu2P-Alyn1F",
+    "H72H_TESTNET_RESERVE_VAULT_72HOURS_ADDRESS": "kQBLNN8yPjZkJScpdLEHtKWK2SVo1AQdcXRq101quxehCuO-",
+    "H72H_TESTNET_RESERVE_VAULT_WAN_ADDRESS": "kQBqfKlyTlpEzcGOQP9KI1Cm1RB05yaOBxO_4CibuxgyUf5T",
+    "H72H_TESTNET_RESERVE_VAULT_MULTI_MILLIONAIRE_ADDRESS": "kQD1deHkTIB023tn3dryEI0_CIpY2DuBDO1PfUdqHEkUce5b",
+    "H72H_TESTNET_APP_REWARD_POOL_72HOURS_ADDRESS": "kQCm8florP84b0TPy9KzxgRSct8S5-69vzAaptifzTKvlmQD",
+    "H72H_TESTNET_APP_REWARD_POOL_WAN_ADDRESS": "kQA_kns2TrFNS_45x_CCMRVHc2cxNn0tG79HR1qvlfvCztuU",
+    "H72H_TESTNET_APP_REWARD_POOL_MULTI_MILLIONAIRE_ADDRESS": "kQB4JINiTmXFqoG1dZ7QTGsm_UQM2b-BJrYVRGxiv--_HQYY",
+    "H72H_TESTNET_ALPHA_VAULT_72HOURS_ADDRESS": "kQC4DsAl5pk5BWd41eZqZcs91MVJFt96MQARm0s0wLFZTtZM",
+    "H72H_TESTNET_ALPHA_VAULT_WAN_ADDRESS": "kQBQHba8T6A6F-pN8VmfU1u14XcsIntn4cVgujCoD1MZJfX2",
+    "H72H_TESTNET_ALPHA_VAULT_MULTI_MILLIONAIRE_ADDRESS": "kQBCj5KTlqvkoCk1jcfQZi35rAQaNm_-yjjzB9-GP07CVlr7"
+  }
+}

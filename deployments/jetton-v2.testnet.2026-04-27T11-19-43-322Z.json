@@ -1,0 +1,21 @@
+{
+  "network": "testnet",
+  "sentAt": "2026-04-27T11:19:43.322Z",
+  "loadedEnvFiles": [
+    ".env.local"
+  ],
+  "deployer": "kQAJ3lcy59JfWEOsMwzAnvXGnH_mZ4sraFvPOIIihWTw8QEt",
+  "initialSupplyOwner": "kQAJ3lcy59JfWEOsMwzAnvXGnH_mZ4sraFvPOIIihWTw8QEt",
+  "jettonMaster": "kQA1e5Ayiw0F0-Kyxpdr3_dsnMYpVe1mR3zIQNS4McTIsFIg",
+  "metadataUri": "ipfs://QmZkjBvKmHhsh56bPbbnwgPL8844eP5Btke6edbRGjPZNw",
+  "codeHashes": {
+    "minterHex": "6bb0d7057db450efbec90d03ac47de45a22e418fd5151cf96cd9440a43e8a91e",
+    "walletHex": "ba2918c8947e9b25af9ac1b883357754173e5812f807a3d6e642a14709595395"
+  },
+  "finalGetter": {
+    "totalSupplyRaw": "100000000000000000000",
+    "mintable": false,
+    "adminAddress": null,
+    "walletCodeHashHex": "ba2918c8947e9b25af9ac1b883357754173e5812f807a3d6e642a14709595395"
+  }
+}

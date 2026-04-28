@@ -1,0 +1,63 @@
+{
+  "network": "testnet",
+  "createdAt": "2026-04-24T01:58:41.206Z",
+  "sent": true,
+  "loadedEnvFiles": [
+    ".env.local"
+  ],
+  "rpcUrl": "https:...sonRPC",
+  "deployer": {
+    "configuredAddress": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+    "derivedWalletV4": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+    "walletMatchesConfigured": true,
+    "balanceTon": "5018.009251648"
+  },
+  "contracts": {
+    "TestJetton72H": "kQD-K-E1vlm1KM290wXr11tcEhJIw-IEdX9C5n2EyGrNp98R",
+    "CapitalRegistry": "kQDTeck0qSAIzfGU90-xCoxu-uQb1rqdJMe4BS962QFGjGvY",
+    "ReserveVaults": {
+      "72hours": "kQBm-Xq-7oAjPMsL7eEk65LNSuUbj1b4aXshHdH0yRFjm0Cn",
+      "wan": "kQCoXCGAU2fDg7mZ4GBci7A_7ttliUmAeDOYNzNgvAC7pIZ-",
+      "multi-millionaire": "kQC3Zl6ZgchiwtN8QKVuTvwsqaXHoCx6B5TKavjpQZ9OFA3r"
+    }
+  },
+  "states": {
+    "TestJetton72H": {
+      "label": "TestJetton72H",
+      "address": "kQD-K-E1vlm1KM290wXr11tcEhJIw-IEdX9C5n2EyGrNp98R",
+      "state": "active",
+      "balanceTon": "0.0455096"
+    },
+    "CapitalRegistry": {
+      "label": "CapitalRegistry",
+      "address": "kQDTeck0qSAIzfGU90-xCoxu-uQb1rqdJMe4BS962QFGjGvY",
+      "state": "active",
+      "balanceTon": "0.206900344"
+    },
+    "ReserveVault(72hours)": {
+      "label": "ReserveVault(72hours)",
+      "address": "kQBm-Xq-7oAjPMsL7eEk65LNSuUbj1b4aXshHdH0yRFjm0Cn",
+      "state": "active",
+      "balanceTon": "0.0411212"
+    },
+    "ReserveVault(wan)": {
+      "label": "ReserveVault(wan)",
+      "address": "kQCoXCGAU2fDg7mZ4GBci7A_7ttliUmAeDOYNzNgvAC7pIZ-",
+      "state": "active",
+      "balanceTon": "0.0411212"
+    },
+    "ReserveVault(multi-millionaire)": {
+      "label": "ReserveVault(multi-millionaire)",
+      "address": "kQC3Zl6ZgchiwtN8QKVuTvwsqaXHoCx6B5TKavjpQZ9OFA3r",
+      "state": "active",
+      "balanceTon": "0.0411212"
+    }
+  },
+  "apiEnv": {
+    "H72H_CAPITAL_NETWORK_MODE": "testnet",
+    "H72H_ENABLE_TESTNET_TACT_MESSAGES": "true",
+    "H72H_TESTNET_RESERVE_VAULT_72HOURS_ADDRESS": "kQBm-Xq-7oAjPMsL7eEk65LNSuUbj1b4aXshHdH0yRFjm0Cn",
+    "H72H_TESTNET_RESERVE_VAULT_WAN_ADDRESS": "kQCoXCGAU2fDg7mZ4GBci7A_7ttliUmAeDOYNzNgvAC7pIZ-",
+    "H72H_TESTNET_RESERVE_VAULT_MULTI_MILLIONAIRE_ADDRESS": "kQC3Zl6ZgchiwtN8QKVuTvwsqaXHoCx6B5TKavjpQZ9OFA3r"
+  }
+}

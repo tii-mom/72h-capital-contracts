@@ -1,0 +1,48 @@
+{
+  "network": "testnet",
+  "rpcUrlEnv": "TON_TESTNET_RPC_URL",
+  "deployerAddressEnv": "TON_TESTNET_DEPLOYER_ADDRESS",
+  "deployerMnemonicEnv": "TON_TESTNET_DEPLOYER_MNEMONIC",
+  "jetton": {
+    "modeEnv": "TON_TESTNET_72H_JETTON_MODE",
+    "symbolEnv": "TON_TESTNET_72H_JETTON_SYMBOL",
+    "decimalsEnv": "TON_TESTNET_72H_JETTON_DECIMALS",
+    "masterAddressEnv": "TON_TESTNET_72H_JETTON_MASTER_ADDRESS",
+    "testnetMockAllowed": true
+  },
+  "governance": {
+    "signerSource": "env",
+    "signerAddressEnvs": [
+      "TON_TESTNET_ADMIN_MULTISIG_SIGNER_1",
+      "TON_TESTNET_ADMIN_MULTISIG_SIGNER_2",
+      "TON_TESTNET_ADMIN_MULTISIG_SIGNER_3",
+      "TON_TESTNET_ADMIN_MULTISIG_SIGNER_4",
+      "TON_TESTNET_ADMIN_MULTISIG_SIGNER_5"
+    ]
+  },
+  "contracts": {
+    "AdminMultisig": null,
+    "CapitalRegistry": null,
+    "Treasury": null,
+    "ReserveVaults": {
+      "72hours": null,
+      "wan": null,
+      "multi-millionaire": null
+    },
+    "ReserveVaultJettonWallets": {
+      "72hours": null,
+      "wan": null,
+      "multi-millionaire": null
+    },
+    "AlphaVaults": {
+      "72hours": null,
+      "wan": null,
+      "multi-millionaire": null
+    },
+    "AlphaVaultJettonWallets": {
+      "72hours": null,
+      "wan": null,
+      "multi-millionaire": null
+    }
+  }
+}
