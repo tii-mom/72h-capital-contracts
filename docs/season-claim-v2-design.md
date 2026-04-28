@@ -87,7 +87,14 @@ The bridge avoids changing the already-funded mainnet `SeasonVault` route:
 
 This gives an auditable route from the existing 90B inventory into `SeasonClaimV2` without retargeting `SeasonVault`. The current bridge is conservative: because `SeasonClaimV2` still requires a season to be fully funded before `RegisterSeasonClaim`, public V2 roots should be registered only after the bridge has delivered the full season amount. Supporting progressive 20/40/60/80/100 V2 public claims from partial bridge funding would require a separate audited `SeasonClaimV2` accounting change.
 
-Current local bridge code hash: `82f322cee7dbffe85c2295d43f06734475fa19512651389de93266f8f9ac148a`.
+Bridge hardening after audit review:
+
+- bridge wallet and V2 target configuration lock permanently after the first legacy claim attempt
+- automatic forward query ids use `[7207100000000000, 14414200000000000)`, while manual retry forward ids must be `>= 14414200000000000`
+- `forwardToV2` rejects pending query collisions
+- authenticated legacy notifications are accepted for the actual amount received, so a 20% legacy unlock does not strand tokens when the operator planned a larger expected amount
+
+Current local bridge code hash: `73c5d27d3366a238b73844ccbb8a6dceb18ee4ba2a2820c0b30121a7ad12f0dd`.
 
 ## Next Steps
 

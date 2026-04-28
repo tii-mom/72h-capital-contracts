@@ -1,6 +1,7 @@
 import "./SeasonClaimV2.tact";
 
 const SEASON_CLAIM_V2_BRIDGE_FORWARD_QUERY_OFFSET: Int = 7207100000000000;
+const SEASON_CLAIM_V2_BRIDGE_MANUAL_FORWARD_QUERY_OFFSET: Int = 14414200000000000;
 const SEASON_CLAIM_V2_BRIDGE_MAX_SEASONS: Int = 10;
 
 message(0x72071001) SetSeasonClaimV2BridgeJettonWallet {
@@ -36,6 +37,7 @@ contract SeasonClaimV2LegacyBridge {
     claimedFromLegacy72H: Int as coins;
     forwardedToV272H: Int as coins;
     pendingForward72H: Int as coins;
+    configurationLocked: Bool;
     pendingLegacySeasonByQuery: map<Int as uint64, Int as uint8>;
     pendingLegacyAmountByQuery: map<Int as uint64, Int as coins>;
     pendingForwardAmountByQuery: map<Int as uint64, Int as coins>;
@@ -49,19 +51,20 @@ contract SeasonClaimV2LegacyBridge {
         self.claimedFromLegacy72H = 0;
         self.forwardedToV272H = 0;
         self.pendingForward72H = 0;
+        self.configurationLocked = false;
     }
 
     receive() {}
 
     receive(msg: SetSeasonClaimV2BridgeJettonWallet) {
         self.requireOwner();
-        require(self.claimedFromLegacy72H == 0 && self.forwardedToV272H == 0 && self.pendingForward72H == 0, "wallet locked after activity");
+        require(!self.configurationLocked, "wallet locked after activity");
         self.bridgeJettonWallet = msg.wallet;
     }
 
     receive(msg: SetSeasonClaimV2BridgeTarget) {
         self.requireOwner();
-        require(self.claimedFromLegacy72H == 0 && self.forwardedToV272H == 0 && self.pendingForward72H == 0, "target locked after activity");
+        require(!self.configurationLocked, "target locked after activity");
         self.seasonClaimV2 = msg.seasonClaimV2;
     }
 
@@ -72,6 +75,7 @@ contract SeasonClaimV2LegacyBridge {
         require(msg.queryId < SEASON_CLAIM_V2_BRIDGE_FORWARD_QUERY_OFFSET, "legacy query reserved");
         require(!self.pendingLegacySeasonByQuery.exists(msg.queryId), "legacy query pending");
 
+        self.configurationLocked = true;
         self.pendingLegacySeasonByQuery.set(msg.queryId, msg.seasonId);
         self.pendingLegacyAmountByQuery.set(msg.queryId, msg.expectedClaimAmount72H);
 
@@ -94,9 +98,10 @@ contract SeasonClaimV2LegacyBridge {
     receive(msg: ForwardBridgeInventoryToV2) {
         self.requireOwner();
         require(msg.amount72H > 0, "amount missing");
-        require(msg.queryId >= SEASON_CLAIM_V2_BRIDGE_FORWARD_QUERY_OFFSET, "forward query required");
+        require(msg.queryId >= SEASON_CLAIM_V2_BRIDGE_MANUAL_FORWARD_QUERY_OFFSET, "manual forward query required");
         require(!self.pendingForwardAmountByQuery.exists(msg.queryId), "forward query pending");
         require(msg.amount72H <= self.availableToForward72H(), "insufficient bridge inventory");
+        self.configurationLocked = true;
         self.forwardToV2(msg.queryId, msg.amount72H);
     }
 
@@ -107,12 +112,13 @@ contract SeasonClaimV2LegacyBridge {
         require(pendingSeason != null, "legacy claim pending missing");
         let pendingAmount = self.pendingLegacyAmountByQuery.get(msg.queryId);
         require(pendingAmount != null, "legacy claim amount missing");
-        require(pendingAmount!! == msg.amount, "invalid legacy claim amount");
 
         self.pendingLegacySeasonByQuery.del(msg.queryId);
         self.pendingLegacyAmountByQuery.del(msg.queryId);
         self.claimedFromLegacy72H += msg.amount;
-        self.forwardToV2(SEASON_CLAIM_V2_BRIDGE_FORWARD_QUERY_OFFSET + msg.queryId, msg.amount);
+        let autoForwardQueryId = SEASON_CLAIM_V2_BRIDGE_FORWARD_QUERY_OFFSET + msg.queryId;
+        require(autoForwardQueryId < SEASON_CLAIM_V2_BRIDGE_MANUAL_FORWARD_QUERY_OFFSET, "auto forward query overflow");
+        self.forwardToV2(autoForwardQueryId, msg.amount);
     }
 
     receive(msg: ConfirmSeasonClaimFunding) {
@@ -148,6 +154,8 @@ contract SeasonClaimV2LegacyBridge {
     }
 
     fun forwardToV2(queryId: Int, amount72H: Int) {
+        require(queryId >= SEASON_CLAIM_V2_BRIDGE_FORWARD_QUERY_OFFSET, "forward query required");
+        require(!self.pendingForwardAmountByQuery.exists(queryId), "forward query pending");
         self.pendingForwardAmountByQuery.set(queryId, amount72H);
         self.pendingForward72H += amount72H;
 
@@ -199,5 +207,9 @@ contract SeasonClaimV2LegacyBridge {
     get fun getPendingForwardAmount(queryId: Int): Int {
         let value = self.pendingForwardAmountByQuery.get(queryId);
         return value == null ? 0 : value!!;
+    }
+
+    get fun getConfigurationLocked(): Bool {
+        return self.configurationLocked;
     }
 }
