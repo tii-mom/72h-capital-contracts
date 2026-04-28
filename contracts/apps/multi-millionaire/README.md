@@ -12,6 +12,7 @@ Status: planning and migration boundary.
 - Leaderboard pool: 10%.
 - Claim path: deployed `SeasonClaim`.
 - Display/navigation companion: `/Users/yudeyou/Desktop/72`.
+- Production-scale claim path: pending `SeasonClaimV2` testnet rehearsal and audit.
 
 ## Migration Rule
 
@@ -25,4 +26,3 @@ When an app contract becomes a production candidate, move or recreate the source
 - audit notes
 
 Do not deploy the draft app contracts from `/Users/yudeyou/Desktop/multi-millionaire/contracts/` until they pass this process.
-

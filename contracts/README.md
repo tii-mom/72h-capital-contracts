@@ -9,6 +9,7 @@ The deployed 72H V2 mainnet package consists of the fixed-supply Jetton plus the
 - `jetton-v2/*.fc`: production Jetton master and wallet implementation.
 - `SeasonVault.tact`: custody for the 90B season reward inventory.
 - `SeasonClaim.tact`: Merkle claim contract for successful season rewards.
+- `SeasonClaimV2.tact`: not deployed; candidate scalable-proof replacement for large Season War claim sets.
 - `FundVesting.tact`: price-stage vesting for failed-round inventory.
 - `DevelopmentFund.tact`: development fund custody.
 - `PresaleVault.tact`: TON-only staged presale custody and sale logic.

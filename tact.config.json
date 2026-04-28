@@ -56,6 +56,12 @@
       "mode": "full"
     },
     {
+      "name": "SeasonClaimV2",
+      "path": "./contracts/SeasonClaimV2.tact",
+      "output": "./build/tact/SeasonClaimV2",
+      "mode": "full"
+    },
+    {
       "name": "FundVesting",
       "path": "./contracts/FundVesting.tact",
       "output": "./build/tact/FundVesting",

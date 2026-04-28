@@ -20,6 +20,7 @@ Start here when reviewing, auditing, integrating, or submitting 72H V2 contract 
 ## Technical Specs
 
 - `72h-v2-tokenomics-development-spec.md`: V2 tokenomics design and implementation notes.
+- `season-claim-v2-design.md`: scalable-proof SeasonClaimV2 candidate design.
 - `apps/multi-millionaire-900b-reward-integration.md`: 90B reward integration plan.
 - `architecture.md`: broader system architecture.
 - `deployment.md`: older deployment and rehearsal notes for supporting contracts.
