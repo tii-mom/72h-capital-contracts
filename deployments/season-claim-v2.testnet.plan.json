@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-04-28T09:20:13.184Z",
+  "network": "testnet",
+  "loadedEnvFiles": [
+    ".env.local"
+  ],
+  "mode": "send",
+  "nonce": "post-p3-bounce-2026-04-28",
+  "deployer": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+  "deployerWalletId": 698983191,
+  "jettonMaster": "kQDJqdAP9DR5NGV7EDg6T78EuNqmuKsbpEhQJSrFxTm8rjtK",
+  "metadataUri": "https://72h.lol/testnet/72h-v2-season-reward-confirm-2026-04-28.json",
+  "contract": {
+    "SeasonClaimV2": "kQAZgDqwx5LJFseLP0Tf8XQITz5nMKa41taB17zp2jWdiJko",
+    "claimJettonWallet": "kQC3PlHvyPhpXCyD4DnSHphey0SLzxTaKOEqOeHMHtJSHO1N",
+    "placeholderClaimWallet": "kQB_DbRNgEIaX0BcTgycFxMUXFThCYIKwFm6JZo5yzgDooMe",
+    "seasonVaultForRehearsal": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+    "BounceSeasonClaimV2": "kQAWAME0KXgJcP4u2VFNJRCs66ON_kBohOh2lfXCi1DIySWq",
+    "BouncingJettonWallet": "kQAE_HZO5aVgB7PtEFeCbaITWq7wGrC-4m2adVpFes4JkzCY"
+  },
+  "codeHashes": {
+    "minterHex": "779489f7cadb181403156694116baa342c0fe32c0cf5ce3b84a1ef4e652ed5e9",
+    "walletHex": "ba2918c8947e9b25af9ac1b883357754173e5812f807a3d6e642a14709595395",
+    "SeasonClaimV2": "9a9488a0e2ba150ac6e2e0b9bc4feec93b5a7439059096de202543a3a46ea2c1",
+    "SeasonClaimV2Data": "9250f55b1a85b57072178d2c790327dc34a0a16a018ddef38838e2e0411631c8",
+    "SeasonClaimV2BounceMock": "4cf2f1d3cdd18184c883a36c3216f3e958143966351510b1c84a6b76478499e5"
+  },
+  "rehearsal": {
+    "claimLeafCount": 128,
+    "claimProofDepth": 7,
+    "claimProofCellHash": "e5d0eff2a2bfb104274b11c477838008e8e45e4574301cfe1666fdbdf80f4e91",
+    "season1Root": "0xaed77d310c7731c68b1236bdb9bfd2f0f6be8c94b71c86581c9777982ae6a52e",
+    "claimantLeaf": "0x55d358b0b58182bb41bffc5e9f08c2d29e2d3da998ba1b5d10d687be24abb41",
+    "season1TotalRaw": "128000000000",
+    "season2SweepTotalRaw": "100000000000",
+    "fundingTotalRaw": "228000000000",
+    "expectedStageOneClaimRaw": "200000000",
+    "bounceRehearsalTotalRaw": "1000000000",
+    "bounceLeaf": "0x48d07f6238736c8c0c4d7102fa18c295e02b44c9f292c5063424dcef09165c94"
+  }
+}

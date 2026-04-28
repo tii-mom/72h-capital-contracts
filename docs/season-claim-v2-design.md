@@ -1,6 +1,6 @@
 # SeasonClaimV2 Design
 
-Status: implemented candidate, not deployed.
+Status: implemented candidate, testnet rehearsed, not mainnet deployed.
 
 `SeasonClaimV2` addresses the proof-depth limit discovered during the `multi-millionaire` Season War exporter rehearsal. The deployed `SeasonClaim` reads all Merkle proof entries from a single cell. Because each entry is `siblingOnLeft bool + sibling uint256`, that format fits only three proof levels and roughly eight leaves.
 
@@ -38,6 +38,7 @@ The verifier rejects malformed tails:
 
 - leftover bits that do not form a full entry
 - more than one continuation reference in a proof cell
+- empty continuation cells appended before or after valid proof entries
 
 This supports deep Merkle paths while keeping the leaf schema, root hash, and claim message shape stable.
 
@@ -53,15 +54,27 @@ This supports deep Merkle paths while keeping the leaf schema, root hash, and cl
 - correct bounce sender with wrong amount does not roll back
 - correct bounce sender with correct amount rolls back
 
+## Testnet Evidence
+
+Latest focused SeasonClaimV2 testnet rehearsal:
+
+- Evidence: `deployments/season-claim-v2.testnet.latest.json`
+- Timestamped evidence: `deployments/season-claim-v2.testnet.2026-04-28T09-25-57-992Z.json`
+- Deployed testnet SeasonClaimV2: `kQAZgDqwx5LJFseLP0Tf8XQITz5nMKa41taB17zp2jWdiJko`
+- Testnet code hash: `9a9488a0e2ba150ac6e2e0b9bc4feec93b5a7439059096de202543a3a46ea2c1`
+- Rehearsed path: deploy, set Jetton wallet, fund through real V2 testnet Jetton transfer notification, register 128-leaf ref-chain root, unlock, claim, sweep expired season, and true bounced transfer rollback through a testnet-only bouncing Jetton wallet mock.
+- Misti all-detectors output: `audit-artifacts/misti-seasonclaim-v2-post-p3-bounce-2026-04-28.json/warnings.json`
+- Misti high-severity run: exit code 0, no high/critical findings.
+
+## Mainnet Planning Caveat
+
+The currently deployed mainnet `SeasonVault` is already funded and its route setter is locked once funding or allocation is non-zero. A standalone `SeasonClaimV2` deployment does not automatically redirect the existing 90B SeasonVault inventory. Before mainnet use, the deployment plan must explicitly define the funding route for `SeasonClaimV2` rather than assuming the deployed `SeasonVault` can be retargeted.
+
 ## Next Steps
 
 Before production use:
 
-1. Run full local validation.
-2. Update the `multi-millionaire` exporter to emit ref-chain proof cells for production manifests.
-3. Run a large dry-run artifact with realistic recipient counts.
-4. Deploy `SeasonClaimV2` to testnet.
-5. Run testnet funding/register/claim/bounce/sweep rehearsal.
-6. Send the implementation and evidence to audit.
-7. Only after audit signoff, generate a mainnet deployment plan and update public docs/website JSON with the new claim contract address.
-
+1. Get audit signoff on the post-P3 implementation and testnet evidence.
+2. Confirm the production funding route for `SeasonClaimV2`, given the deployed mainnet `SeasonVault` route lock.
+3. Generate a mainnet deployment or migration plan only after the funding route is selected and audited.
+4. Update public docs/website JSON only after mainnet deployment is complete.

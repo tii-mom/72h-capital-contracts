@@ -89,13 +89,15 @@ position_contribution = confirmed_locked_amount_raw x eligible_successful_round_
 
 The app database does not yet persist season round success metadata or per-position round eligibility, so `successfulWaveIds` remains an explicit operator input for v1.
 
-## SeasonClaimV2 Evaluation Required
+## SeasonClaimV2 Evaluation
 
 The deployed `SeasonClaim` proof format is a single cell containing consecutive `siblingOnLeft bool + sibling uint256` pairs. That fits at most 3 proof levels, so it supports roughly 8 leaves. `multi-millionaire` now fail-fast rejects exports above that capacity and only supports small rehearsal artifacts against the deployed contract.
 
-`SeasonClaimV2` is now implemented as an undeployed candidate in `contracts/SeasonClaimV2.tact`. It supports proof continuation through references while preserving the same leaf schema, reward accounting, category totals, price-stage unlocks, and bounce safety properties.
+`SeasonClaimV2` is now implemented as an undeployed mainnet candidate in `contracts/SeasonClaimV2.tact`. It supports proof continuation through references while preserving the same leaf schema, reward accounting, category totals, price-stage unlocks, and bounce safety properties. Focused testnet rehearsal completed in `deployments/season-claim-v2.testnet.latest.json`, including real V2 testnet Jetton funding, 128-leaf ref-chain claim, expired season sweep, and a true bounced transfer rollback through a testnet-only bouncing Jetton wallet mock.
 
-Before a real public 90B reward root is registered, deploy and rehearse `SeasonClaimV2` or a compatible audited migration. The preferred direction is a proof format that can traverse references or a dictionary/continuation structure while preserving:
+Before a real public 90B reward root is registered, the remaining blocker is not proof depth but the mainnet funding route. The currently deployed mainnet `SeasonVault` is already funded and cannot be retargeted to a new claim contract after funding starts. A mainnet plan must therefore explicitly choose and audit how production rewards fund `SeasonClaimV2`.
+
+Any final production route must preserve:
 
 - the current leaf domain: `appId`, Jetton Master, claim contract address, `seasonId`, recipient wallet, four pool amounts, computed total
 - duplicate-claim protection by leaf hash

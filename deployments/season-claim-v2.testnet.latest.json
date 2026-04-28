@@ -1,0 +1,157 @@
+{
+  "generatedAt": "2026-04-28T09:20:13.184Z",
+  "network": "testnet",
+  "loadedEnvFiles": [
+    ".env.local"
+  ],
+  "mode": "send",
+  "nonce": "post-p3-bounce-2026-04-28",
+  "deployer": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+  "deployerWalletId": 698983191,
+  "jettonMaster": "kQDJqdAP9DR5NGV7EDg6T78EuNqmuKsbpEhQJSrFxTm8rjtK",
+  "metadataUri": "https://72h.lol/testnet/72h-v2-season-reward-confirm-2026-04-28.json",
+  "contract": {
+    "SeasonClaimV2": "kQAZgDqwx5LJFseLP0Tf8XQITz5nMKa41taB17zp2jWdiJko",
+    "claimJettonWallet": "kQC3PlHvyPhpXCyD4DnSHphey0SLzxTaKOEqOeHMHtJSHO1N",
+    "placeholderClaimWallet": "kQB_DbRNgEIaX0BcTgycFxMUXFThCYIKwFm6JZo5yzgDooMe",
+    "seasonVaultForRehearsal": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+    "BounceSeasonClaimV2": "kQAWAME0KXgJcP4u2VFNJRCs66ON_kBohOh2lfXCi1DIySWq",
+    "BouncingJettonWallet": "kQAE_HZO5aVgB7PtEFeCbaITWq7wGrC-4m2adVpFes4JkzCY"
+  },
+  "codeHashes": {
+    "minterHex": "779489f7cadb181403156694116baa342c0fe32c0cf5ce3b84a1ef4e652ed5e9",
+    "walletHex": "ba2918c8947e9b25af9ac1b883357754173e5812f807a3d6e642a14709595395",
+    "SeasonClaimV2": "9a9488a0e2ba150ac6e2e0b9bc4feec93b5a7439059096de202543a3a46ea2c1",
+    "SeasonClaimV2Data": "9250f55b1a85b57072178d2c790327dc34a0a16a018ddef38838e2e0411631c8",
+    "SeasonClaimV2BounceMock": "4cf2f1d3cdd18184c883a36c3216f3e958143966351510b1c84a6b76478499e5"
+  },
+  "rehearsal": {
+    "claimLeafCount": 128,
+    "claimProofDepth": 7,
+    "claimProofCellHash": "e5d0eff2a2bfb104274b11c477838008e8e45e4574301cfe1666fdbdf80f4e91",
+    "season1Root": "0xaed77d310c7731c68b1236bdb9bfd2f0f6be8c94b71c86581c9777982ae6a52e",
+    "claimantLeaf": "0x55d358b0b58182bb41bffc5e9f08c2d29e2d3da998ba1b5d10d687be24abb41",
+    "season1TotalRaw": "128000000000",
+    "season2SweepTotalRaw": "100000000000",
+    "fundingTotalRaw": "228000000000",
+    "expectedStageOneClaimRaw": "200000000",
+    "bounceRehearsalTotalRaw": "1000000000",
+    "bounceLeaf": "0x48d07f6238736c8c0c4d7102fa18c295e02b44c9f292c5063424dcef09165c94"
+  },
+  "completedAt": "2026-04-28T09:25:57.992Z",
+  "actions": [
+    {
+      "label": "deploy SeasonClaimV2",
+      "seqnoBefore": 1485,
+      "seqnoAfter": 1486,
+      "at": "2026-04-28T09:20:33.218Z"
+    },
+    {
+      "label": "set SeasonClaimV2 jetton wallet",
+      "seqnoBefore": 1486,
+      "seqnoAfter": 1487,
+      "at": "2026-04-28T09:20:53.519Z"
+    },
+    {
+      "label": "fund SeasonClaimV2 rehearsal inventory",
+      "seqnoBefore": 1487,
+      "seqnoAfter": 1488,
+      "at": "2026-04-28T09:21:12.912Z"
+    },
+    {
+      "label": "register SeasonClaimV2 season 1 ref-chain root",
+      "seqnoBefore": 1488,
+      "seqnoAfter": 1489,
+      "at": "2026-04-28T09:21:33.731Z"
+    },
+    {
+      "label": "register expired SeasonClaimV2 season 2 root",
+      "seqnoBefore": 1489,
+      "seqnoAfter": 1490,
+      "at": "2026-04-28T09:21:54.211Z"
+    },
+    {
+      "label": "unlock SeasonClaimV2 stage 1",
+      "seqnoBefore": 1490,
+      "seqnoAfter": 1491,
+      "at": "2026-04-28T09:22:15.452Z"
+    },
+    {
+      "label": "claim SeasonClaimV2 ref-chain proof",
+      "seqnoBefore": 1491,
+      "seqnoAfter": 1492,
+      "at": "2026-04-28T09:22:40.931Z"
+    },
+    {
+      "label": "sweep expired SeasonClaimV2 season 2",
+      "seqnoBefore": 1492,
+      "seqnoAfter": 1493,
+      "at": "2026-04-28T09:23:03.850Z"
+    },
+    {
+      "label": "deploy bounce SeasonClaimV2",
+      "seqnoBefore": 1493,
+      "seqnoAfter": 1494,
+      "at": "2026-04-28T09:23:26.418Z"
+    },
+    {
+      "label": "deploy bouncing Jetton wallet mock",
+      "seqnoBefore": 1494,
+      "seqnoAfter": 1495,
+      "at": "2026-04-28T09:23:47.515Z"
+    },
+    {
+      "label": "set bounce SeasonClaimV2 jetton wallet",
+      "seqnoBefore": 1495,
+      "seqnoAfter": 1496,
+      "at": "2026-04-28T09:24:09.387Z"
+    },
+    {
+      "label": "mock-fund bounce SeasonClaimV2",
+      "seqnoBefore": 1496,
+      "seqnoAfter": 1497,
+      "at": "2026-04-28T09:24:29.971Z"
+    },
+    {
+      "label": "register bounce SeasonClaimV2 season root",
+      "seqnoBefore": 1497,
+      "seqnoAfter": 1498,
+      "at": "2026-04-28T09:24:57.096Z"
+    },
+    {
+      "label": "unlock bounce SeasonClaimV2 stage 1",
+      "seqnoBefore": 1498,
+      "seqnoAfter": 1499,
+      "at": "2026-04-28T09:25:17.543Z"
+    },
+    {
+      "label": "claim bounce SeasonClaimV2 and expect rollback",
+      "seqnoBefore": 1499,
+      "seqnoAfter": 1500,
+      "at": "2026-04-28T09:25:37.834Z"
+    }
+  ],
+  "finalGetter": {
+    "SeasonClaimV2": {
+      "funded72H": "228000000000",
+      "reserved72H": "128000000000",
+      "claimed72H": "200000000",
+      "season1Root": "79083171813059220965516911157586329177488100597922456726151261865914778690862",
+      "season1Total72H": "128000000000",
+      "season1Claimed72H": "200000000",
+      "season1Pending72H": "200000000",
+      "season2Total72H": "100000000000"
+    },
+    "BounceSeasonClaimV2": {
+      "funded72H": "1000000000",
+      "reserved72H": "1000000000",
+      "claimed72H": "0",
+      "pendingBounceClaim72H": "0"
+    },
+    "balances": {
+      "ownerJettonBefore": "1700009942200000000",
+      "ownerJettonAfter": "1700009814400000000",
+      "claimJettonWallet": "127800000000"
+    }
+  }
+}

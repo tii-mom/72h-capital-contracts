@@ -43,6 +43,8 @@
     "rehearse:testnet:reserve:send": "tsx scripts/rehearse-testnet-reserve.ts --send",
     "rehearse:testnet:reward": "tsx scripts/rehearse-testnet-reward-pool.ts",
     "rehearse:testnet:reward:send": "tsx scripts/rehearse-testnet-reward-pool.ts --send",
+    "rehearse:season-claim-v2:testnet": "tsx scripts/rehearse-season-claim-v2-testnet.ts",
+    "rehearse:season-claim-v2:testnet:send": "tsx scripts/rehearse-season-claim-v2-testnet.ts --send",
     "rehearse:v2-tokenomics:testnet": "tsx scripts/rehearse-72h-v2-tokenomics-testnet.ts",
     "rehearse:v2-tokenomics:testnet:send": "tsx scripts/rehearse-72h-v2-tokenomics-testnet.ts --send",
     "sync:api-env:testnet": "tsx scripts/sync-api-env-from-testnet-manifest.ts",

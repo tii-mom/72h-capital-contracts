@@ -164,6 +164,28 @@ function encodeProofRefChain(proof: ProofItem[]) {
   return next || beginCell().endCell();
 }
 
+function encodeProofWithTailBit(proof: ProofItem[]) {
+  const builder = beginCell();
+  for (const item of proof) {
+    builder.storeBit(item.siblingOnLeft).storeUint(item.hash, 256);
+  }
+  return builder.storeBit(false).endCell();
+}
+
+function encodeProofWithTwoRefs(item: ProofItem) {
+  return beginCell()
+    .storeBit(item.siblingOnLeft)
+    .storeUint(item.hash, 256)
+    .storeRef(beginCell().endCell())
+    .storeRef(beginCell().endCell())
+    .endCell();
+}
+
+function encodeProofWithEmptyContinuation(proof: ProofItem[]) {
+  const valid = encodeProofRefChain(proof);
+  return beginCell().storeRef(valid).endCell();
+}
+
 function claimSeasonRewardMessage(queryId: bigint, seasonId: bigint, amounts: SeasonRewardAmounts, proof: Cell) {
   return {
     $$type: 'ClaimSeasonReward',
@@ -363,10 +385,35 @@ describe('SeasonClaimV2', () => {
     expect(() => findJettonTransfer(wrongProofClaim)).toThrow('Expected a JettonTransfer outbound message.');
     expect(await (claim.getGetClaimedByLeaf as (leaf: bigint) => Promise<bigint>)(must(leaves[0], 'wrong proof leaf'))).toBe(0n);
 
+    const validProof = tree.proofs.get(0) || [];
+    const tailBitClaim = await claim.send(
+      must(claimants[0], 'tail bit claimant').getSender(),
+      { value: toNano('0.2') },
+      claimSeasonRewardMessage(802n, 1n, must(amounts[0], 'tail bit amount'), encodeProofWithTailBit(validProof)),
+    );
+    expect(() => findJettonTransfer(tailBitClaim)).toThrow('Expected a JettonTransfer outbound message.');
+    expect(await (claim.getGetClaimedByLeaf as (leaf: bigint) => Promise<bigint>)(must(leaves[0], 'tail bit leaf'))).toBe(0n);
+
+    const twoRefsClaim = await claim.send(
+      must(claimants[0], 'two refs claimant').getSender(),
+      { value: toNano('0.2') },
+      claimSeasonRewardMessage(803n, 1n, must(amounts[0], 'two refs amount'), encodeProofWithTwoRefs(must(validProof[0], 'two refs proof item'))),
+    );
+    expect(() => findJettonTransfer(twoRefsClaim)).toThrow('Expected a JettonTransfer outbound message.');
+    expect(await (claim.getGetClaimedByLeaf as (leaf: bigint) => Promise<bigint>)(must(leaves[0], 'two refs leaf'))).toBe(0n);
+
+    const emptyContinuationClaim = await claim.send(
+      must(claimants[0], 'empty continuation claimant').getSender(),
+      { value: toNano('0.2') },
+      claimSeasonRewardMessage(804n, 1n, must(amounts[0], 'empty continuation amount'), encodeProofWithEmptyContinuation(validProof)),
+    );
+    expect(() => findJettonTransfer(emptyContinuationClaim)).toThrow('Expected a JettonTransfer outbound message.');
+    expect(await (claim.getGetClaimedByLeaf as (leaf: bigint) => Promise<bigint>)(must(leaves[0], 'empty continuation leaf'))).toBe(0n);
+
     const legacyProofClaim = await claim.send(
       must(claimants[0], 'legacy proof claimant').getSender(),
       { value: toNano('0.2') },
-      claimSeasonRewardMessage(802n, 1n, must(amounts[0], 'legacy proof amount'), encodeProofSingleCell(tree.proofs.get(0) || [])),
+      claimSeasonRewardMessage(805n, 1n, must(amounts[0], 'legacy proof amount'), encodeProofSingleCell(validProof)),
     );
     const legacyTransfer = findJettonTransfer(legacyProofClaim);
     expect(legacyTransfer.amount).toBe((totalSeasonRewardAmount(must(amounts[0], 'legacy transfer amount')) * 2000n) / 10000n);

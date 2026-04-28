@@ -62,6 +62,12 @@
       "mode": "full"
     },
     {
+      "name": "SeasonClaimV2BounceMock",
+      "path": "./contracts/testnet/SeasonClaimV2BounceMock.tact",
+      "output": "./build/tact/SeasonClaimV2BounceMock",
+      "mode": "full"
+    },
+    {
       "name": "FundVesting",
       "path": "./contracts/FundVesting.tact",
       "output": "./build/tact/FundVesting",

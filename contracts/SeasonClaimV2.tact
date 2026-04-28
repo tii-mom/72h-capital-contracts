@@ -446,10 +446,13 @@ contract SeasonClaimV2 {
         let cursor = proof.asSlice();
         let current = leaf;
         let done = false;
+        let continuation = false;
         while (!done) {
+            let entriesInCell = 0;
             while (cursor.bits() >= 257) {
                 let siblingOnLeft = cursor.loadBool();
                 let sibling = cursor.loadUint(256);
+                entriesInCell += 1;
                 if (siblingOnLeft) {
                     current = self.hashPair(sibling, current);
                 } else {
@@ -458,10 +461,13 @@ contract SeasonClaimV2 {
             }
             require(cursor.bits() == 0, "invalid proof bits");
             if (cursor.refs() == 0) {
+                require(!continuation || entriesInCell > 0, "empty proof continuation");
                 done = true;
             } else {
                 require(cursor.refs() == 1, "invalid proof refs");
+                require(entriesInCell > 0, "empty proof continuation");
                 cursor = cursor.loadRef().asSlice();
+                continuation = true;
             }
         }
         return current;
