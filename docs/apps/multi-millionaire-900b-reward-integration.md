@@ -75,6 +75,32 @@ Production exports must:
 - use deterministic tie-breakers for leaderboards
 - verify that all four pool totals exactly match the successful-round budget before publishing the Merkle root
 
+Current `multi-millionaire` exporter v1 uses this contribution formula:
+
+```text
+user_contribution = sum(confirmed_locked_amount_raw for positions in successfulWaveIds)
+```
+
+This means each included successful-wave position has `eligible_successful_round_count = 1`. If the final product rule needs one lock to count across multiple successful rounds, the app exporter must change to:
+
+```text
+position_contribution = confirmed_locked_amount_raw x eligible_successful_round_count
+```
+
+The app database does not yet persist season round success metadata or per-position round eligibility, so `successfulWaveIds` remains an explicit operator input for v1.
+
+## SeasonClaimV2 Evaluation Required
+
+The deployed `SeasonClaim` proof format is a single cell containing consecutive `siblingOnLeft bool + sibling uint256` pairs. That fits at most 3 proof levels, so it supports roughly 8 leaves. `multi-millionaire` now fail-fast rejects exports above that capacity and only supports small rehearsal artifacts against the deployed contract.
+
+Before a real public 90B reward root is registered, evaluate and implement a `SeasonClaimV2` or compatible migration that supports scalable Merkle proofs. The preferred direction is a proof format that can traverse references or a dictionary/continuation structure while preserving:
+
+- the current leaf domain: `appId`, Jetton Master, claim contract address, `seasonId`, recipient wallet, four pool amounts, computed total
+- duplicate-claim protection by leaf hash
+- category total checks for 50/25/15/10
+- pending claim and bounce safety from the deployed `SeasonClaim`
+- tests for large proof depths well above production recipient counts
+
 ## Existing Multi-Millionaire Work
 
 The current app repo already has a draft SeasonClaim-compatible helper at:
@@ -112,4 +138,3 @@ Known hardening requirement before any app-contract deployment:
 - outbound JettonTransfer success and bounce flows must authenticate the configured Jetton wallet sender
 - bounce rollback must verify the bounced amount equals the pending amount
 - forged success/finalize messages must not clear pending state or mutate accounting
-
