@@ -1,47 +1,43 @@
-# Contract Source Placeholders
+# Contracts
 
-This directory marks the intended TON contract source locations.
+This directory contains the TON smart contract sources for 72H.
 
-The files here are intentionally conservative. `CapitalRegistry.tact`, `ReserveVault.tact`, and `TestJetton.tact` now compile through the Tact toolchain as minimal testnet-oriented shells. The executable TypeScript state machines in `src/contracts/*.ts` are still the richer behavior source of truth until the on-chain implementation catches up.
+## Mainnet V2 Contracts
 
-Current mapping:
+The deployed 72H V2 mainnet package consists of the fixed-supply Jetton plus these tokenomics contracts:
 
-- `src/contracts/CapitalRegistry.ts` is the executable registry and seat lifecycle model
-- `src/contracts/ReserveVault.ts` is the executable reserve lot and redemption model
-- `src/contracts/AlphaVault.ts` is the executable alpha allocation and settlement model
-- `src/contracts/TestJetton.ts` is the testnet-only 72H Jetton rehearsal boundary
-- `src/contracts/AdminMultisig.ts` exports the executable `AdminAuthority` governance blueprint while the filename remains stable for generated-contract compatibility
-- `src/contracts/Treasury.ts` is legacy yield-control scaffolding; `AppRewardPool` is the v1 reward custody path
-- `src/types/lifecycle.ts` and `src/utils/capital-lifecycle.ts` carry reusable lifecycle/status helpers
-- `src/encoding/transactionPayloadScaffolds.ts` is the current website / API payload-alignment scaffold
-- `contracts/CapitalRegistry.tact` and `contracts/ReserveVault.tact` provide the first minimal compiled Reserve path
-- `contracts/AlphaVault.tact` mirrors the intended alpha storage and entrypoints and is not compiled yet
-- `contracts/TestJetton.tact` is the testnet-only Jetton placeholder scaffold
-- `contracts/AdminMultisig.tact` remains the compiled-file governance scaffold for `AdminAuthority`
-- `contracts/Treasury.tact` remains legacy governance/yield scaffolding
-- `contracts/jetton-v2/*.fc` is the production 72H V2 standard Jetton path
-- `contracts/SeasonVault.tact` holds the 90B 72-hour season inventory and routes each 500M round to rewards or fund vesting
-- `contracts/SeasonClaim.tact` verifies off-chain reward lists with Merkle proofs and enforces price-stage claim unlocks
-- `contracts/FundVesting.tact` locks failed-round fund allocations until public price stages are met
-- `contracts/DevelopmentFund.tact` holds normal fund inventory and allows transparent owner-directed withdrawals without price locks
-- `contracts/PresaleVault.tact` implements the simple TON-only 3-stage V2 presale
-- `contracts/EcosystemTreasury.tact` only funds approved app/reward contracts
-- `contracts/TeamVesting.tact` releases team reserve only after price stages are held for 72 hours
+- `jetton-v2/*.fc`: production Jetton master and wallet implementation.
+- `SeasonVault.tact`: custody for the 90B season reward inventory.
+- `SeasonClaim.tact`: Merkle claim contract for successful season rewards.
+- `FundVesting.tact`: price-stage vesting for failed-round inventory.
+- `DevelopmentFund.tact`: development fund custody.
+- `PresaleVault.tact`: TON-only staged presale custody and sale logic.
+- `EcosystemTreasury.tact`: approved ecosystem application funding.
+- `TeamVesting.tact`: price-stage team vesting custody.
 
-Sibling repos now fill the surrounding system boundary:
+Mainnet deployment evidence is recorded in `../deployments/72h-v2-mainnet.deployed-2026-04-28.md`.
 
-- `72h-capital-shared` carries shared route, intent, and view types
-- `72h-capital-indexer` carries read-model and ingestion scaffolding
-- `72h-capital-api` exposes the business API surface
-- `72h-capital-admin` carries the operations console
-- `72hours` carries the public website and Capital preview UI
+## Supporting And Legacy Contracts
 
-The Tact files intentionally do not overclaim implemented behavior. The compiled Reserve path is still minimal: it is useful for testnet message and deployment progression, but it does not yet implement Jetton transfer verification, the full independent lot ledger, audited mature-lot payout dispatch, or registry callback messages.
+These contracts remain in the repository because they are part of the broader 72H Capital system or earlier audit work:
 
-The transaction payload scaffold also intentionally does not overclaim. Its base64 output is only a wrapped JSON placeholder for downstream integration work, not a TON message cell.
+- `CapitalRegistry.tact`
+- `ReserveVault.tact`
+- `AppRewardPool.tact`
+- `AlphaVault.tact`
+- `AdminMultisig.tact`
+- `Treasury.tact`
+- `TestJetton.tact`
 
-Suggested next step:
+They are not part of the deployed 8-contract V2 tokenomics mainnet package unless a future deployment explicitly includes them.
 
-- replace each scaffold with a real Tact or FunC source file once the TON toolchain and deployment format are finalized
-- keep the module names unchanged
-- preserve the invariants locked in `docs/rules.md` and `tests/capital-rules.spec.ts`
+## Application Contracts
+
+Future application-specific contracts should live under an app-specific folder in this repository, for example:
+
+```text
+contracts/apps/multi-millionaire/
+contracts/apps/price-game-72/
+```
+
+Application frontend and backend repositories should not become the source of truth for chain contracts. They should consume addresses, ABI/wrapper artifacts, and public JSON from this repository.

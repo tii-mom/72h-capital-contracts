@@ -2,7 +2,7 @@
   "name": "72h-capital-contracts",
   "version": "0.1.0",
   "private": true,
-  "description": "Standalone TON contracts scaffold for 72H Capital.",
+  "description": "Official TON smart contracts, deployment evidence, and public contract information for 72H V2.",
   "type": "module",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
