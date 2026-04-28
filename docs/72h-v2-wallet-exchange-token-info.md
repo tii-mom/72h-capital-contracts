@@ -59,7 +59,17 @@ Use this package for wallet, DEX, CEX, block explorer, and listing submissions.
 - Mainnet deployment evidence: `deployments/72h-v2-mainnet.deployed-2026-04-28.md`
 - Mainnet public contract information: `docs/72h-v2-mainnet-public-info.md`
 - Mainnet readiness summary: `docs/72h-v2-mainnet-readiness.md`
+- Public website JSON source: `integrations/website/72h-v2-mainnet.json`
+- Public submission status: `docs/72h-v2-public-submission-status.md`
 - Misti static-analysis artifact: `audit-artifacts/misti-all-detectors-post-souffle-2026-04-28.json/warnings.json`
+
+## Submission Status
+
+- Tonkeeper asset PR: `https://github.com/tonkeeper/ton-assets/pull/5095`
+- Official website route: implemented locally, production deploy pending Cloudflare authentication.
+- OKX listing application: package ready; requires project owner exchange/login flow.
+- STON.fi verification: package ready; submit after liquidity/listing plan is confirmed.
+- DEX/CEX submissions: use this document plus `docs/72h-v2-mainnet-public-info.md` and mainnet evidence.
 
 ## Wallet Display Checklist
 

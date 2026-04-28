@@ -4,14 +4,15 @@ This is the project-owner checklist after the 72H V2 mainnet deployment.
 
 ## Public Verification
 
-- Add the GitHub repository link to the official website.
-- Add a public website route for contract information, backed by `/contracts/72h-v2-mainnet.json`.
+- Add the GitHub repository link to the official website. Status: implemented in `/Users/yudeyou/Desktop/72hours`, pending production deploy.
+- Add a public website route for contract information, backed by `/contracts/72h-v2-mainnet.json`. Status: implemented and built locally, pending production deploy.
 - Confirm Tonviewer, Tonscan, Tonkeeper, OKX Wallet, and other major wallets display the token metadata correctly.
 - Confirm wallets show no mint authority or mint-warning state.
 
 ## Wallet And Exchange Submission
 
 - Use `docs/72h-v2-wallet-exchange-token-info.md` as the base submission package.
+- Track current status in `docs/72h-v2-public-submission-status.md`.
 - Include the public GitHub repository and final deployment evidence.
 - Include the final metadata and logo gateway URLs.
 - Maintain one canonical contact path for exchange/wallet follow-up.
@@ -21,7 +22,7 @@ This is the project-owner checklist after the 72H V2 mainnet deployment.
 - Put future application contracts in this repository under app-specific folders.
 - Recommended first folders:
   - `contracts/apps/multi-millionaire/`
-  - `contracts/apps/price-game-72/`
+  - `contracts/apps/price-dashboard-72/`
 - Keep application frontend/backend repositories focused on UI, APIs, indexers, and off-chain accounting.
 - Let app repositories consume this contracts repository as the chain source of truth.
 
@@ -35,7 +36,7 @@ This is the project-owner checklist after the 72H V2 mainnet deployment.
 ## Near-Term Product Work
 
 - Wire `multi-millionaire` reward accounting to the SeasonClaim leaf schema.
-- Publish `/contracts/72h-v2-mainnet.json` on the official website.
-- Add a user-facing `/contracts` or `/token` page.
+- Publish `/contracts/72h-v2-mainnet.json` on the official website. Blocked until Cloudflare Pages authentication or release-branch deployment.
+- Add a user-facing `/contracts` or `/token` page. Implemented locally and pushed to the website branch.
 - Prepare presale activation runbook before enabling `PresaleVault`.
 - Prepare DEX pool address documentation after presale/liquidity setup.

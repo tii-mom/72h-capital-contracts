@@ -16,6 +16,8 @@ Official smart contract repository for the 72H V2 mainnet token and tokenomics c
 - Deployment evidence: [`deployments/72h-v2-mainnet.deployed-2026-04-28.md`](deployments/72h-v2-mainnet.deployed-2026-04-28.md)
 - Public token and contract information: [`docs/72h-v2-mainnet-public-info.md`](docs/72h-v2-mainnet-public-info.md)
 - Wallet/exchange submission package: [`docs/72h-v2-wallet-exchange-token-info.md`](docs/72h-v2-wallet-exchange-token-info.md)
+- Public submission status: [`docs/72h-v2-public-submission-status.md`](docs/72h-v2-public-submission-status.md)
+- Official website JSON source: [`integrations/website/72h-v2-mainnet.json`](integrations/website/72h-v2-mainnet.json)
 
 ## Mainnet Addresses
 
@@ -59,6 +61,8 @@ This repository contains:
 - Legacy and supporting contracts used for earlier Reserve/AppRewardPool work
 - Mainnet and testnet deployment plans and evidence
 - Audit artifacts and readiness documents
+- Public website, wallet, explorer, and exchange integration notes
+- Future app contract folders under `contracts/apps/`
 - Integration tests and deployment scripts
 
 Application-specific future contracts should be added under app-specific folders in this contracts repository, while frontend and backend application repositories should consume the public addresses and ABI/wrapper artifacts from here.
@@ -96,6 +100,11 @@ Static analysis baseline:
 - X: `https://x.com/72hour_s`
 - Final metadata URI: `ipfs://QmZkjBvKmHhsh56bPbbnwgPL8844eP5Btke6edbRGjPZNw`
 - Logo URI: `ipfs://QmNzFgWkVCxuJJBym1hoDq5tG4PwFBT8mUMMXdPefb23S4`
+
+## Application Integration
+
+- Multi-millionaire 90B reward plan: [`docs/apps/multi-millionaire-900b-reward-integration.md`](docs/apps/multi-millionaire-900b-reward-integration.md)
+- App contract boundary: [`contracts/apps/README.md`](contracts/apps/README.md)
 
 ## Development
 

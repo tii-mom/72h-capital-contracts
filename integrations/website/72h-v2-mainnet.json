@@ -1,0 +1,42 @@
+{
+  "name": "72H",
+  "symbol": "72H",
+  "network": "ton-mainnet",
+  "standard": "jetton",
+  "decimals": 9,
+  "totalSupply": "100000000000000000000",
+  "totalSupplyFormatted": "100,000,000,000 72H",
+  "mintable": false,
+  "admin": null,
+  "jettonMaster": "EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg",
+  "metadataUri": "ipfs://QmZkjBvKmHhsh56bPbbnwgPL8844eP5Btke6edbRGjPZNw",
+  "metadataGatewayUrl": "https://gateway.pinata.cloud/ipfs/QmZkjBvKmHhsh56bPbbnwgPL8844eP5Btke6edbRGjPZNw",
+  "logoUri": "ipfs://QmNzFgWkVCxuJJBym1hoDq5tG4PwFBT8mUMMXdPefb23S4",
+  "logoGatewayUrl": "https://gateway.pinata.cloud/ipfs/QmNzFgWkVCxuJJBym1hoDq5tG4PwFBT8mUMMXdPefb23S4",
+  "website": "https://72h.lol",
+  "telegram": "https://t.me/the_72h",
+  "x": "https://x.com/72hour_s",
+  "contracts": {
+    "seasonVault": "EQCdSSWPVbwh9zIzhF5pnxwRKw-I8xc4bS1iyiVcbXKfnWe-",
+    "seasonClaim": "EQCYvg-_oFE8q8cweVScna-WDRzDYol-FBwHKuTcAjcFGonS",
+    "fundVesting": "EQDO0AMsITst5rWGcabJ8OF7Ys079UMPGNOq9H8WtiJakID4",
+    "developmentFund": "EQAPkdB1YJDEsVixATzfDjf--yl0frlKRkLPYHHUv6nVFkEU",
+    "presaleVault": "EQCj56OaGFtIBgdtQjIacb7s1jlEy93vh-93PU07MDR1vpE9",
+    "ecosystemTreasury": "EQARGC33uqypROhxiJMVOeKPYbYRgAEhXUkTxkrK7CrKDP3O",
+    "teamVesting": "EQD5PnUEuEUYBt1XktTPlvN7HE5n-AIBI4XiAyd4qUgHasrK"
+  },
+  "allocations": {
+    "seasonVault": "90000000000000000000",
+    "presaleVault": "4500000000000000000",
+    "ecosystemTreasury": "4500000000000000000",
+    "developmentFund": "500000000000000000",
+    "teamVesting": "300000000000000000",
+    "earlyUsersOperations": "200000000000000000"
+  },
+  "evidence": {
+    "deployedAt": "2026-04-28",
+    "sourceRepository": "https://github.com/tii-mom/72h-capital-contracts",
+    "deploymentEvidence": "deployments/72h-v2-mainnet.deployed-2026-04-28.md",
+    "publicInfo": "docs/72h-v2-mainnet-public-info.md"
+  }
+}

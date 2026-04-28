@@ -1,0 +1,115 @@
+# Multi-Millionaire 90B Season Reward Integration
+
+This document records the accepted application-level design for the 90B SeasonVault reward allocation.
+
+## Source Of Truth
+
+`multi-millionaire` is the allocation source for successful round rewards because it controls the user behavior that matters:
+
+- personal 72H deposits
+- squad/team deposits
+- referral activation and new-user conversion
+- personal and squad leaderboards
+
+`/Users/yudeyou/Desktop/72` is a display and navigation surface. It should show price, season status, claimable estimates, countdowns, and links into `multi-millionaire`; it must not become the authoritative reward accounting source.
+
+## Chain Contracts
+
+The deployed chain path is:
+
+```text
+SeasonVault -> SeasonClaim -> user wallet
+```
+
+Successful rounds are accumulated by `SeasonVault`. At season finalization, the owner transfers the season's successful-round amount into `SeasonClaim`. `SeasonClaim` then validates a season Merkle root and lets users claim under the price-stage unlock rules.
+
+Failed rounds are not paid to users. They are routed to `FundVesting` under the failed-round rule.
+
+## Allocation Math
+
+Total inventory:
+
+```text
+90,000,000,000 72H = 10 seasons x 18 rounds x 500,000,000 72H
+```
+
+Per successful round:
+
+| Pool | Share | Amount |
+| --- | ---: | ---: |
+| Personal deposit | 50% | 250,000,000 72H |
+| Team deposit | 25% | 125,000,000 72H |
+| Referral/new user | 15% | 75,000,000 72H |
+| Leaderboard | 10% | 50,000,000 72H |
+| Total | 100% | 500,000,000 72H |
+
+Note: an earlier written amount of `300,000,000 72H` for the 50% personal pool is mathematically inconsistent with a 500M round budget. The implemented and audited rule is 50/25/15/10, which means `250M/125M/75M/50M`.
+
+For a season with `N` successful rounds, the SeasonClaim totals must be:
+
+```text
+personal = N x 250,000,000 72H
+team = N x 125,000,000 72H
+referral = N x 75,000,000 72H
+leaderboard = N x 50,000,000 72H
+total = N x 500,000,000 72H
+```
+
+## Off-Chain Allocation Rules
+
+The multi-millionaire backend should export one row per `(seasonId, recipientWallet)` with four pool amounts:
+
+- `personalAmountRaw`
+- `teamAmountRaw`
+- `referralAmountRaw`
+- `leaderboardAmountRaw`
+
+The total is computed, not user-supplied.
+
+Production exports must:
+
+- require a verified primary recipient wallet
+- include only chain-verified lock positions
+- deduplicate each recipient by season
+- exclude or quarantine open/reviewing risk flags
+- use deterministic tie-breakers for leaderboards
+- verify that all four pool totals exactly match the successful-round budget before publishing the Merkle root
+
+## Existing Multi-Millionaire Work
+
+The current app repo already has a draft SeasonClaim-compatible helper at:
+
+```text
+/Users/yudeyou/Desktop/multi-millionaire/server/src/services/seasonRewards.ts
+```
+
+It currently matches the deployed SeasonClaim leaf direction:
+
+- `appId = 1`
+- token address
+- SeasonClaim address
+- `seasonId uint8`
+- wallet
+- four pool amounts
+- computed total
+
+Before production claim activation, the app repo still needs an operator export job, durable archive of source rows/proofs, admin review UI, and tests around risk filtering and deterministic allocation.
+
+## Application Contract Boundary
+
+Future chain contracts for multi-millionaire must be migrated into:
+
+```text
+contracts/apps/multi-millionaire/
+```
+
+The app repo may keep frontend, backend, indexer, and export logic. Chain source code, wrappers, deployment scripts, and evidence should live in this repository once the contracts are production candidates.
+
+The existing app contracts in `/Users/yudeyou/Desktop/multi-millionaire/contracts/` are not part of the deployed 72H V2 core package and should not be deployed to mainnet until they are migrated, hardened, tested, and audited here.
+
+Known hardening requirement before any app-contract deployment:
+
+- outbound JettonTransfer success and bounce flows must authenticate the configured Jetton wallet sender
+- bounce rollback must verify the bounced amount equals the pending amount
+- forged success/finalize messages must not clear pending state or mutate accounting
+

@@ -14,6 +14,7 @@ The deployed 72H V2 mainnet package consists of the fixed-supply Jetton plus the
 - `PresaleVault.tact`: TON-only staged presale custody and sale logic.
 - `EcosystemTreasury.tact`: approved ecosystem application funding.
 - `TeamVesting.tact`: price-stage team vesting custody.
+- `apps/`: future application-specific chain contracts, organized by application.
 
 Mainnet deployment evidence is recorded in `../deployments/72h-v2-mainnet.deployed-2026-04-28.md`.
 
@@ -37,7 +38,13 @@ Future application-specific contracts should live under an app-specific folder i
 
 ```text
 contracts/apps/multi-millionaire/
-contracts/apps/price-game-72/
+contracts/apps/price-dashboard-72/
 ```
 
 Application frontend and backend repositories should not become the source of truth for chain contracts. They should consume addresses, ABI/wrapper artifacts, and public JSON from this repository.
+
+The first application planning documents are:
+
+- `apps/multi-millionaire/README.md`
+- `apps/price-dashboard-72/README.md`
+- `../docs/apps/multi-millionaire-900b-reward-integration.md`
