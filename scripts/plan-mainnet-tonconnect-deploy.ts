@@ -30,7 +30,8 @@ const CAPITAL_APP_IDS: Readonly<Record<CapitalAppSlug, bigint>> = {
   wan: 2n,
   'multi-millionaire': 3n,
 };
-const APPROVED_72H_JETTON_MASTER = 'EQDvE0ffdwvOhILjRJKFd2bIU9t5H9bG3-SKRidqavZjRsw8';
+const APPROVED_72H_JETTON_MASTER = 'EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg';
+// Deprecated / not active V2: EQDvE0ffdwvOhILjRJKFd2bIU9t5H9bG3-SKRidqavZjRsw8
 const DEPLOY_VALUE = toNano('0.05').toString();
 const REGISTRY_MESSAGE_VALUE = toNano('0.03').toString();
 

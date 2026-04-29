@@ -127,9 +127,10 @@ Local deploy planning loads `.env.local` and `.env` from this repository root. D
 
 - Testnet uses a `72H Test Jetton` placeholder until a testnet master address is deployed and recorded.
 - The current `TestJetton72H` is a minimal shell for rehearsal and does not claim full Jetton standard compatibility.
-- Mainnet must use the official `72H` Jetton master address: `EQDvE0ffdwvOhILjRJKFd2bIU9t5H9bG3-SKRidqavZjRsw8`.
+- Mainnet must use the official deployed V2 `72H` Jetton master address: `EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg`.
+- Deprecated: old Jetton master `EQDvE0ffdwvOhILjRJKFd2bIU9t5H9bG3-SKRidqavZjRsw8` is not the active V2 deployed token and must not be used in new mainnet manifests, apps, exchange submissions, wallet metadata, scripts, or launch materials.
 - Mainnet deployment is blocked if `TON_MAINNET_72H_JETTON_MASTER_ADDRESS` is missing.
-- `TON_MAINNET_72H_JETTON_MASTER_ADDRESS` must be the Jetton master contract address. Do not use the admin wallet address here.
+- `TON_MAINNET_72H_JETTON_MASTER_ADDRESS` must be the Jetton master contract address. Do not use the admin wallet address here. For deployed V2 facts, see `docs/72H_MAINNET_FACTS.md`.
 - Mainnet governance default is `single-admin` with `TON_MAINNET_ADMIN_ADDRESS=UQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQfRq` and a `1` signature threshold.
 - Reserve launch custody rehearsal default is `720,000 72H` per app, total `2,160,000 72H`.
 - The testnet mock Jetton must not be reused or referenced in mainnet manifests.
