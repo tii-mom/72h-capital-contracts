@@ -1366,7 +1366,21 @@ describe('72H V2 tokenomics contracts', () => {
     expect(transfer.destination.equals(buyer.address)).toBe(true);
     expect(await (presale.getGetSoldByStage as (stage: bigint) => Promise<bigint>)(1n)).toBe(100_000n * ONE_72H);
     expect(await (presale.getGetPurchasedByBuyer as (buyer: Address) => Promise<bigint>)(buyer.address)).toBe(100_000n * ONE_72H);
+    expect(await (presale.getGetPendingPurchaseTokens as (queryId: bigint) => Promise<bigint>)(401n)).toBe(100_000n * ONE_72H);
+    expect(await (presale.getGetPendingSold72H as () => Promise<bigint>)()).toBe(100_000n * ONE_72H);
+    expect(await (presale.getGetSettledSaleProceedsTon as () => Promise<bigint>)()).toBe(0n);
     expect(await (presale.getGetCurrentStage as () => Promise<bigint>)()).toBe(1n);
+
+    await presale.send(
+      owner.getSender(),
+      { value: toNano('0.05') },
+      { $$type: 'WithdrawPresaleTon', amountTon: toNano('1') },
+    );
+    expect(await (presale.getGetWithdrawnTon as () => Promise<bigint>)()).toBe(0n);
+
+    await presale.send(forgedBouncer.getSender(), { value: toNano('0.05') }, { $$type: 'JettonExcesses', queryId: 401n });
+    expect(await (presale.getGetPendingPurchaseTokens as (queryId: bigint) => Promise<bigint>)(401n)).toBe(100_000n * ONE_72H);
+
     await blockchain.sendMessage(sandboxInternal({
       from: forgedBouncer.address,
       to: presale.address,
@@ -1377,6 +1391,25 @@ describe('72H V2 tokenomics contracts', () => {
     expect(await (presale.getGetSold72H as () => Promise<bigint>)()).toBe(100_000n * ONE_72H);
     expect(await (presale.getGetSaleProceedsTon as () => Promise<bigint>)()).toBe(toNano('1'));
     expect(await (presale.getGetPurchasedByBuyer as (buyer: Address) => Promise<bigint>)(buyer.address)).toBe(100_000n * ONE_72H);
+
+    await presale.send(presaleJettonWallet.getSender(), { value: toNano('0.05') }, { $$type: 'JettonExcesses', queryId: 401n });
+    expect(await (presale.getGetPendingPurchaseTokens as (queryId: bigint) => Promise<bigint>)(401n)).toBe(0n);
+    expect(await (presale.getGetCompletedPurchaseTokens as (queryId: bigint) => Promise<bigint>)(401n)).toBe(100_000n * ONE_72H);
+    expect(await (presale.getGetPendingSold72H as () => Promise<bigint>)()).toBe(0n);
+    expect(await (presale.getGetSettledSaleProceedsTon as () => Promise<bigint>)()).toBe(toNano('1'));
+
+    const duplicateCompletedBuy = await presale.send(
+      buyer.getSender(),
+      { value: toNano('1.2') },
+      {
+        $$type: 'BuyPresale',
+        queryId: 401n,
+        stage: 1n,
+        tonAmount: toNano('1'),
+        minTokens72H: 100_000n * ONE_72H,
+      },
+    );
+    expect(() => findJettonTransfer(duplicateCompletedBuy)).toThrow('Expected a JettonTransfer outbound message.');
 
     await presale.send(owner.getSender(), { value: toNano('0.05') }, { $$type: 'SetPresaleActive', active: false });
     await presale.send(owner.getSender(), { value: toNano('0.05') }, { $$type: 'SetPresaleStage', stage: 2n });
@@ -1398,6 +1431,9 @@ describe('72H V2 tokenomics contracts', () => {
     const stageTwoTransfer = findJettonTransfer(stageTwoBuy);
     expect(stageTwoTransfer.amount).toBe(80_000n * ONE_72H);
     expect(await (presale.getGetSoldByStage as (stage: bigint) => Promise<bigint>)(2n)).toBe(80_000n * ONE_72H);
+    expect(await (presale.getGetPendingPurchaseTokens as (queryId: bigint) => Promise<bigint>)(402n)).toBe(80_000n * ONE_72H);
+    await presale.send(presaleJettonWallet.getSender(), { value: toNano('0.05') }, { $$type: 'JettonExcesses', queryId: 402n });
+    expect(await (presale.getGetPendingPurchaseTokens as (queryId: bigint) => Promise<bigint>)(402n)).toBe(0n);
 
     const capBoundaryBuy = await presale.send(
       buyer.getSender(),
@@ -1413,6 +1449,8 @@ describe('72H V2 tokenomics contracts', () => {
     const capBoundaryTransfer = findJettonTransfer(capBoundaryBuy);
     expect(capBoundaryTransfer.amount).toBe(20_000n * ONE_72H);
     expect(await (presale.getGetPurchasedByBuyer as (buyer: Address) => Promise<bigint>)(buyer.address)).toBe(200_000n * ONE_72H);
+    await presale.send(presaleJettonWallet.getSender(), { value: toNano('0.05') }, { $$type: 'JettonExcesses', queryId: 404n });
+    expect(await (presale.getGetPendingSold72H as () => Promise<bigint>)()).toBe(0n);
 
     const overCapBuy = await presale.send(
       buyer.getSender(),
@@ -1432,6 +1470,44 @@ describe('72H V2 tokenomics contracts', () => {
     const sweepTransfer = findJettonTransfer(sweep);
     expect(sweepTransfer.destination.equals(developmentFund.address)).toBe(true);
     expect(sweepTransfer.amount).toBe(PRESALE_TOTAL - 200_000n * ONE_72H);
+    expect(await (presale.getGetPendingUnsoldSweepAmount as (queryId: bigint) => Promise<bigint>)(403n)).toBe(PRESALE_TOTAL - 200_000n * ONE_72H);
+    expect(await (presale.getGetPendingUnsoldSweep72H as () => Promise<bigint>)()).toBe(PRESALE_TOTAL - 200_000n * ONE_72H);
+
+    await presale.send(owner.getSender(), { value: toNano('0.05') }, { $$type: 'SetPresaleActive', active: true });
+    expect(await (presale.getIsActive as () => Promise<boolean>)()).toBe(false);
+
+    await presale.send(presaleJettonWallet.getSender(), { value: toNano('0.05') }, { $$type: 'JettonExcesses', queryId: 403n });
+    expect(await (presale.getGetPendingUnsoldSweepAmount as (queryId: bigint) => Promise<bigint>)(403n)).toBe(0n);
+    expect(await (presale.getGetCompletedUnsoldSweepAmount as (queryId: bigint) => Promise<bigint>)(403n)).toBe(PRESALE_TOTAL - 200_000n * ONE_72H);
+    expect(await (presale.getGetSweptUnsold72H as () => Promise<bigint>)()).toBe(PRESALE_TOTAL - 200_000n * ONE_72H);
+
+    await blockchain.sendMessage(sandboxInternal({
+      from: presaleJettonWallet.address,
+      to: presale.address,
+      value: toNano('0.05'),
+      bounced: true,
+      body: bouncedJettonTransferBody(403n, PRESALE_TOTAL - 200_000n * ONE_72H),
+    }));
+    expect(await (presale.getGetSweptUnsold72H as () => Promise<bigint>)()).toBe(PRESALE_TOTAL - 200_000n * ONE_72H);
+
+    await presale.send(owner.getSender(), { value: toNano('0.05') }, { $$type: 'SetPresaleActive', active: true });
+    expect(await (presale.getIsActive as () => Promise<boolean>)()).toBe(false);
+
+    const duplicateSweep = await presale.send(owner.getSender(), { value: toNano('0.2') }, { $$type: 'SweepUnsoldPresale', queryId: 403n });
+    expect(() => findJettonTransfer(duplicateSweep)).toThrow('Expected a JettonTransfer outbound message.');
+
+    const buyAfterSweep = await presale.send(
+      buyer.getSender(),
+      { value: toNano('1.2') },
+      {
+        $$type: 'BuyPresale',
+        queryId: 406n,
+        stage: 2n,
+        tonAmount: toNano('1'),
+        minTokens72H: 80_000n * ONE_72H,
+      },
+    );
+    expect(() => findJettonTransfer(buyAfterSweep)).toThrow('Expected a JettonTransfer outbound message.');
     expect(await (presale.getGetStageCap72H as () => Promise<bigint>)()).toBe(PRESALE_STAGE_CAP);
   });
 
