@@ -93,11 +93,21 @@ The app database does not yet persist season round success metadata or per-posit
 
 The deployed `SeasonClaim` proof format is a single cell containing consecutive `siblingOnLeft bool + sibling uint256` pairs. That fits at most 3 proof levels, so it supports roughly 8 leaves. `multi-millionaire` now fail-fast rejects exports above that capacity and only supports small rehearsal artifacts against the deployed contract.
 
-`SeasonClaimV2` is now implemented as an undeployed mainnet candidate in `contracts/SeasonClaimV2.tact`. It supports proof continuation through references while preserving the same leaf schema, reward accounting, category totals, price-stage unlocks, and bounce safety properties. A prior focused testnet rehearsal completed in `deployments/season-claim-v2.testnet.latest.json`, including real V2 testnet Jetton funding, 128-leaf ref-chain claim, expired season sweep, and a true bounced transfer rollback through a testnet-only bouncing Jetton wallet mock. Because the bridge candidate later added `ConfirmSeasonClaimFunding`, fresh bridge-focused testnet evidence is still required before mainnet planning.
+`SeasonClaimV2` is now implemented as an undeployed mainnet candidate in `contracts/SeasonClaimV2.tact`. It supports proof continuation through references while preserving the same leaf schema, reward accounting, category totals, price-stage unlocks, and bounce safety properties. A prior focused testnet rehearsal completed in `deployments/season-claim-v2.testnet.latest.json`, including real V2 testnet Jetton funding, 128-leaf ref-chain claim, expired season sweep, and a true bounced transfer rollback through a testnet-only bouncing Jetton wallet mock. The later bridge-focused rehearsal has now completed phase 1 with `ConfirmSeasonClaimFunding`; the remaining final gate is legacy pending cleanup after the legacy 72-hour bounce grace.
 
 Before a real public 90B reward root is registered, the remaining blocker is not proof depth but the mainnet funding route. The currently deployed mainnet `SeasonVault` is already funded and cannot be retargeted to a new claim contract after funding starts. A mainnet plan must therefore explicitly choose and audit how production rewards fund `SeasonClaimV2`.
 
-Current candidate route: `SeasonClaimV2LegacyBridge` lets the existing legacy `SeasonClaim` register a single bridge leaf, lets the bridge claim that legacy leaf, then forwards the received 72H to `SeasonClaimV2`. `SeasonClaimV2` sends an authenticated `ConfirmSeasonClaimFunding` receipt, so bridge forwarding is not finalized by unauthenticated Jetton excesses. The bridge locks configuration after the first legacy claim attempt, uses disjoint auto/manual forward query namespaces, and forwards the actual authenticated legacy amount received so partial legacy unlocks do not strand tokens. This route keeps the deployed `SeasonVault -> SeasonClaim` path intact, but public `SeasonClaimV2` roots should be registered only after the bridge has delivered the full season amount unless a later audited partial-funding claim design is added.
+Current candidate route: `SeasonClaimV2LegacyBridge` lets the existing legacy `SeasonClaim` register a single bridge leaf and lets the bridge claim that legacy leaf. The deployed legacy claim payout uses `forwardTonAmount: 0`, so the bridge contract cannot wait for a legacy Jetton transfer notification. Instead, the operator must confirm the bridge-owned Jetton wallet balance increase on chain, then the owner calls `ForwardBridgeWalletToV2(queryId, amount72H)`. `SeasonClaimV2` sends an authenticated `ConfirmSeasonClaimFunding` receipt after it receives the real funding notification, so bridge forwarding is not finalized by unauthenticated Jetton excesses. This route keeps the deployed `SeasonVault -> SeasonClaim` path intact, but public `SeasonClaimV2` roots should be registered only after the bridge has delivered the full season amount unless a later audited partial-funding claim design is added.
+
+Operational bridge notes:
+
+- bridge wallet and V2 target configuration lock after the first legacy claim attempt
+- manual forward query ids must be `>= 14414200000000000`
+- duplicate pending or completed manual forward query ids are rejected
+- insufficient bridge wallet balance causes the Jetton transfer to bounce and clears the bridge pending forward
+- after the legacy claim succeeds, the old `SeasonClaim` still needs `SettleSeasonClaimPending(queryId)` after the 72-hour bounce grace before later sweep workflows
+
+Bridge-focused testnet rehearsal phase 1 completed in `deployments/season-claim-v2-legacy-bridge.testnet.latest.json`: legacy payout funded the bridge Jetton wallet, owner manual-forwarded to `SeasonClaimV2`, and bridge finalized on `ConfirmSeasonClaimFunding`. Audit follow-up found no new P1/P2 blocker and permits draft-only mainnet runbook preparation, but the evidence status remains `bridge-forward-complete-pending-legacy-settle` until legacy query `1777387300691001` is settled after `2026-05-01T14:45:31Z`. No mainnet signing package, bridge transaction, or public V2 root should be generated before that final gate is complete.
 
 Any final production route must preserve:
 
@@ -128,6 +138,10 @@ It currently matches the deployed SeasonClaim leaf direction:
 - computed total
 
 Before production claim activation, the app repo still needs an operator export job, durable archive of source rows/proofs, admin review UI, and tests around risk filtering and deterministic allocation.
+
+The current draft exporter and configuration gate for future `SeasonClaimV2` publication is recorded in `docs/apps/multi-millionaire-seasonclaim-v2-exporter-config-checklist.md`. It keeps V2 manifests non-publishable until the bridge-focused testnet legacy pending cleanup is complete, final audit follow-up has no P1/P2 blocker, the mainnet V2 funding route is executed, and `SeasonClaimV2` is funded for the full public season amount being registered.
+
+The app-side non-publishable 128-leaf V2 rehearsal artifact has been regenerated against the bridge-focused testnet `SeasonClaimV2` address `kQDEELj9KCzdqT07sVp4FRnbZRo-QhjS5ig0N6lcpJDGcn0H` at `/Users/yudeyou/Desktop/multi-millionaire/tmp/season-war/rehearsal-v2-large`. It is accepted as exporter/proof-format evidence only; production publication remains blocked by the final legacy pending cleanup and later mainnet funding gates.
 
 ## Application Contract Boundary
 

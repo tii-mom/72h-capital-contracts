@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-04-28T15:28:10.954Z",
+  "network": "testnet",
+  "loadedEnvFiles": [
+    ".env.local"
+  ],
+  "mode": "settle-pending-send",
+  "phase": "bridge-focused-manual-forward",
+  "nonce": "manual-forward-2026-04-28",
+  "deployer": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+  "deployerWalletId": 698983191,
+  "jettonMaster": "kQDJqdAP9DR5NGV7EDg6T78EuNqmuKsbpEhQJSrFxTm8rjtK",
+  "metadataUri": "https://72h.lol/testnet/72h-v2-season-reward-confirm-2026-04-28.json",
+  "contracts": {
+    "legacySeasonClaim": "kQBFDtxtg2HXPBFoSvPMy0KwyZq4jI294bfwL35NixnDUtH4",
+    "seasonClaimV2": "kQDEELj9KCzdqT07sVp4FRnbZRo-QhjS5ig0N6lcpJDGcn0H",
+    "bridge": "kQAXCCNSnY_MmBJwjrJi4zRIvli1p1zi1GtP7L0wf0WaP_l5",
+    "ownerJettonWallet": "kQDX6PNOMsdipv55KiMtYF5hf6584pwRO_K-ZXrCjVAoM6mP",
+    "legacyClaimJettonWallet": "kQALy0egfSDslOFlsFNyQLMEDhcTWAkXKfBH_IyR3ue1waIc",
+    "bridgeJettonWallet": "kQA5J_1iZ5HPIyFF0nL_4qScWAq-B_QvZGu1ctmjTCY-K157",
+    "v2JettonWallet": "kQCJbmU0LEqcflqQFrqIiDv8GfXYuFx9Iu6ndAUmZDIAgKyD"
+  },
+  "codeHashes": {
+    "minterHex": "779489f7cadb181403156694116baa342c0fe32c0cf5ce3b84a1ef4e652ed5e9",
+    "walletHex": "ba2918c8947e9b25af9ac1b883357754173e5812f807a3d6e642a14709595395",
+    "SeasonClaim": "8ae1ab7f8b4d1631e3999ffaa9d452ae6a58f262bc3cb8fb2c8c56d01b3c526e",
+    "SeasonClaimData": "86190444b6ab7f1c54a9f3f9203a9ccf3d93e2b6723888247757a77f659ce1c4",
+    "SeasonClaimV2": "99b63712844f6032a34b10e52b2e8daa0eebc2e265603cc2176a5df7f6e02c26",
+    "SeasonClaimV2Data": "a456ea2993d07ca4a7b421adf4b3273cde5b10b1910bec6e30d2442851d0ba51",
+    "SeasonClaimV2LegacyBridge": "86f767f5d56675c0b9c11c76f949022e4ddc1b12cb318a3c5f0a1105c3b83c76",
+    "SeasonClaimV2LegacyBridgeData": "0f6fa2cd1faab3632adba15b3285cb6a6e4eefd2d3357ed67381dc4b55c1ff13"
+  },
+  "rehearsal": {
+    "amountRaw": "1000000000",
+    "personalAmountRaw": "500000000",
+    "teamAmountRaw": "250000000",
+    "referralAmountRaw": "150000000",
+    "leaderboardAmountRaw": "100000000",
+    "legacyRoot": "0x41657efa56d45532260bb9fb6e10d6b7c2b331887011aac185dfe9e5ab0da0d8",
+    "legacyClaimQueryId": "1777387300691001",
+    "manualForwardQueryId": "16191587300691002",
+    "manualForwardQueryOffset": "14414200000000000",
+    "openAt": "1777130590"
+  },
+  "checkpoints": [
+    "legacy SeasonClaim payout uses forwardTonAmount=0",
+    "bridge contract pendingForward remains 0 before manual forward",
+    "bridge Jetton wallet balance increases by the claim amount",
+    "owner calls ForwardBridgeWalletToV2 after wallet balance confirmation",
+    "SeasonClaimV2 funding and bridge forwarded accounting finalize after ConfirmSeasonClaimFunding",
+    "legacy SeasonClaim pending cleanup is recorded for execution after 72h bounce grace"
+  ]
+}

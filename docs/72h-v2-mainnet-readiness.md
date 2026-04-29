@@ -188,6 +188,15 @@ Final chain checks passed:
 5. Admin Jetton wallet final balance is `0`.
 6. Final allocation balances match the refreshed mainnet plan.
 
+## Post-Deployment Presale Gate
+
+The deployed mainnet `PresaleVault` remains inactive and must not be opened for sales under the current blocker policy. The local `PresaleVault` candidate has been hardened after deployment, so the deployed mainnet code hash and current local candidate code hash no longer match:
+
+- deployed mainnet `PresaleVault` code hash: `d0458deb2bc69870977e003c5da36c2e806cce29422e6720afaa497b0ec3a63b`
+- hardened local candidate code hash: `5951893d33ce3937961703516c2f8bcd48bf0c146dbc29d228af346ea4e6cf9e`
+
+Presale activation requires the presale-specific route in `docs/presale-vault-launch-runbook.md`; do not sign `SetPresaleActive`, `BuyPresale`, `WithdrawPresaleTon`, or `SweepUnsoldPresale` payloads before that route is approved.
+
 ## References
 
 - OpenZeppelin mainnet preparation: https://docs.openzeppelin.com/learn/preparing-for-mainnet

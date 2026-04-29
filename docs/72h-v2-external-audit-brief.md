@@ -16,6 +16,8 @@ V2 tokenomics contracts:
 
 - `contracts/SeasonVault.tact`
 - `contracts/SeasonClaim.tact`
+- `contracts/SeasonClaimV2.tact`
+- `contracts/SeasonClaimV2LegacyBridge.tact`
 - `contracts/FundVesting.tact`
 - `contracts/DevelopmentFund.tact`
 - `contracts/PresaleVault.tact`
@@ -36,6 +38,7 @@ V2 Jetton integration:
 Deployment and rehearsal scripts:
 
 - `scripts/rehearse-72h-v2-tokenomics-testnet.ts`
+- `scripts/rehearse-season-claim-v2-legacy-bridge-testnet.ts`
 - `scripts/plan-72h-v2-tokenomics-mainnet.ts`
 - `scripts/upload-72h-v2-metadata-pinata.ts`
 
@@ -47,6 +50,13 @@ Mainnet parameters and evidence:
 - `deployments/72h-v2-tokenomics.mainnet.plan.json`
 - `deployments/jetton-v2.testnet.latest.json`
 - `deployments/72h-v2-tokenomics.testnet.latest.json`
+- `deployments/season-claim-v2-legacy-bridge.testnet.latest.json`
+- `docs/season-claim-v2-design.md`
+- `docs/season-claim-v2-bridge-audit-followup-prompt.md`
+- `docs/season-claim-v2-mainnet-migration-runbook.md`
+- `docs/season-claim-v2-mainnet-dry-run-requirements.md`
+- `docs/season-claim-v2-mainnet-operator-checklist.md`
+- `docs/apps/multi-millionaire-seasonclaim-v2-exporter-config-checklist.md`
 - `metadata/72h-v2.metadata.final.json`
 - `deployments/72h-v2.pinata-metadata.json`
 
@@ -71,7 +81,22 @@ The audit must answer these questions with code references and evidence:
 10. Do mainnet plan code hashes, data hashes, addresses, metadata URI, and allocation constants match the audited source?
 11. Do the 90B season reward unlock thresholds match the approved cumulative schedule: `$0.01`, `$0.03`, `$0.05`, `$0.07`, `$0.10`, each held for 72 hours and each releasing another 20%?
 12. Do all outgoing JettonTransfer bounce handlers authenticate `sender()` against the source Jetton wallet and validate `msg.amount` against pending local accounting before clearing pending state or rolling back balances?
-13. If the older Capital/Reserve/AppRewardPool package is in scope, do `ReserveVault` and `AppRewardPool` success finalization handlers authenticate `JettonExcesses` and explicit `Finalize*` messages against their configured Jetton wallet before clearing pending state or updating accounting?
+13. Does `SeasonClaimV2LegacyBridge` avoid relying on legacy claim transfer notifications, forward only from the configured bridge Jetton wallet to the fixed `SeasonClaimV2` target, clear pending forwards on true wallet bounces, and finalize only on authenticated `ConfirmSeasonClaimFunding` from `SeasonClaimV2`?
+14. Does the bridge migration runbook require the legacy `SeasonClaim.SettleSeasonClaimPending(queryId)` call after the 72-hour bounce grace so old pending claim state cannot block later sweep workflows?
+15. Is it acceptable to continue draft-only mainnet migration planning while bridge phase 1 testnet evidence is complete but final legacy pending cleanup remains gated by on-chain time, provided every mainnet signing/deployment action stays blocked until evidence status is `complete`?
+16. If the older Capital/Reserve/AppRewardPool package is in scope, do `ReserveVault` and `AppRewardPool` success finalization handlers authenticate `JettonExcesses` and explicit `Finalize*` messages against their configured Jetton wallet before clearing pending state or updating accounting?
+
+## Current Bridge Follow-Up Result
+
+Audit follow-up for the manual-forward bridge reported no new P1/P2 blocker. It accepted draft-only mainnet runbook preparation based on phase 1 testnet evidence, and explicitly kept `legacy pending cleanup complete` as a hard gate before any mainnet signing package, deployment, bridge transaction, or public V2 root publication.
+
+Current gate:
+
+- Evidence: `deployments/season-claim-v2-legacy-bridge.testnet.latest.json`
+- Current status: `bridge-forward-complete-pending-legacy-settle`
+- Required final status before executable mainnet work: `complete`
+- Legacy query id: `1777387300691001`
+- Cleanup not before: `2026-05-01T14:45:31Z`
 
 ## Required Codex Tools For The Audit Thread
 

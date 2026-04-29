@@ -1,6 +1,6 @@
 # SeasonClaimV2 Design
 
-Status: implemented candidate, testnet rehearsed, not mainnet deployed.
+Status: SeasonClaimV2 implemented and previously testnet rehearsed; manual-forward legacy bridge passed local audit review and completed bridge-focused testnet rehearsal phase 1. The audit follow-up found no new P1/P2 blocker and permits draft-only mainnet runbook preparation. Final legacy pending cleanup remains a hard gate after the 72-hour bounce grace; no mainnet signing package, deployment, bridge transaction, or public V2 root publication is allowed until that gate is complete.
 
 `SeasonClaimV2` addresses the proof-depth limit discovered during the `multi-millionaire` Season War exporter rehearsal. The deployed `SeasonClaim` reads all Merkle proof entries from a single cell. Because each entry is `siblingOnLeft bool + sibling uint256`, that format fits only three proof levels and roughly eight leaves.
 
@@ -54,6 +54,17 @@ This supports deep Merkle paths while keeping the leaf schema, root hash, and cl
 - correct bounce sender with wrong amount does not roll back
 - correct bounce sender with correct amount rolls back
 
+`tests/season-claim-v2-legacy-bridge.spec.ts` covers:
+
+- real legacy `SeasonClaim` payout with `forwardTonAmount: 0`
+- no bridge contract notification on the legacy payout path
+- bridge-owned Jetton wallet balance increase
+- owner-triggered `ForwardBridgeWalletToV2` funding into `SeasonClaimV2`
+- authenticated `ConfirmSeasonClaimFunding` finalization
+- insufficient bridge wallet balance bounce rollback
+- wrong amount, forged confirm, and duplicate manual forward query rejection
+- legacy `SettleSeasonClaimPending` cleanup after bounce grace
+
 ## Prior Testnet Evidence
 
 Focused SeasonClaimV2 testnet rehearsal before the bridge receipt change:
@@ -66,7 +77,46 @@ Focused SeasonClaimV2 testnet rehearsal before the bridge receipt change:
 - Misti all-detectors output: `audit-artifacts/misti-seasonclaim-v2-post-p3-bounce-2026-04-28.json/warnings.json`
 - Misti high-severity run: exit code 0, no high/critical findings.
 
-The bridge candidate adds an authenticated `ConfirmSeasonClaimFunding` receipt to `SeasonClaimV2`, so the current local `SeasonClaimV2` code hash is now `99b63712844f6032a34b10e52b2e8daa0eebc2e265603cc2176a5df7f6e02c26`. This supersedes the historical standalone testnet evidence for mainnet planning. A fresh bridge-focused testnet rehearsal is required before any mainnet deployment plan.
+The bridge candidate adds an authenticated `ConfirmSeasonClaimFunding` receipt to `SeasonClaimV2`, so the current local `SeasonClaimV2` code hash is now `99b63712844f6032a34b10e52b2e8daa0eebc2e265603cc2176a5df7f6e02c26`. This supersedes the historical standalone testnet evidence for mainnet planning.
+
+## Bridge-Focused Testnet Evidence
+
+Manual-forward bridge rehearsal phase 1 completed on testnet:
+
+- Evidence: `deployments/season-claim-v2-legacy-bridge.testnet.latest.json`
+- Timestamped evidence: `deployments/season-claim-v2-legacy-bridge.testnet.2026-04-28T14-46-27-843Z.json`
+- Status: `bridge-forward-complete-pending-legacy-settle`
+- Legacy SeasonClaim: `kQBFDtxtg2HXPBFoSvPMy0KwyZq4jI294bfwL35NixnDUtH4`
+- SeasonClaimV2: `kQDEELj9KCzdqT07sVp4FRnbZRo-QhjS5ig0N6lcpJDGcn0H`
+- Bridge: `kQAXCCNSnY_MmBJwjrJi4zRIvli1p1zi1GtP7L0wf0WaP_l5`
+- Bridge Jetton wallet: `kQA5J_1iZ5HPIyFF0nL_4qScWAq-B_QvZGu1ctmjTCY-K157`
+- V2 Jetton wallet: `kQCJbmU0LEqcflqQFrqIiDv8GfXYuFx9Iu6ndAUmZDIAgKyD`
+- Legacy claim query id: `1777387300691001`
+- Manual forward query id: `16191587300691002`
+- Rehearsal amount: `1_000_000_000` raw units
+- Bridge code hash: `86f767f5d56675c0b9c11c76f949022e4ddc1b12cb318a3c5f0a1105c3b83c76`
+- SeasonClaimV2 code hash: `99b63712844f6032a34b10e52b2e8daa0eebc2e265603cc2176a5df7f6e02c26`
+
+Verified getter snapshot:
+
+- legacy `claimed72H = 1000000000`
+- legacy `pendingClaimAmount = 1000000000`
+- bridge `forwardedToV272H = 1000000000`
+- bridge `pendingForward72H = 0`
+- bridge `completedForwardAmount = 1000000000`
+- SeasonClaimV2 `funded72H = 1000000000`
+- bridge Jetton wallet balance is `0`
+- SeasonClaimV2 Jetton wallet balance is `1000000000`
+
+The remaining final gate is the legacy `SeasonClaim.SettleSeasonClaimPending(1777387300691001)` call after `2026-05-01T14:45:31Z`. Until that call clears legacy pending state and updates evidence status to `complete`, the bridge evidence is treated as phase 1 complete, final settle gate pending.
+
+Audit follow-up after phase 1 concluded:
+
+- no new P1/P2 blocker
+- manual-forward design removes the legacy notification P1
+- phase 1 evidence is sufficient for non-executable mainnet runbook preparation
+- legacy pending cleanup complete must remain a hard gate before any mainnet signing package, deployment, bridge transaction, or public V2 root publication
+- local verification reported by the audit thread: `npm run build`, focused bridge tests, `npm run lint`, and Misti high severity passed
 
 ## Mainnet Planning Caveat
 
@@ -81,26 +131,40 @@ The bridge avoids changing the already-funded mainnet `SeasonVault` route:
 1. Existing `SeasonVault` finalizes a season into the deployed legacy `SeasonClaim`.
 2. The owner registers the legacy `SeasonClaim` root as a single leaf for the bridge contract address.
 3. The bridge claims that single legacy leaf using the existing `ClaimSeasonReward` message.
-4. The bridge accepts only the legacy `SeasonClaim` Jetton transfer notification from its configured Jetton wallet.
-5. The bridge forwards received 72H to `SeasonClaimV2`.
-6. `SeasonClaimV2` sends `ConfirmSeasonClaimFunding` back to the bridge, and the bridge finalizes forwarded accounting only on that authenticated confirmation.
+4. The legacy `SeasonClaim` sends its claim payout with `forwardTonAmount: 0`, so the bridge contract itself does not receive a Jetton transfer notification.
+5. The operator confirms on chain that the bridge-owned Jetton wallet balance increased.
+6. The owner calls `ForwardBridgeWalletToV2(queryId, amount72H)` on the bridge.
+7. The bridge sends a Jetton transfer from its configured Jetton wallet to the fixed `SeasonClaimV2` address.
+8. `SeasonClaimV2` receives the real funding notification and sends `ConfirmSeasonClaimFunding` back to the bridge; the bridge finalizes forwarded accounting only on that authenticated confirmation.
 
 This gives an auditable route from the existing 90B inventory into `SeasonClaimV2` without retargeting `SeasonVault`. The current bridge is conservative: because `SeasonClaimV2` still requires a season to be fully funded before `RegisterSeasonClaim`, public V2 roots should be registered only after the bridge has delivered the full season amount. Supporting progressive 20/40/60/80/100 V2 public claims from partial bridge funding would require a separate audited `SeasonClaimV2` accounting change.
 
 Bridge hardening after audit review:
 
 - bridge wallet and V2 target configuration lock permanently after the first legacy claim attempt
-- automatic forward query ids use `[7207100000000000, 14414200000000000)`, while manual retry forward ids must be `>= 14414200000000000`
-- `forwardToV2` rejects pending query collisions
-- authenticated legacy notifications are accepted for the actual amount received, so a 20% legacy unlock does not strand tokens when the operator planned a larger expected amount
+- legacy claim query ids must stay below the legacy `SeasonClaim` sweep namespace `7207000600000000`
+- manual forward query ids must be `>= 14414200000000000`
+- `forwardToV2` rejects pending and already-completed query collisions
+- the bridge does not attest legacy success from notifications; wallet balance confirmation is an operator checkpoint
+- if the bridge wallet balance is insufficient, the bridge wallet bounces the Jetton transfer and the bridge clears the pending forward
+- unauthenticated `JettonExcesses` do not finalize bridge forwarding
 
-Current local bridge code hash: `73c5d27d3366a238b73844ccbb8a6dceb18ee4ba2a2820c0b30121a7ad12f0dd`.
+Legacy pending cleanup runbook:
+
+1. After the bridge legacy claim transaction succeeds, record the legacy claim `queryId`.
+2. Confirm the bridge Jetton wallet balance increased by the expected claim amount or the currently unlocked partial amount.
+3. Perform `ForwardBridgeWalletToV2(queryId, amount72H)` only after that balance check.
+4. After the legacy claim's 72-hour bounce grace has elapsed, call `SettleSeasonClaimPending(queryId)` on the legacy `SeasonClaim`.
+5. Verify `getPendingClaimAmount(queryId) == 0` before any later legacy sweep workflow.
+
+Current local bridge code hash: `86f767f5d56675c0b9c11c76f949022e4ddc1b12cb318a3c5f0a1105c3b83c76`.
 
 ## Next Steps
 
 Before production use:
 
-1. Get audit signoff on the post-P3 implementation, testnet evidence, and `SeasonClaimV2LegacyBridge`.
-2. If bridge route is accepted, run a focused testnet bridge rehearsal against deployed testnet contracts.
-3. Generate a mainnet deployment or migration plan only after the bridge route is audited.
-4. Update public docs/website JSON only after mainnet deployment is complete.
+1. Keep drafting mainnet migration runbook and audit follow-up materials under `BLOCKED UNTIL TESTNET LEGACY PENDING CLEANUP COMPLETE`.
+2. Complete the legacy pending cleanup after the 72-hour bounce grace.
+3. Update bridge-focused testnet evidence to `complete` after `SettleSeasonClaimPending` clears the legacy pending amount.
+4. Generate any mainnet signing package only after the bridge route is audited and the bridge-focused testnet rehearsal, including pending cleanup, passes.
+5. Update public docs/website JSON only after mainnet deployment is complete.

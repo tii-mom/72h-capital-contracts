@@ -104,6 +104,10 @@ Static analysis baseline:
 ## Application Integration
 
 - Multi-millionaire 90B reward plan: [`docs/apps/multi-millionaire-900b-reward-integration.md`](docs/apps/multi-millionaire-900b-reward-integration.md)
+- Blocker follow-up and launch gates: [`docs/72h-v2-blocker-follow-up-worklist.md`](docs/72h-v2-blocker-follow-up-worklist.md)
+- Owner custody runbook: [`docs/owner-custody-runbook.md`](docs/owner-custody-runbook.md)
+- Presale launch runbook: [`docs/presale-vault-launch-runbook.md`](docs/presale-vault-launch-runbook.md)
+- SeasonClaimV2 stable interface draft: [`docs/season-claim-v2-stable-interface.md`](docs/season-claim-v2-stable-interface.md)
 - App contract boundary: [`contracts/apps/README.md`](contracts/apps/README.md)
 
 ## Development
