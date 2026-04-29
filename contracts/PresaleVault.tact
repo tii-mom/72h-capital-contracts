@@ -48,6 +48,9 @@ contract PresaleVault {
     sweptUnsold72H: Int as coins;
     saleProceedsTon: Int as coins;
     withdrawnTon: Int as coins;
+    pendingSold72H: Int as coins;
+    pendingSaleProceedsTon: Int as coins;
+    pendingUnsoldSweep72H: Int as coins;
     soldByStage: map<Int as uint8, Int as coins>;
     purchasedByBuyer: map<Address, Int as coins>;
     pendingBuyerByQuery: map<Int as uint64, Address>;
@@ -55,6 +58,8 @@ contract PresaleVault {
     pendingTokensByQuery: map<Int as uint64, Int as coins>;
     pendingTonByQuery: map<Int as uint64, Int as coins>;
     pendingUnsoldSweepByQuery: map<Int as uint64, Int as coins>;
+    completedPurchaseByQuery: map<Int as uint64, Int as coins>;
+    completedUnsoldSweepByQuery: map<Int as uint64, Int as coins>;
 
     init(
         owner: Address,
@@ -84,6 +89,9 @@ contract PresaleVault {
         self.sweptUnsold72H = 0;
         self.saleProceedsTon = 0;
         self.withdrawnTon = 0;
+        self.pendingSold72H = 0;
+        self.pendingSaleProceedsTon = 0;
+        self.pendingUnsoldSweep72H = 0;
     }
 
     receive() {}
@@ -96,6 +104,9 @@ contract PresaleVault {
 
     receive(msg: SetPresaleActive) {
         self.requireOwner();
+        if (msg.active) {
+            require(self.sweptUnsold72H == 0 && self.pendingUnsoldSweep72H == 0, "unsold already swept");
+        }
         self.active = msg.active;
         if (msg.active) {
             self.hasBeenActive = true;
@@ -124,11 +135,13 @@ contract PresaleVault {
         require(msg.tonAmount > 0, "ton amount missing");
         require(context().value >= msg.tonAmount + ton("0.12"), "insufficient ton for purchase and gas");
         require(!self.pendingBuyerByQuery.exists(msg.queryId), "query pending");
+        require(!self.completedPurchaseByQuery.exists(msg.queryId), "query completed");
+        require(!self.pendingUnsoldSweepByQuery.exists(msg.queryId) && !self.completedUnsoldSweepByQuery.exists(msg.queryId), "query reserved");
 
         let tokenAmount = (msg.tonAmount * self.tokensPerTon(msg.stage)) / 1000000000;
         require(tokenAmount >= msg.minTokens72H, "min tokens not met");
         require(tokenAmount > 0, "token amount too small");
-        require(self.sold72H + tokenAmount <= self.funded72H, "insufficient presale inventory");
+        require(self.sold72H + self.sweptUnsold72H + tokenAmount <= self.funded72H, "insufficient presale inventory");
 
         let stageSold = self.soldByStage.get(msg.stage);
         let currentStageSold = stageSold == null ? 0 : stageSold!!;
@@ -140,6 +153,8 @@ contract PresaleVault {
 
         self.sold72H += tokenAmount;
         self.saleProceedsTon += msg.tonAmount;
+        self.pendingSold72H += tokenAmount;
+        self.pendingSaleProceedsTon += msg.tonAmount;
         self.soldByStage.set(msg.stage, currentStageSold + tokenAmount);
         self.purchasedByBuyer.set(sender(), currentBuyerPurchased + tokenAmount);
         self.pendingBuyerByQuery.set(msg.queryId, sender());
@@ -166,7 +181,7 @@ contract PresaleVault {
     receive(msg: WithdrawPresaleTon) {
         self.requireOwner();
         require(msg.amountTon > 0, "withdraw must be positive");
-        require(self.withdrawnTon + msg.amountTon <= self.saleProceedsTon, "withdraw exceeds proceeds");
+        require(self.withdrawnTon + msg.amountTon <= self.saleProceedsTon - self.pendingSaleProceedsTon, "withdraw exceeds settled proceeds");
         self.withdrawnTon += msg.amountTon;
         send(SendParameters {
             to: self.proceedsWallet,
@@ -179,10 +194,15 @@ contract PresaleVault {
         self.requireOwner();
         require(!self.active, "presale active");
         require(self.hasBeenActive, "presale never opened");
+        require(self.pendingSold72H == 0 && self.pendingSaleProceedsTon == 0, "purchases pending");
+        require(self.pendingUnsoldSweep72H == 0, "sweep pending");
         let unsold = self.funded72H - self.sold72H - self.sweptUnsold72H;
         require(unsold > 0, "no unsold tokens");
         require(!self.pendingUnsoldSweepByQuery.exists(msg.queryId), "sweep query exists");
+        require(!self.completedUnsoldSweepByQuery.exists(msg.queryId), "sweep query completed");
+        require(!self.pendingBuyerByQuery.exists(msg.queryId) && !self.completedPurchaseByQuery.exists(msg.queryId), "query reserved");
         self.sweptUnsold72H += unsold;
+        self.pendingUnsoldSweep72H += unsold;
         self.pendingUnsoldSweepByQuery.set(msg.queryId, unsold);
 
         send(SendParameters {
@@ -201,6 +221,29 @@ contract PresaleVault {
         });
     }
 
+    receive(msg: JettonExcesses) {
+        require(sender() == self.presaleJettonWallet, "invalid jetton wallet");
+        let buyer = self.pendingBuyerByQuery.get(msg.queryId);
+        if (buyer != null) {
+            let tokens = self.pendingTokensByQuery.get(msg.queryId);
+            let tonAmount = self.pendingTonByQuery.get(msg.queryId);
+            require(tokens != null && tonAmount != null, "pending purchase incomplete");
+            self.pendingSold72H -= tokens!!;
+            self.pendingSaleProceedsTon -= tonAmount!!;
+            self.completedPurchaseByQuery.set(msg.queryId, tokens!!);
+            self.pendingBuyerByQuery.del(msg.queryId);
+            self.pendingStageByQuery.del(msg.queryId);
+            self.pendingTokensByQuery.del(msg.queryId);
+            self.pendingTonByQuery.del(msg.queryId);
+        }
+        let unsoldSweep = self.pendingUnsoldSweepByQuery.get(msg.queryId);
+        if (unsoldSweep != null) {
+            self.pendingUnsoldSweep72H -= unsoldSweep!!;
+            self.completedUnsoldSweepByQuery.set(msg.queryId, unsoldSweep!!);
+            self.pendingUnsoldSweepByQuery.del(msg.queryId);
+        }
+    }
+
     bounced(msg: bounced<JettonTransfer>) {
         require(sender() == self.presaleJettonWallet, "invalid bounced sender");
         let buyer = self.pendingBuyerByQuery.get(msg.queryId);
@@ -212,6 +255,8 @@ contract PresaleVault {
             require(tokens!! == msg.amount, "invalid bounced amount");
             self.sold72H -= tokens!!;
             self.saleProceedsTon -= tonAmount!!;
+            self.pendingSold72H -= tokens!!;
+            self.pendingSaleProceedsTon -= tonAmount!!;
 
             let stageSold = self.soldByStage.get(stage!!);
             if (stageSold != null) {
@@ -237,6 +282,7 @@ contract PresaleVault {
         if (unsoldSweep != null) {
             require(unsoldSweep!! == msg.amount, "invalid bounced amount");
             self.sweptUnsold72H -= unsoldSweep!!;
+            self.pendingUnsoldSweep72H -= unsoldSweep!!;
             self.pendingUnsoldSweepByQuery.del(msg.queryId);
         }
     }
@@ -292,12 +338,52 @@ contract PresaleVault {
         return self.withdrawnTon;
     }
 
+    get fun getSettledSaleProceedsTon(): Int {
+        return self.saleProceedsTon - self.pendingSaleProceedsTon;
+    }
+
+    get fun getPendingSold72H(): Int {
+        return self.pendingSold72H;
+    }
+
+    get fun getPendingSaleProceedsTon(): Int {
+        return self.pendingSaleProceedsTon;
+    }
+
+    get fun getSweptUnsold72H(): Int {
+        return self.sweptUnsold72H;
+    }
+
+    get fun getPendingUnsoldSweep72H(): Int {
+        return self.pendingUnsoldSweep72H;
+    }
+
     get fun getSoldByStage(stage: Int): Int {
         return self.getSoldByStageInternal(stage);
     }
 
     get fun getPurchasedByBuyer(buyer: Address): Int {
         let value = self.purchasedByBuyer.get(buyer);
+        return value == null ? 0 : value!!;
+    }
+
+    get fun getPendingPurchaseTokens(queryId: Int): Int {
+        let value = self.pendingTokensByQuery.get(queryId);
+        return value == null ? 0 : value!!;
+    }
+
+    get fun getCompletedPurchaseTokens(queryId: Int): Int {
+        let value = self.completedPurchaseByQuery.get(queryId);
+        return value == null ? 0 : value!!;
+    }
+
+    get fun getPendingUnsoldSweepAmount(queryId: Int): Int {
+        let value = self.pendingUnsoldSweepByQuery.get(queryId);
+        return value == null ? 0 : value!!;
+    }
+
+    get fun getCompletedUnsoldSweepAmount(queryId: Int): Int {
+        let value = self.completedUnsoldSweepByQuery.get(queryId);
         return value == null ? 0 : value!!;
     }
 }
