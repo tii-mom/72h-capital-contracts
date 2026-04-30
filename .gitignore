@@ -20,8 +20,13 @@ coverage/
 *secret*
 *private*
 
+# Local / generated runtime state
+.data/
+.wrangler/
+.cache/
+.tmp/
+tmp/
+
 # Logs and temporary files
 *.log
 *.tmp
-tmp/
-.cache/
