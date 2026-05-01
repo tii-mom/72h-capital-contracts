@@ -1,6 +1,6 @@
 # 72H V2 Public Submission Status
 
-Status date: 2026-04-28
+Status date: 2026-04-30
 
 ## Completed
 
@@ -11,37 +11,31 @@ Status date: 2026-04-28
   - `public/contracts/72h-v2-mainnet.json`
   - `/contracts` page
   - `/token` redirect to `/contracts`
-- Website build passed locally with `npm run build`.
-- Tonkeeper asset PR submitted: `https://github.com/tonkeeper/ton-assets/pull/5095`.
+- Website build passed locally with `npm run build` on 2026-04-30.
+- Production contract JSON is live: `https://72h.lol/contracts/72h-v2-mainnet.json` returned HTTP 200 on 2026-04-30.
+- Production contracts page is live: `https://72h.lol/contracts` returned HTTP 200 on 2026-04-30.
+- Tonkeeper asset PR submitted: `https://github.com/tonkeeper/ton-assets/pull/5095`; status checked 2026-04-30: PR is closed, not merged. Maintainer feedback: token needs more development before verification / return after future development.
 
-## Blocked Until Website Production Deploy
+## Website Production Status
 
-The production URL is not live yet:
+The production contract information URL is live:
 
 ```text
 https://72h.lol/contracts/72h-v2-mainnet.json
 ```
 
-Current check returns `404`. The local build contains the file, but Cloudflare Wrangler is not authenticated in this workspace, so direct production deployment cannot be completed by Codex right now.
-
-After Cloudflare authentication, deploy the website with:
-
-```bash
-cd /Users/yudeyou/Desktop/72hours
-npm run build
-npx wrangler pages deploy dist --project-name 72hours
-```
-
-Then verify:
+Verified on 2026-04-30:
 
 ```bash
 curl -fsS https://72h.lol/contracts/72h-v2-mainnet.json
 curl -fsS https://72h.lol/contracts
 ```
 
+Current note: `/token` is intended as a convenience redirect to `/contracts`; local static build now emits `dist/token/index.html` with canonical `/contracts/`. Deploy that website build before using `/token` in public submissions.
+
 ## Wallets And Explorers
 
-TON token verification is driven by the public token asset list. The 72H Tonkeeper PR adds the Jetton metadata under `jettons/72H.yaml`; after maintainers merge it, wallets and explorers that consume the asset list should be able to display the token as verified.
+TON token verification is driven by the public token asset list. The first 72H Tonkeeper PR added Jetton metadata under `jettons/72H.yaml`, but it was closed unmerged with maintainer feedback that the token needs more development before verification. Treat wallet verification as a follow-up after public product/community/liquidity evidence improves; do not assume Tonkeeper verification is active.
 
 Important public facts for wallet review:
 
