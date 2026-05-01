@@ -1,0 +1,91 @@
+{
+  "name": "72H",
+  "symbol": "72H",
+  "network": "ton-mainnet",
+  "standard": "jetton",
+  "version": "v3",
+  "status": "current",
+  "decimals": 9,
+  "totalSupply": "100000000000000000000",
+  "totalSupplyFormatted": "100,000,000,000 72H",
+  "mintable": false,
+  "admin": null,
+  "jettonMaster": "EQAm0twD5SYndyrdIvWyNZ_7oUXlrlGOhUf6iiA7q1ph-GI3",
+  "metadataUri": "ipfs://QmSzB37bf7BWRLhssq3RxaEdHQgLWb1RqdwGDkaGidFSmC",
+  "metadataGatewayUrl": "https://gateway.pinata.cloud/ipfs/QmSzB37bf7BWRLhssq3RxaEdHQgLWb1RqdwGDkaGidFSmC",
+  "logoUri": "ipfs://QmNzFgWkVCxuJJBym1hoDq5tG4PwFBT8mUMMXdPefb23S4",
+  "logoGatewayUrl": "https://gateway.pinata.cloud/ipfs/QmNzFgWkVCxuJJBym1hoDq5tG4PwFBT8mUMMXdPefb23S4",
+  "website": "https://72h.lol",
+  "telegram": "https://t.me/the_72h",
+  "x": "https://x.com/72hour_s",
+  "contracts": {
+    "seasonVault": "EQCkI1atYYWN-2cnJJASJ1nKsu0ZbvCd_EVZQ61KcoIW-13l",
+    "seasonClaimV2": "EQDBwNs-eQSUbl0XISsd9b9g-RvaZ-XWDa-PIVoG-wtMsf4b",
+    "fundVesting": "EQBKuIRplvhYzL9Gbm6GpZqCxMTHApVOZMVs9T1HzXcP7inb",
+    "developmentFund": "EQBbRZQj_VJU2r-DAtQcHoDngRC9EBvUHFg4LoB5HXLBv1Yh",
+    "presaleVault": "EQDHSwsiQtB3sdoAaOdJi4kCu32GIHM4BtXd-_EtpE96EYXy",
+    "ecosystemTreasury": "EQCy7YpjZJuQAwjCQvQK55dv4p89c5pJUR9vi8nAwoW4a_w7",
+    "teamVesting": "EQC3pNoWZHNmbcazxJV7lzcQH05Zewjl5w1KJhA4OfIPM6cy"
+  },
+  "allocations": {
+    "seasonVault": "90000000000000000000",
+    "seasonClaimV2": "0",
+    "fundVesting": "0",
+    "presaleVault": "4500000000000000000",
+    "ecosystemTreasury": "4500000000000000000",
+    "developmentFund": "500000000000000000",
+    "teamVesting": "300000000000000000",
+    "earlyUsersOperations": "200000000000000000"
+  },
+  "jettonWallets": {
+    "seasonVault": {
+      "wallet": "EQClq_b3CeBTPUtjsQWgaIg4dfrjIP2GyTPcYkIMf352BSbt",
+      "balanceRaw": "90000000000000000000"
+    },
+    "seasonClaimV2": {
+      "wallet": "EQC3AK8tmvIezR6gd_cdmg4qmrFJOloUhpoWE8HpsSKhjPxY",
+      "balanceRaw": "0"
+    },
+    "fundVesting": {
+      "wallet": "EQBHI_ujpZQVNDj8CVaKMQ6QR2tMVugXaSL46rxgQT7XxnpW",
+      "balanceRaw": "0"
+    },
+    "developmentFund": {
+      "wallet": "EQAmfNJcT0-DZlc1pLWURIJrQKR2xRJQaBjadpSB9wVcYx8T",
+      "balanceRaw": "500000000000000000"
+    },
+    "presaleVault": {
+      "wallet": "EQBeIBmsLzSkfVwcGl4Donf3Hca2nfta__S3x2n1TMO1g9Vx",
+      "balanceRaw": "4500000000000000000"
+    },
+    "ecosystemTreasury": {
+      "wallet": "EQC6l1XfmSrj50sOWHf5S7xiO_O4_0Xd4v2je2Pr7BLcWnBF",
+      "balanceRaw": "4500000000000000000"
+    },
+    "teamVesting": {
+      "wallet": "EQABKzYV7XtCAi9RcKGWRL8OAHWEr0lYvNXW_h-W9kJ7sO9X",
+      "balanceRaw": "300000000000000000"
+    },
+    "earlyUsersOperations": {
+      "wallet": "EQD-9WsEEJFTo9yMw2cLOkbN_tnFQuizMRMZzeWOv2E2Zq01",
+      "balanceRaw": "200000000000000000"
+    }
+  },
+  "evidence": {
+    "deployedAt": "2026-05-01",
+    "sourceRepository": "https://github.com/tii-mom/72h-capital-contracts",
+    "postDeployEvidence": "deployments/v3-mainnet/72h-v3-mainnet.postdeploy.latest.json",
+    "publicInfo": "docs/72h-v3-mainnet-public-info.md"
+  },
+  "restrictions": {
+    "presale": "inactive; do not enable sales UX or call SetPresaleActive without separate audited launch approval",
+    "seasonClaimRoots": "not published; require reviewed game export, Merkle root evidence, and owner approval",
+    "appContracts": "contracts/apps/multi-millionaire/v3 is reserved for production candidates only and is not deployed",
+    "v2": "frozen archive only; do not use V2 addresses for current integrations"
+  },
+  "replaces": {
+    "version": "v2",
+    "status": "frozen-archive",
+    "jettonMaster": "EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg"
+  }
+}

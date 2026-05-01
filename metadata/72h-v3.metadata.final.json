@@ -1,0 +1,15 @@
+{
+  "name": "72H",
+  "symbol": "72H",
+  "decimals": "9",
+  "description": "72Hours是Vibe coder社区通行证。创新的“72 小时赛季机制”：每个赛季 18 轮，每轮 4 小时，固定赛季库存会根据公开轮次结果，在持币者奖励和生态基金之间流转。",
+  "image": "ipfs://QmNzFgWkVCxuJJBym1hoDq5tG4PwFBT8mUMMXdPefb23S4",
+  "website": "https://72h.lol",
+  "telegram": "https://t.me/the_72h",
+  "twitter": "https://x.com/72hour_s",
+  "social": [
+    "https://72h.lol",
+    "https://t.me/the_72h",
+    "https://x.com/72hour_s"
+  ]
+}
