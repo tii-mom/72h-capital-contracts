@@ -76,13 +76,14 @@ Use these facts when reviewing exporter inputs:
 
 | Field | Value | Status |
 | --- | --- | --- |
-| V2 Jetton master | `EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg` | deployed mainnet |
-| SeasonVault | `EQCdSSWPVbwh9zIzhF5pnxwRKw-I8xc4bS1iyiVcbXKfnWe-` | deployed mainnet |
-| Legacy SeasonClaim | `EQCYvg-_oFE8q8cweVScna-WDRzDYol-FBwHKuTcAjcFGonS` | deployed mainnet |
-| SeasonClaimV2 | unset | future audited mainnet address only |
+| V3 Jetton master | `EQAm0twD5SYndyrdIvWyNZ_7oUXlrlGOhUf6iiA7q1ph-GI3` | current mainnet |
+| SeasonVault | `EQCkI1atYYWN-2cnJJASJ1nKsu0ZbvCd_EVZQ61KcoIW-13l` | current mainnet |
+| Frozen V2 SeasonClaim | `EQCYvg-_oFE8q8cweVScna-WDRzDYol-FBwHKuTcAjcFGonS` | historical archive |
+| Frozen V2 Jetton master | `EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg` | historical archive |
+| SeasonClaimV2 | `EQDBwNs-eQSUbl0XISsd9b9g-RvaZ-XWDa-PIVoG-wtMsf4b` | current mainnet |
 | SeasonClaimV2LegacyBridge | unset | future audited mainnet address only |
 
-The legacy `SEASON_CLAIM_ADDRESS` value may continue to point to the deployed legacy SeasonClaim for v1 small rehearsal exports. It must not be repurposed as a V2 address without an explicit app-side migration review.
+The legacy `SEASON_CLAIM_ADDRESS` value may continue to point to the deployed legacy SeasonClaim for v1 small rehearsal exports. It must not be repurposed as the current V3 claim address without an explicit app-side migration review.
 
 ## Future Environment Placeholders
 
@@ -90,7 +91,7 @@ These names are planning placeholders only. Do not add them to production `.env`
 
 ```text
 SEASON_CLAIM_VERSION=season-claim-v2
-SEASON_CLAIM_V2_ADDRESS=<audited-mainnet-season-claim-v2-address>
+SEASON_CLAIM_V2_ADDRESS=EQDBwNs-eQSUbl0XISsd9b9g-RvaZ-XWDa-PIVoG-wtMsf4b
 SEASON_CLAIM_V2_BRIDGE_ADDRESS=<audited-mainnet-bridge-address>
 SEASON_CLAIM_PROOF_FORMAT=ref-chain:siblingOnLeft-bool+sibling-uint256
 SEASON_CLAIM_ROOT_PUBLISHABLE=false

@@ -1,4 +1,4 @@
-import "./SeasonClaimV2.tact";
+import "../../deployed/v3-core/SeasonClaimV2.tact";
 
 const SEASON_CLAIM_V2_BRIDGE_MANUAL_FORWARD_QUERY_OFFSET: Int = 14414200000000000;
 const SEASON_CLAIM_V2_BRIDGE_MAX_SEASONS: Int = 10;

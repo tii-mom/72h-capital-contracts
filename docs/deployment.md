@@ -1,8 +1,8 @@
 # Deployment
 
-This repository now deploys the first minimal TON testnet contract boundary for 72H Capital. The current deployable set covers `TestJetton72H`, `AdminAuthority` using the existing `AdminMultisig.tact` filename, `CapitalRegistry`, `AppRewardPool`, one `ReserveVault` per first-batch app, and one `AlphaVault` per first-batch app. It is suitable for testnet rehearsal and API/wallet integration, not mainnet production.
+This page is legacy deployment guidance for the earlier Capital/Reserve/AppRewardPool package. The current V3 mainnet facts are in `72H_MAINNET_FACTS.md`, and current deployed Tact sources live under `../contracts/deployed/v3-core/`.
 
-The full product behavior is still represented by the TypeScript state machines in `src/contracts/*.ts`. The `contracts/*.tact` files are the first deployable shells that mirror the agreed rules enough to exercise address derivation, TonConnect payloads, Registry bindings, and Reserve intent submission.
+The older Capital/Reserve/AppRewardPool sources are now retained under `../contracts/supporting/`. They are not part of the deployed V3 tokenomics package unless a future deployment explicitly re-promotes them with tests, evidence, and public documentation.
 
 System boundary:
 
@@ -127,10 +127,11 @@ Local deploy planning loads `.env.local` and `.env` from this repository root. D
 
 - Testnet uses a `72H Test Jetton` placeholder until a testnet master address is deployed and recorded.
 - The current `TestJetton72H` is a minimal shell for rehearsal and does not claim full Jetton standard compatibility.
-- Mainnet must use the official deployed V2 `72H` Jetton master address: `EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg`.
-- Deprecated: old Jetton master `EQDvE0ffdwvOhILjRJKFd2bIU9t5H9bG3-SKRidqavZjRsw8` is not the active V2 deployed token and must not be used in new mainnet manifests, apps, exchange submissions, wallet metadata, scripts, or launch materials.
+- Mainnet must use the official deployed V3 `72H` Jetton master address: `EQAm0twD5SYndyrdIvWyNZ_7oUXlrlGOhUf6iiA7q1ph-GI3`.
+- Frozen archive: V2 Jetton master `EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg` must not be used in new current mainnet manifests, apps, exchange submissions, wallet metadata, scripts, or launch materials.
+- Deprecated: old pre-V2 Jetton master `EQDvE0ffdwvOhILjRJKFd2bIU9t5H9bG3-SKRidqavZjRsw8` must not be used in new mainnet manifests, apps, exchange submissions, wallet metadata, scripts, or launch materials.
 - Mainnet deployment is blocked if `TON_MAINNET_72H_JETTON_MASTER_ADDRESS` is missing.
-- `TON_MAINNET_72H_JETTON_MASTER_ADDRESS` must be the Jetton master contract address. Do not use the admin wallet address here. For deployed V2 facts, see `docs/72H_MAINNET_FACTS.md`.
+- `TON_MAINNET_72H_JETTON_MASTER_ADDRESS` must be the current V3 Jetton master contract address. Do not use the admin wallet address here. For deployed V3 facts, see `docs/72H_MAINNET_FACTS.md`.
 - Mainnet governance default is `single-admin` with `TON_MAINNET_ADMIN_ADDRESS=UQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQfRq` and a `1` signature threshold.
 - Reserve launch custody rehearsal default is `720,000 72H` per app, total `2,160,000 72H`.
 - The testnet mock Jetton must not be reused or referenced in mainnet manifests.

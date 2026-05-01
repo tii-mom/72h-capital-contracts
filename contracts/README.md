@@ -2,36 +2,49 @@
 
 This directory contains the TON smart contract sources for 72H.
 
-## Mainnet V2 Contracts
+## Folder Layout
 
-The deployed 72H V2 mainnet package consists of the fixed-supply Jetton plus these tokenomics contracts:
+- `jetton-v2/`: production Func Jetton master and wallet implementation used by the current V3 token.
+- `deployed/v3-core/`: Tact sources for the currently deployed V3 mainnet tokenomics package.
+- `apps/`: application-specific contracts grouped by product. These are not part of the core V3 deployment unless separately reviewed and deployed.
+- `supporting/`: reusable, historical, or system-adjacent contracts kept for audits, tests, and future planning.
+- `archive/`: frozen replaced contracts. Do not use these for new integrations or signing packages.
+- `testnet/`: testnet-only mocks and harness contracts.
 
-- `jetton-v2/*.fc`: production Jetton master and wallet implementation.
-- `SeasonVault.tact`: custody for the 90B season reward inventory.
-- `SeasonClaim.tact`: Merkle claim contract for successful season rewards.
-- `SeasonClaimV2.tact`: not deployed; candidate scalable-proof replacement for large Season War claim sets.
-- `FundVesting.tact`: price-stage vesting for failed-round inventory.
-- `DevelopmentFund.tact`: development fund custody.
-- `PresaleVault.tact`: TON-only staged presale custody and sale logic.
-- `EcosystemTreasury.tact`: approved ecosystem application funding.
-- `TeamVesting.tact`: price-stage team vesting custody.
+## Mainnet V3 Contracts
+
+The deployed 72H V3 mainnet package consists of the fixed-supply Jetton plus these tokenomics contracts:
+
+- `jetton-v2/*.fc`: production Jetton master and wallet implementation used by V3.
+- `deployed/v3-core/SeasonVault.tact`: custody for the 90B season reward inventory.
+- `deployed/v3-core/SeasonClaimV2.tact`: Merkle claim contract for finalized season rewards.
+- `deployed/v3-core/FundVesting.tact`: price-stage vesting for failed-round inventory.
+- `deployed/v3-core/DevelopmentFund.tact`: development fund custody.
+- `deployed/v3-core/PresaleVault.tact`: TON-only staged presale custody and sale logic.
+- `deployed/v3-core/EcosystemTreasury.tact`: approved ecosystem application funding.
+- `deployed/v3-core/TeamVesting.tact`: price-stage team vesting custody.
 - `apps/`: future application-specific chain contracts, organized by application.
 
-Mainnet deployment evidence is recorded in `../deployments/72h-v2-mainnet.deployed-2026-04-28.md`.
+Current mainnet deployment evidence is recorded in `../deployments/v3-mainnet/72h-v3-mainnet.postdeploy.latest.json`.
 
 ## Supporting And Legacy Contracts
 
 These contracts remain in the repository because they are part of the broader 72H Capital system or earlier audit work:
 
-- `CapitalRegistry.tact`
-- `ReserveVault.tact`
-- `AppRewardPool.tact`
-- `AlphaVault.tact`
-- `AdminMultisig.tact`
-- `Treasury.tact`
-- `TestJetton.tact`
+- `supporting/CapitalRegistry.tact`
+- `supporting/ReserveVault.tact`
+- `supporting/AppRewardPool.tact`
+- `supporting/AlphaVault.tact`
+- `supporting/AdminMultisig.tact`
+- `supporting/Treasury.tact`
+- `supporting/TestJetton.tact`
 
-They are not part of the deployed 8-contract V2 tokenomics mainnet package unless a future deployment explicitly includes them.
+Frozen V2 archive contracts live under:
+
+- `archive/v2/SeasonClaim.tact`
+- `archive/v2/SeasonClaimV2LegacyBridge.tact`
+
+They are not part of the deployed V3 tokenomics mainnet package unless a future deployment explicitly includes them.
 
 ## Application Contracts
 

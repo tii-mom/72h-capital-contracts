@@ -5,12 +5,13 @@
   "deployerMnemonicEnv": "TON_MAINNET_DEPLOYER_MNEMONIC",
   "jetton": {
     "masterAddressEnv": "TON_MAINNET_72H_JETTON_MASTER_ADDRESS",
-    "approvedMasterAddress": "EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg",
+    "approvedMasterAddress": "EQAm0twD5SYndyrdIvWyNZ_7oUXlrlGOhUf6iiA7q1ph-GI3",
+    "frozenArchiveMasterAddress": "EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg",
     "deprecatedMasterAddress": "EQDvE0ffdwvOhILjRJKFd2bIU9t5H9bG3-SKRidqavZjRsw8",
     "mainnetMasterRequired": true,
     "decimals": 9,
     "symbol": "72H",
-    "note": "Must be the official deployed V2 72H Jetton master contract, not the admin wallet. The deprecated master address must not be used for new mainnet manifests."
+    "note": "Must be the official deployed V3 72H Jetton master contract, not the admin wallet. V2 and deprecated pre-V2 master addresses must not be used for new mainnet manifests."
   },
   "governance": {
     "mode": "single-admin",

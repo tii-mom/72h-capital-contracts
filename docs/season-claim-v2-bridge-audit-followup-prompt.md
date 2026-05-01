@@ -69,8 +69,8 @@ Request:
 2. Please explicitly state whether `legacy pending cleanup complete` must remain a hard gate before any mainnet signing package, deployment, or bridge transaction is generated.
 3. Please review `docs/season-claim-v2-mainnet-migration-runbook.md`, which is marked `BLOCKED UNTIL TESTNET LEGACY PENDING CLEANUP COMPLETE`.
 4. Please look for any remaining P1/P2 blockers in:
-   - `contracts/SeasonClaimV2.tact`
-   - `contracts/SeasonClaimV2LegacyBridge.tact`
+   - `contracts/deployed/v3-core/SeasonClaimV2.tact`
+   - `contracts/archive/v2/SeasonClaimV2LegacyBridge.tact`
    - `tests/season-claim-v2-legacy-bridge.spec.ts`
    - `scripts/rehearse-season-claim-v2-legacy-bridge-testnet.ts`
    - `docs/season-claim-v2-mainnet-migration-runbook.md`

@@ -1,6 +1,12 @@
 # 72H V2 Wallet and Exchange Token Information
 
-Use this package for wallet, DEX, CEX, block explorer, and listing submissions.
+Status: `FROZEN ARCHIVE - REPLACED BY V3`
+
+Current wallet/exchange package: `docs/72h-v3-wallet-exchange-token-info.md`
+
+Do not submit or integrate the V2 Jetton master as the current 72H token. This file is retained only as historical deployment evidence.
+
+Use the V3 package for wallet, DEX, CEX, block explorer, and listing submissions. This V2 package is frozen archive only.
 
 ## Basic Token Information
 
@@ -63,13 +69,13 @@ Use this package for wallet, DEX, CEX, block explorer, and listing submissions.
 - Public submission status: `docs/72h-v2-public-submission-status.md`
 - Misti static-analysis artifact: `audit-artifacts/misti-all-detectors-post-souffle-2026-04-28.json/warnings.json`
 
-## Submission Status
+## Historical Submission Status
 
 - Tonkeeper asset PR: `https://github.com/tonkeeper/ton-assets/pull/5095`
-- Official website route: implemented locally, production deploy pending Cloudflare authentication.
-- OKX listing application: package ready; requires project owner exchange/login flow.
-- STON.fi verification: package ready; submit after liquidity/listing plan is confirmed.
-- DEX/CEX submissions: use this document plus `docs/72h-v2-mainnet-public-info.md` and mainnet evidence.
+- Official website V2 route: frozen archive only after the V3 migration.
+- OKX listing application: do not submit this V2 package as current.
+- STON.fi verification: do not submit this V2 package as current.
+- DEX/CEX submissions: use `docs/72h-v3-wallet-exchange-token-info.md` instead.
 
 ## Wallet Display Checklist
 

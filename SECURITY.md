@@ -2,14 +2,16 @@
 
 ## Mainnet Status
 
-72H V2 is deployed on TON mainnet with fixed supply:
+72H V3 is the current deployed 72H token on TON mainnet with fixed supply:
 
-- Jetton master: `EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg`
+- Jetton master: `EQAm0twD5SYndyrdIvWyNZ_7oUXlrlGOhUf6iiA7q1ph-GI3`
 - Total supply: `100000000000000000000` raw
 - Mintable: `0`
 - Admin: `null`
+- Metadata URI: `ipfs://QmSzB37bf7BWRLhssq3RxaEdHQgLWb1RqdwGDkaGidFSmC`
 
-Deployment evidence is recorded in `deployments/72h-v2-mainnet.deployed-2026-04-28.md`.
+Deployment evidence is recorded in `deployments/v3-mainnet/72h-v3-mainnet.postdeploy.latest.json`.
+V2 evidence remains frozen archive only and must not be used as current mainnet configuration.
 
 ## Reporting Issues
 
@@ -28,13 +30,14 @@ Do not disclose an active exploit publicly before the project has had time to tr
 In scope:
 
 - `contracts/jetton-v2/*.fc`
-- V2 tokenomics contracts in `contracts/*.tact`
+- V3 tokenomics contracts in `contracts/deployed/v3-core/*.tact`
 - deployment scripts and TonConnect generation scripts
 - public deployment evidence and address derivation logic
 
 Out of scope unless explicitly deployed in a future package:
 
-- legacy Capital/Reserve/AppRewardPool package files marked as void
+- archived contracts in `contracts/archive/`
+- supporting Capital/Reserve/AppRewardPool package files in `contracts/supporting/`
 - local-only generated artifacts in ignored `build/` or `dist/`
 - testnet-only secrets and `.env.local`
 

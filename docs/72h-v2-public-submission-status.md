@@ -1,24 +1,30 @@
 # 72H V2 Public Submission Status
 
+Status: `FROZEN ARCHIVE - REPLACED BY V3`
+
+Current submission status: `docs/72h-v3-public-submission-status.md`
+
+Do not use V2 addresses for new public submissions. This file records the historical V2 submission attempt and Tonkeeper PR outcome only.
+
 Status date: 2026-04-30
 
-## Completed
+## Historical Outcome
 
 - Mainnet deployment completed and verified.
 - Public GitHub repository published: `https://github.com/tii-mom/72h-capital-contracts`.
 - Wallet and exchange token information package prepared: `docs/72h-v2-wallet-exchange-token-info.md`.
-- Official website implementation prepared in `/Users/yudeyou/Desktop/72hours`:
+- Historical V2 website implementation prepared in `/Users/yudeyou/Desktop/72hours`:
   - `public/contracts/72h-v2-mainnet.json`
   - `/contracts` page
   - `/token` redirect to `/contracts`
 - Website build passed locally with `npm run build` on 2026-04-30.
-- Production contract JSON is live: `https://72h.lol/contracts/72h-v2-mainnet.json` returned HTTP 200 on 2026-04-30.
-- Production contracts page is live: `https://72h.lol/contracts` returned HTTP 200 on 2026-04-30.
+- Historical V2 contract JSON was live: `https://72h.lol/contracts/72h-v2-mainnet.json` returned HTTP 200 on 2026-04-30. It must not be used as the current/default contract JSON after the V3 migration.
+- Historical V2 contracts page was live: `https://72h.lol/contracts` returned HTTP 200 on 2026-04-30. The current/default page must now present V3.
 - Tonkeeper asset PR submitted: `https://github.com/tonkeeper/ton-assets/pull/5095`; status checked 2026-04-30: PR is closed, not merged. Maintainer feedback: token needs more development before verification / return after future development.
 
 ## Website Production Status
 
-The production contract information URL is live:
+The historical V2 contract information URL was live during the V2 submission attempt:
 
 ```text
 https://72h.lol/contracts/72h-v2-mainnet.json
@@ -37,7 +43,7 @@ Current note: `/token` is intended as a convenience redirect to `/contracts`; lo
 
 TON token verification is driven by the public token asset list. The first 72H Tonkeeper PR added Jetton metadata under `jettons/72H.yaml`, but it was closed unmerged with maintainer feedback that the token needs more development before verification. Treat wallet verification as a follow-up after public product/community/liquidity evidence improves; do not assume Tonkeeper verification is active.
 
-Important public facts for wallet review:
+Historical V2 facts from the closed wallet review:
 
 - Jetton master: `EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg`
 - Total supply: `100000000000000000000`
@@ -57,9 +63,9 @@ DEX follow-up should happen after liquidity is intentionally created:
 - DeDust/other DEX visibility depends on pool creation, liquidity, metadata ingestion, and any platform-specific verification.
 - CEX applications should use the same fixed-supply, no-mint-authority package and include the GitHub repository plus mainnet evidence.
 
-## Submission Package
+## Historical Archive Package
 
-Use these files as the single source package:
+Retain these files only as frozen V2 archive evidence:
 
 - `docs/72h-v2-wallet-exchange-token-info.md`
 - `docs/72h-v2-mainnet-public-info.md`

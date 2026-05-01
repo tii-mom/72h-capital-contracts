@@ -1,4 +1,4 @@
-import "./TestJetton.tact";
+import "../../supporting/TestJetton.tact";
 
 const ECOSYSTEM_TREASURY_TOTAL_72H: Int = 4500000000 * 1000000000;
 

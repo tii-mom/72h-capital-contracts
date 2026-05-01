@@ -1,0 +1,31 @@
+{
+  "network": "ton-testnet",
+  "status": "pending",
+  "contract": {
+    "name": "MultiMillionaireDepositVault",
+    "address": "",
+    "codeHashHex": ""
+  },
+  "checks": {
+    "local_typecheck": false,
+    "local_tact_check": false,
+    "local_vitest": false,
+    "testnet_deploy": false,
+    "testnet_vault_wallet_bound": false,
+    "testnet_deposit_supported_target": false,
+    "testnet_rejects_bad_sender": false,
+    "testnet_rejects_bad_target": false,
+    "testnet_withdraw_after_goal": false,
+    "testnet_finalize_excesses": false,
+    "testnet_bounce_restore": false
+  },
+  "evidence": {
+    "deployTxHash": "",
+    "vaultWalletBindTxHash": "",
+    "supportedDepositTxHash": "",
+    "withdrawTxHash": "",
+    "finalizeTxHash": "",
+    "bounceRestoreTxHash": "",
+    "notes": "Copy to deposit-vault.testnet.latest.json only after real testnet execution completes."
+  }
+}

@@ -1,6 +1,8 @@
 # 72H V2 Mainnet Deployment Evidence
 
-Status: deployed and verified on mainnet.
+Status: `FROZEN ARCHIVE - REPLACED BY V3`
+
+This is historical V2 deployment evidence only. Do not use these addresses as current mainnet configuration.
 
 Verified at: `2026-04-28T05:22:59Z` (`2026-04-28 13:22:59 CST`)
 
@@ -16,18 +18,18 @@ Do not use legacy files:
 
 ## Core Contracts
 
-All 8 core contracts are active on mainnet.
+All 8 V2 core contracts were active on mainnet when this historical evidence was captured. They are now frozen archive addresses and must not be used as current mainnet configuration.
 
 | Contract | Address | State |
 | --- | --- | --- |
-| V2 Jetton Master | `EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg` | active |
-| SeasonVault | `EQCdSSWPVbwh9zIzhF5pnxwRKw-I8xc4bS1iyiVcbXKfnWe-` | active |
-| SeasonClaim | `EQCYvg-_oFE8q8cweVScna-WDRzDYol-FBwHKuTcAjcFGonS` | active |
-| FundVesting | `EQDO0AMsITst5rWGcabJ8OF7Ys079UMPGNOq9H8WtiJakID4` | active |
-| DevelopmentFund | `EQAPkdB1YJDEsVixATzfDjf--yl0frlKRkLPYHHUv6nVFkEU` | active |
-| PresaleVault | `EQCj56OaGFtIBgdtQjIacb7s1jlEy93vh-93PU07MDR1vpE9` | active |
-| EcosystemTreasury | `EQARGC33uqypROhxiJMVOeKPYbYRgAEhXUkTxkrK7CrKDP3O` | active |
-| TeamVesting | `EQD5PnUEuEUYBt1XktTPlvN7HE5n-AIBI4XiAyd4qUgHasrK` | active |
+| V2 Jetton Master | `EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg` | frozen archive |
+| SeasonVault | `EQCdSSWPVbwh9zIzhF5pnxwRKw-I8xc4bS1iyiVcbXKfnWe-` | frozen archive |
+| SeasonClaim | `EQCYvg-_oFE8q8cweVScna-WDRzDYol-FBwHKuTcAjcFGonS` | frozen archive |
+| FundVesting | `EQDO0AMsITst5rWGcabJ8OF7Ys079UMPGNOq9H8WtiJakID4` | frozen archive |
+| DevelopmentFund | `EQAPkdB1YJDEsVixATzfDjf--yl0frlKRkLPYHHUv6nVFkEU` | frozen archive |
+| PresaleVault | `EQCj56OaGFtIBgdtQjIacb7s1jlEy93vh-93PU07MDR1vpE9` | frozen archive |
+| EcosystemTreasury | `EQARGC33uqypROhxiJMVOeKPYbYRgAEhXUkTxkrK7CrKDP3O` | frozen archive |
+| TeamVesting | `EQD5PnUEuEUYBt1XktTPlvN7HE5n-AIBI4XiAyd4qUgHasrK` | frozen archive |
 
 ## Jetton Final State
 

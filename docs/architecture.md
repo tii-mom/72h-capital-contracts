@@ -2,9 +2,9 @@
 
 ## Overview
 
-`72H Capital` uses five contract modules with clear responsibilities:
+`72H Capital` originally used five Capital/Reserve/AppRewardPool modules with clear responsibilities. That architecture is retained here as historical and supporting context.
 
-The executable behavior today lives in `src/contracts/*.ts`. The files in `contracts/*.tact` are aligned scaffolds only and should be read as layout and lifecycle notes, not deployable chain code.
+The current V3 mainnet token facts are in `72H_MAINNET_FACTS.md`, and the deployed V3 core Tact sources live under `../contracts/deployed/v3-core/`. The older Capital/Reserve/AppRewardPool Tact sources now live under `../contracts/supporting/` and should be read as supporting or future-planning code unless explicitly re-promoted.
 
 The wider system is split across sibling repos:
 

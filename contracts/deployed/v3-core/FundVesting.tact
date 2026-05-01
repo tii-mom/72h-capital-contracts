@@ -1,4 +1,4 @@
-import "./TestJetton.tact";
+import "../../supporting/TestJetton.tact";
 
 const FUND_VESTING_BPS_DENOMINATOR: Int = 10000;
 const FUND_VESTING_STAGE_ONE_BPS: Int = 2000;
@@ -11,7 +11,7 @@ const FUND_VESTING_STAGE_TWO_PRICE_USD9: Int = 30000000;
 const FUND_VESTING_STAGE_THREE_PRICE_USD9: Int = 50000000;
 const FUND_VESTING_STAGE_FOUR_PRICE_USD9: Int = 70000000;
 const FUND_VESTING_STAGE_FIVE_PRICE_USD9: Int = 100000000;
-const FUND_VESTING_HOLD_SECONDS: Int = 15 * 60;
+const FUND_VESTING_HOLD_SECONDS: Int = 60 * 60;
 
 message(0x72080001) SetFundJettonWallet {
     wallet: Address;

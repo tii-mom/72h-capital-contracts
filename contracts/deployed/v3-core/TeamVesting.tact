@@ -1,8 +1,8 @@
-import "./TestJetton.tact";
+import "../../supporting/TestJetton.tact";
 
 const TEAM_VESTING_STAGE_AMOUNT_72H: Int = 100000000 * 1000000000;
 const TEAM_VESTING_TOTAL_72H: Int = 300000000 * 1000000000;
-const TEAM_VESTING_HOLD_SECONDS: Int = 15 * 60;
+const TEAM_VESTING_HOLD_SECONDS: Int = 60 * 60;
 
 message(0x72090001) SetTeamJettonWallet {
     wallet: Address;

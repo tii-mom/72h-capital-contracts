@@ -1,6 +1,12 @@
 # 72H V2 Mainnet Public Contract Information
 
-This document is the public reference for users, wallets, exchanges, block explorers, and integration partners.
+Status: `FROZEN ARCHIVE - REPLACED BY V3`
+
+Current public package: `docs/72h-v3-mainnet-public-info.md`
+
+Do not use this V2 document for new wallet, website, exchange, DEX, explorer, or product integrations. It is retained only as historical deployment evidence.
+
+This document is a frozen historical reference. Current users, wallets, exchanges, block explorers, and integration partners must use the V3 package.
 
 ## Token
 
@@ -28,7 +34,7 @@ This document is the public reference for users, wallets, exchanges, block explo
 
 | Contract | Address | Purpose |
 | --- | --- | --- |
-| V2 Jetton Master | `EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg` | Official 72H Jetton master |
+| V2 Jetton Master | `EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg` | Frozen archive only; replaced by V3 |
 | SeasonVault | `EQCdSSWPVbwh9zIzhF5pnxwRKw-I8xc4bS1iyiVcbXKfnWe-` | 90B season reward inventory |
 | SeasonClaim | `EQCYvg-_oFE8q8cweVScna-WDRzDYol-FBwHKuTcAjcFGonS` | Merkle claim contract for successful season rewards |
 | FundVesting | `EQDO0AMsITst5rWGcabJ8OF7Ys079UMPGNOq9H8WtiJakID4` | Failed-round price-locked vesting |

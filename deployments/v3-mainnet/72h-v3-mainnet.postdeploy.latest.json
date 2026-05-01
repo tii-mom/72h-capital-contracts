@@ -1,0 +1,98 @@
+{
+  "checkedAt": "2026-05-01T16:15:36.246Z",
+  "network": "mainnet",
+  "status": "deployed-and-postdeploy-verified",
+  "loadedEnvFiles": [
+    ".env.local"
+  ],
+  "adminWallet": "EQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQamv",
+  "metadataUri": "ipfs://QmSzB37bf7BWRLhssq3RxaEdHQgLWb1RqdwGDkaGidFSmC",
+  "jettonMaster": {
+    "address": "EQAm0twD5SYndyrdIvWyNZ_7oUXlrlGOhUf6iiA7q1ph-GI3",
+    "state": "active",
+    "codeHashHex": "779489f7cadb181403156694116baa342c0fe32c0cf5ce3b84a1ef4e652ed5e9",
+    "totalSupplyRaw": "100000000000000000000",
+    "mintable": false,
+    "adminAddress": null,
+    "walletCodeHashHex": "ba2918c8947e9b25af9ac1b883357754173e5812f807a3d6e642a14709595395"
+  },
+  "contracts": {
+    "SeasonVault": {
+      "address": "EQCkI1atYYWN-2cnJJASJ1nKsu0ZbvCd_EVZQ61KcoIW-13l",
+      "state": "active",
+      "codeHashHex": "7c7de509936c3eb2bdff7eb2b9a20fdc529c68f55c21da4f69b6614c68b8d0a1",
+      "extra": {
+        "derivedJettonWallet": "EQClq_b3CeBTPUtjsQWgaIg4dfrjIP2GyTPcYkIMf352BSbt",
+        "jettonWalletBalanceRaw": "90000000000000000000",
+        "allocated72H": "0"
+      },
+      "funded72H": "90000000000000000000"
+    },
+    "SeasonClaimV2": {
+      "address": "EQDBwNs-eQSUbl0XISsd9b9g-RvaZ-XWDa-PIVoG-wtMsf4b",
+      "state": "active",
+      "codeHashHex": "53e2e08467bbe2bf95936abf308f346f8b9f82b3a0ef4465282bef643b453cef",
+      "extra": {
+        "derivedJettonWallet": "EQC3AK8tmvIezR6gd_cdmg4qmrFJOloUhpoWE8HpsSKhjPxY",
+        "jettonWalletBalanceRaw": "0"
+      },
+      "funded72H": "0"
+    },
+    "FundVesting": {
+      "address": "EQBKuIRplvhYzL9Gbm6GpZqCxMTHApVOZMVs9T1HzXcP7inb",
+      "state": "active",
+      "codeHashHex": "c3af1fc9aa16e783fc5fda1303ef0af52f1c8025d7abe165cf7336472c424d3b",
+      "extra": {
+        "derivedJettonWallet": "EQBHI_ujpZQVNDj8CVaKMQ6QR2tMVugXaSL46rxgQT7XxnpW",
+        "jettonWalletBalanceRaw": "0"
+      },
+      "funded72H": "0"
+    },
+    "DevelopmentFund": {
+      "address": "EQBbRZQj_VJU2r-DAtQcHoDngRC9EBvUHFg4LoB5HXLBv1Yh",
+      "state": "active",
+      "codeHashHex": "12147e52cbb3267f61f67016c2711a767e0e2f30d8dc8ea084a3a889ca67926b",
+      "extra": {
+        "derivedJettonWallet": "EQAmfNJcT0-DZlc1pLWURIJrQKR2xRJQaBjadpSB9wVcYx8T",
+        "jettonWalletBalanceRaw": "500000000000000000"
+      },
+      "funded72H": "500000000000000000"
+    },
+    "PresaleVault": {
+      "address": "EQDHSwsiQtB3sdoAaOdJi4kCu32GIHM4BtXd-_EtpE96EYXy",
+      "state": "active",
+      "codeHashHex": "5951893d33ce3937961703516c2f8bcd48bf0c146dbc29d228af346ea4e6cf9e",
+      "extra": {
+        "derivedJettonWallet": "EQBeIBmsLzSkfVwcGl4Donf3Hca2nfta__S3x2n1TMO1g9Vx",
+        "jettonWalletBalanceRaw": "4500000000000000000"
+      },
+      "funded72H": "4500000000000000000"
+    },
+    "EcosystemTreasury": {
+      "address": "EQCy7YpjZJuQAwjCQvQK55dv4p89c5pJUR9vi8nAwoW4a_w7",
+      "state": "active",
+      "codeHashHex": "151c7ff421e39eb71216a81bb21402da81a4a5ca87a1641a0c20d85537a8228b",
+      "extra": {
+        "derivedJettonWallet": "EQC6l1XfmSrj50sOWHf5S7xiO_O4_0Xd4v2je2Pr7BLcWnBF",
+        "jettonWalletBalanceRaw": "4500000000000000000"
+      },
+      "funded72H": "4500000000000000000"
+    },
+    "TeamVesting": {
+      "address": "EQC3pNoWZHNmbcazxJV7lzcQH05Zewjl5w1KJhA4OfIPM6cy",
+      "state": "active",
+      "codeHashHex": "b739aa891c9fc54362d0128269ca856f6ef599bd610bfa46eb3f977386abdf1f",
+      "extra": {
+        "derivedJettonWallet": "EQABKzYV7XtCAi9RcKGWRL8OAHWEr0lYvNXW_h-W9kJ7sO9X",
+        "jettonWalletBalanceRaw": "300000000000000000"
+      },
+      "funded72H": "300000000000000000"
+    }
+  },
+  "earlyUsers": {
+    "owner": "EQDqA19b4tBQKi7Z_0NS08eWzq-FZ-wsRU4QfzEEKwcouZUQ",
+    "jettonWallet": "EQD-9WsEEJFTo9yMw2cLOkbN_tnFQuizMRMZzeWOv2E2Zq01",
+    "balanceRaw": "200000000000000000"
+  },
+  "failures": []
+}

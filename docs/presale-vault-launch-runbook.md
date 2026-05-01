@@ -2,20 +2,20 @@
 
 Status: `BLOCKED - DO NOT ACTIVATE MAINNET PRESALE`
 
-This runbook tracks the presale launch path after the post-review hardening work. It is not a signing package and does not authorize opening sales.
+This runbook tracks the V3 presale launch boundary. It is not a signing package and does not authorize opening sales.
 
 ## Current Decision
 
-Do not activate the currently deployed mainnet `PresaleVault`.
+Do not activate the currently deployed V3 mainnet `PresaleVault`.
 
-Reason: `contracts/PresaleVault.tact` has been hardened after the mainnet deployment. The deployed mainnet contract code hash remains the historical deployment hash and cannot be upgraded in place.
+Reason: the V3 `PresaleVault` is deployed, funded, and verified inactive. Opening sales is a separate high-risk operation that still needs an audited launch approval, exact frontend configuration review, and owner custody review.
 
 | Item | Value |
 | --- | --- |
-| Deployed mainnet `PresaleVault` | `EQCj56OaGFtIBgdtQjIacb7s1jlEy93vh-93PU07MDR1vpE9` |
-| Deployed mainnet code hash | `d0458deb2bc69870977e003c5da36c2e806cce29422e6720afaa497b0ec3a63b` |
-| Hardened local candidate code hash | `5951893d33ce3937961703516c2f8bcd48bf0c146dbc29d228af346ea4e6cf9e` |
-| Mainnet presale inventory wallet | `EQDcJf-sGJvWS6dG24SUStX9UYg9ZQEvMxXTh4TJfZ7Ww-96` |
+| Deployed V3 mainnet `PresaleVault` | `EQDHSwsiQtB3sdoAaOdJi4kCu32GIHM4BtXd-_EtpE96EYXy` |
+| Deployed V3 code hash | `5951893d33ce3937961703516c2f8bcd48bf0c146dbc29d228af346ea4e6cf9e` |
+| Current on-chain active flag | `false` |
+| Mainnet presale inventory wallet | `EQBeIBmsLzSkfVwcGl4Donf3Hca2nfta__S3x2n1TMO1g9Vx` |
 | Mainnet presale inventory | `4,500,000,000 72H` |
 
 ## Hardened Candidate Changes
@@ -67,7 +67,7 @@ Before sales can open, the team must choose and audit one route:
 2. Keep the deployed `PresaleVault` closed and run no contract sale.
 3. Obtain explicit external audit acceptance and owner risk approval for using the deployed `PresaleVault` despite the local hardening delta.
 
-Route 3 is not recommended under the current blocker policy.
+Route 1 would be a new deployment and must not be prepared without explicit approval. Route 3 is the only route that uses the current V3 deployed `PresaleVault`, and it still requires separate audit and owner risk acceptance before any activation payload exists.
 
 ## Final Presale Go/No-Go Checklist
 
@@ -81,4 +81,3 @@ Sales remain blocked until all are true:
 - exact funding source and contract address are reviewed
 - two-person review approves the signing package
 - public sales frontend uses the reviewed contract address and stage parameters
-

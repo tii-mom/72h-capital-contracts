@@ -1,4 +1,4 @@
-import "./TestJetton.tact";
+import "../../supporting/TestJetton.tact";
 
 const PRESALE_STAGE_CAP_72H: Int = 1500000000 * 1000000000;
 const PRESALE_TOTAL_CAP_72H: Int = 4500000000 * 1000000000;

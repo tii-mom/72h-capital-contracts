@@ -1,4 +1,4 @@
-import "./TestJetton.tact";
+import "../../supporting/TestJetton.tact";
 
 const SEASON_VAULT_ROUND_AMOUNT_72H: Int = 500000000 * 1000000000;
 const SEASON_VAULT_MAX_ROUNDS: Int = 180;

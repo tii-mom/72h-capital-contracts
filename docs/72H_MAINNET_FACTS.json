@@ -1,152 +1,124 @@
 {
-  "schema": "72h-mainnet-facts-draft-v1",
-  "status": "draft-cross-repo-facts-source",
-  "lastAligned": "2026-04-30",
+  "schema": "72h-mainnet-facts-v3",
+  "status": "current-v3-facts-source",
+  "lastAligned": "2026-05-01",
   "network": "mainnet",
   "sourceEvidence": {
-    "deploymentEvidence": "deployments/72h-v2-mainnet.deployed-2026-04-28.md",
-    "mainnetPlan": "deployments/72h-v2-tokenomics.mainnet.plan.json",
-    "tonconnectPackage": "deployments/72h-v2-mainnet.tonconnect.json",
-    "signingHtml": "deployments/72h-v2-mainnet-deploy.html",
-    "verifiedAt": "2026-04-28T05:22:59Z"
+    "mainnetPlan": "deployments/v3-mainnet/72h-v3-tokenomics.mainnet.plan.json",
+    "tonconnectPackage": "deployments/v3-mainnet/72h-v3-mainnet.tonconnect.json",
+    "postDeployEvidence": "deployments/v3-mainnet/72h-v3-mainnet.postdeploy.latest.json",
+    "verifiedAt": "2026-05-01T16:15:36.246Z"
   },
   "warnings": [
-    "Use this file for deployed mainnet facts only.",
-    "Do not treat SeasonClaimV2, SeasonClaimV2LegacyBridge, hardened PresaleVault, draft runbooks, testnet manifests, or local code hashes as deployed mainnet facts.",
-    "Do not use voided legacy signing files or the deprecated old Jetton master."
+    "Use V3 addresses for current public integrations.",
+    "V2 addresses are frozen archive only.",
+    "Presale remains inactive unless a separate audited launch route is approved.",
+    "contracts/apps/multi-millionaire/v3 is a reserved production-candidate workspace only, not a deployed contract set."
   ],
   "jetton": {
     "symbol": "72H",
-    "officialV2Master": "EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg",
-    "deprecatedMasters": [
-      {
-        "address": "EQDvE0ffdwvOhILjRJKFd2bIU9t5H9bG3-SKRidqavZjRsw8",
-        "status": "deprecated-not-active-v2",
-        "instruction": "Do not use in new docs, apps, exchange submissions, wallet metadata, scripts, or public launch materials."
-      }
+    "officialV3Master": "EQAm0twD5SYndyrdIvWyNZ_7oUXlrlGOhUf6iiA7q1ph-GI3",
+    "frozenArchiveMasters": [
+      "EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg",
+      "EQDvE0ffdwvOhILjRJKFd2bIU9t5H9bG3-SKRidqavZjRsw8"
     ],
-    "metadataUri": "ipfs://QmZkjBvKmHhsh56bPbbnwgPL8844eP5Btke6edbRGjPZNw",
+    "metadataUri": "ipfs://QmSzB37bf7BWRLhssq3RxaEdHQgLWb1RqdwGDkaGidFSmC",
+    "logoUri": "ipfs://QmNzFgWkVCxuJJBym1hoDq5tG4PwFBT8mUMMXdPefb23S4",
     "totalSupplyRaw": "100000000000000000000",
     "totalSupplyHuman": "100,000,000,000 72H",
     "mintable": false,
     "admin": null,
     "adminOwnerWallet": "EQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQamv",
-    "adminJettonWallet": "EQAgoErDhUiB40UbFYmlVvDxDx_lQo1AEEjVxyTzghbXXX83",
-    "adminJettonWalletFinalBalanceRaw": "0"
+    "walletCodeHashHex": "ba2918c8947e9b25af9ac1b883357754173e5812f807a3d6e642a14709595395"
   },
   "contracts": {
-    "V2JettonMaster": {
-      "address": "EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg",
-      "state": "active"
+    "V3JettonMaster": {
+      "address": "EQAm0twD5SYndyrdIvWyNZ_7oUXlrlGOhUf6iiA7q1ph-GI3",
+      "state": "active",
+      "codeHash": "779489f7cadb181403156694116baa342c0fe32c0cf5ce3b84a1ef4e652ed5e9"
     },
     "SeasonVault": {
-      "address": "EQCdSSWPVbwh9zIzhF5pnxwRKw-I8xc4bS1iyiVcbXKfnWe-",
+      "address": "EQCkI1atYYWN-2cnJJASJ1nKsu0ZbvCd_EVZQ61KcoIW-13l",
       "state": "active",
-      "codeHash": "7c7de509936c3eb2bdff7eb2b9a20fdc529c68f55c21da4f69b6614c68b8d0a1",
-      "dataHash": "130e05a9e59f10ab092e8731a023136a8caf3e2bedf4db69f4bafa79ec41f378"
+      "codeHash": "7c7de509936c3eb2bdff7eb2b9a20fdc529c68f55c21da4f69b6614c68b8d0a1"
     },
-    "SeasonClaim": {
-      "address": "EQCYvg-_oFE8q8cweVScna-WDRzDYol-FBwHKuTcAjcFGonS",
+    "SeasonClaimV2": {
+      "address": "EQDBwNs-eQSUbl0XISsd9b9g-RvaZ-XWDa-PIVoG-wtMsf4b",
       "state": "active",
-      "codeHash": "8ae1ab7f8b4d1631e3999ffaa9d452ae6a58f262bc3cb8fb2c8c56d01b3c526e",
-      "dataHash": "323eb17f7b8cd0410fc155b8aacec6e356c48daadfcddfffadc216fe3c03cfb8"
+      "codeHash": "53e2e08467bbe2bf95936abf308f346f8b9f82b3a0ef4465282bef643b453cef"
     },
     "FundVesting": {
-      "address": "EQDO0AMsITst5rWGcabJ8OF7Ys079UMPGNOq9H8WtiJakID4",
+      "address": "EQBKuIRplvhYzL9Gbm6GpZqCxMTHApVOZMVs9T1HzXcP7inb",
       "state": "active",
-      "codeHash": "46384d8a81b5c3f95ec46085d87cb32c727fefaf0528aa054c2b9bf907525eb8",
-      "dataHash": "67d4c6312b00a2de4d741f20aebb958d060b3bf332b16cc861b642e2d9c613fe"
+      "codeHash": "c3af1fc9aa16e783fc5fda1303ef0af52f1c8025d7abe165cf7336472c424d3b"
     },
     "DevelopmentFund": {
-      "address": "EQAPkdB1YJDEsVixATzfDjf--yl0frlKRkLPYHHUv6nVFkEU",
+      "address": "EQBbRZQj_VJU2r-DAtQcHoDngRC9EBvUHFg4LoB5HXLBv1Yh",
       "state": "active",
-      "codeHash": "12147e52cbb3267f61f67016c2711a767e0e2f30d8dc8ea084a3a889ca67926b",
-      "dataHash": "82387b38f6a11528de996603feed5528e49f6e5279491c6cf62ea370ed430557"
+      "codeHash": "12147e52cbb3267f61f67016c2711a767e0e2f30d8dc8ea084a3a889ca67926b"
     },
     "PresaleVault": {
-      "address": "EQCj56OaGFtIBgdtQjIacb7s1jlEy93vh-93PU07MDR1vpE9",
-      "state": "active-closed-do-not-activate-without-separate-approval",
-      "codeHash": "d0458deb2bc69870977e003c5da36c2e806cce29422e6720afaa497b0ec3a63b",
-      "dataHash": "6f9f1ecbf9dd68161cf7c56acbad505752f26427e5d38c73fefa6982169b4629"
+      "address": "EQDHSwsiQtB3sdoAaOdJi4kCu32GIHM4BtXd-_EtpE96EYXy",
+      "state": "active-inactive-do-not-activate-without-separate-approval",
+      "codeHash": "5951893d33ce3937961703516c2f8bcd48bf0c146dbc29d228af346ea4e6cf9e"
     },
     "EcosystemTreasury": {
-      "address": "EQARGC33uqypROhxiJMVOeKPYbYRgAEhXUkTxkrK7CrKDP3O",
+      "address": "EQCy7YpjZJuQAwjCQvQK55dv4p89c5pJUR9vi8nAwoW4a_w7",
       "state": "active",
-      "codeHash": "151c7ff421e39eb71216a81bb21402da81a4a5ca87a1641a0c20d85537a8228b",
-      "dataHash": "82387b38f6a11528de996603feed5528e49f6e5279491c6cf62ea370ed430557"
+      "codeHash": "151c7ff421e39eb71216a81bb21402da81a4a5ca87a1641a0c20d85537a8228b"
     },
     "TeamVesting": {
-      "address": "EQD5PnUEuEUYBt1XktTPlvN7HE5n-AIBI4XiAyd4qUgHasrK",
+      "address": "EQC3pNoWZHNmbcazxJV7lzcQH05Zewjl5w1KJhA4OfIPM6cy",
       "state": "active",
-      "codeHash": "22bb04a706182d7d73770f0e35c6000f8eb6264c0fbe02489706a5dd09c64793",
-      "dataHash": "b5374faf1fe10049248fa22788248fbe6f483870dff95a59420a6e39137e6792"
+      "codeHash": "b739aa891c9fc54362d0128269ca856f6ef599bd610bfa46eb3f977386abdf1f"
     }
   },
   "allocations": {
     "SeasonVault": {
-      "ownerOrContract": "EQCdSSWPVbwh9zIzhF5pnxwRKw-I8xc4bS1iyiVcbXKfnWe-",
-      "jettonWallet": "EQBgNjSr8gYxl1VUvncCuJ7I4Ikxw9PzVlgfxjsWYEr1ZbmG",
+      "ownerOrContract": "EQCkI1atYYWN-2cnJJASJ1nKsu0ZbvCd_EVZQ61KcoIW-13l",
+      "jettonWallet": "EQClq_b3CeBTPUtjsQWgaIg4dfrjIP2GyTPcYkIMf352BSbt",
       "verifiedRawBalance": "90000000000000000000",
       "humanAmount": "90,000,000,000 72H"
     },
     "PresaleVault": {
-      "ownerOrContract": "EQCj56OaGFtIBgdtQjIacb7s1jlEy93vh-93PU07MDR1vpE9",
-      "jettonWallet": "EQDcJf-sGJvWS6dG24SUStX9UYg9ZQEvMxXTh4TJfZ7Ww-96",
+      "ownerOrContract": "EQDHSwsiQtB3sdoAaOdJi4kCu32GIHM4BtXd-_EtpE96EYXy",
+      "jettonWallet": "EQBeIBmsLzSkfVwcGl4Donf3Hca2nfta__S3x2n1TMO1g9Vx",
       "verifiedRawBalance": "4500000000000000000",
       "humanAmount": "4,500,000,000 72H"
     },
     "EcosystemTreasury": {
-      "ownerOrContract": "EQARGC33uqypROhxiJMVOeKPYbYRgAEhXUkTxkrK7CrKDP3O",
-      "jettonWallet": "EQAK26kYEphSirToa-wf-CDKwD5xXP2bagTxSf4MMqGghMjJ",
+      "ownerOrContract": "EQCy7YpjZJuQAwjCQvQK55dv4p89c5pJUR9vi8nAwoW4a_w7",
+      "jettonWallet": "EQC6l1XfmSrj50sOWHf5S7xiO_O4_0Xd4v2je2Pr7BLcWnBF",
       "verifiedRawBalance": "4500000000000000000",
       "humanAmount": "4,500,000,000 72H"
     },
     "DevelopmentFund": {
-      "ownerOrContract": "EQAPkdB1YJDEsVixATzfDjf--yl0frlKRkLPYHHUv6nVFkEU",
-      "jettonWallet": "EQDqGj5qZYujJmkq4Z1Rf4fJiE-mHc6KTuChcz09b_b_Br1l",
+      "ownerOrContract": "EQBbRZQj_VJU2r-DAtQcHoDngRC9EBvUHFg4LoB5HXLBv1Yh",
+      "jettonWallet": "EQAmfNJcT0-DZlc1pLWURIJrQKR2xRJQaBjadpSB9wVcYx8T",
       "verifiedRawBalance": "500000000000000000",
       "humanAmount": "500,000,000 72H"
     },
     "TeamVesting": {
-      "ownerOrContract": "EQD5PnUEuEUYBt1XktTPlvN7HE5n-AIBI4XiAyd4qUgHasrK",
-      "jettonWallet": "EQD8cg3VXw54EQUVcB8nMAj-2z4aO4JgWwJgL-atxkF3nibe",
+      "ownerOrContract": "EQC3pNoWZHNmbcazxJV7lzcQH05Zewjl5w1KJhA4OfIPM6cy",
+      "jettonWallet": "EQABKzYV7XtCAi9RcKGWRL8OAHWEr0lYvNXW_h-W9kJ7sO9X",
       "verifiedRawBalance": "300000000000000000",
       "humanAmount": "300,000,000 72H"
     },
     "EarlyUsersOperations": {
       "ownerOrContract": "EQDqA19b4tBQKi7Z_0NS08eWzq-FZ-wsRU4QfzEEKwcouZUQ",
-      "jettonWallet": "EQCw3bw5SVmODE2Y5cSMDQHmX8VmP5P_TKSWdPWGO7dEatC1",
+      "jettonWallet": "EQD-9WsEEJFTo9yMw2cLOkbN_tnFQuizMRMZzeWOv2E2Zq01",
       "verifiedRawBalance": "200000000000000000",
       "humanAmount": "200,000,000 72H"
     }
   },
   "zeroInitialWallets": {
-    "SeasonClaim": {
-      "jettonWallet": "EQDG-7nBFsEG6qcVkDD2Kx5zByqvVK3m5xyAy_8qVBEx2IQe",
-      "expectedBalanceRaw": "0",
-      "state": "uninitialized"
+    "SeasonClaimV2": {
+      "jettonWallet": "EQC3AK8tmvIezR6gd_cdmg4qmrFJOloUhpoWE8HpsSKhjPxY",
+      "expectedBalanceRaw": "0"
     },
     "FundVesting": {
-      "jettonWallet": "EQB6A_MVCuqupDYxfKX9x_F-PE74Iq-AvnrMzGjiK3HR6LF3",
-      "expectedBalanceRaw": "0",
-      "state": "uninitialized"
-    }
-  },
-  "candidateVsDeployed": {
-    "PresaleVault": {
-      "deployedFact": "Mainnet PresaleVault is deployed at EQCj56OaGFtIBgdtQjIacb7s1jlEy93vh-93PU07MDR1vpE9 and holds 4,500,000,000 72H.",
-      "candidateStatus": "Local PresaleVault hardening and launch runbooks are candidate/draft only.",
-      "instruction": "Do not activate or route users to the deployed PresaleVault without external review and explicit owner approval."
-    },
-    "SeasonClaimV2": {
-      "deployedFact": "No verified mainnet SeasonClaimV2 address is part of the deployed V2 facts.",
-      "candidateStatus": "Local/testnet SeasonClaimV2 work is candidate/draft only.",
-      "instruction": "Do not publish production roots or integrations for SeasonClaimV2 until final gates pass and deployment evidence exists."
-    },
-    "SeasonClaimV2LegacyBridge": {
-      "deployedFact": "No verified mainnet bridge address is part of the deployed V2 facts.",
-      "candidateStatus": "Bridge route is a candidate migration plan with testnet phase-1 evidence and a pending cleanup gate.",
-      "instruction": "Bridge deployment, claim, manual-forward, and public V2 root work remain blocked/draft-only until gates pass and owner approval is recorded."
+      "jettonWallet": "EQBHI_ujpZQVNDj8CVaKMQ6QR2tMVugXaSL46rxgQT7XxnpW",
+      "expectedBalanceRaw": "0"
     }
   }
 }

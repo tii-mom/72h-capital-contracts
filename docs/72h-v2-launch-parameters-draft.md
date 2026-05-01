@@ -1,5 +1,11 @@
 # 72H V2 Launch Parameters Draft
 
+Status: `FROZEN ARCHIVE - REPLACED BY V3`
+
+Current mainnet facts: `docs/72H_MAINNET_FACTS.md`
+
+Do not use this V2 launch parameter document for current public integrations or signing decisions.
+
 Status: V2 parameters updated and deployed on mainnet after owner Tonkeeper approval. The five-stage reward unlock schedule, 60-day user claim window, `SeasonClaim` pending/sweep safety fix, JettonTransfer bounce sender/amount authentication, `ReserveVault`/`AppRewardPool` success-finalize sender authentication, and the SeasonVault failed-round FundVesting confirmation path were included in the audited package. Mainnet deployment evidence is recorded in `deployments/72h-v2-mainnet.deployed-2026-04-28.md`.
 
 ## Confirmed Wallets

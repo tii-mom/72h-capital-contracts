@@ -1,4 +1,4 @@
-import "../TestJetton.tact";
+import "../supporting/TestJetton.tact";
 
 message(0x7207f001) MockSeasonClaimV2Funding {
     queryId: Int as uint64;

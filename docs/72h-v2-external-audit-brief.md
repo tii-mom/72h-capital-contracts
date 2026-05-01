@@ -14,16 +14,16 @@ The audit must not send mainnet transactions.
 
 V2 tokenomics contracts:
 
-- `contracts/SeasonVault.tact`
-- `contracts/SeasonClaim.tact`
-- `contracts/SeasonClaimV2.tact`
-- `contracts/SeasonClaimV2LegacyBridge.tact`
-- `contracts/FundVesting.tact`
-- `contracts/DevelopmentFund.tact`
-- `contracts/PresaleVault.tact`
-- `contracts/EcosystemTreasury.tact`
-- `contracts/TeamVesting.tact`
-- shared Jetton test helpers in `contracts/TestJetton.tact`, only where they define message structs or helper functions reused by V2 contracts
+- `contracts/deployed/v3-core/SeasonVault.tact`
+- `contracts/archive/v2/SeasonClaim.tact`
+- `contracts/deployed/v3-core/SeasonClaimV2.tact`
+- `contracts/archive/v2/SeasonClaimV2LegacyBridge.tact`
+- `contracts/deployed/v3-core/FundVesting.tact`
+- `contracts/deployed/v3-core/DevelopmentFund.tact`
+- `contracts/deployed/v3-core/PresaleVault.tact`
+- `contracts/deployed/v3-core/EcosystemTreasury.tact`
+- `contracts/deployed/v3-core/TeamVesting.tact`
+- shared Jetton test helpers in `contracts/supporting/TestJetton.tact`, only where they define message structs or helper functions reused by V2 contracts
 
 V2 Jetton integration:
 
@@ -62,7 +62,7 @@ Mainnet parameters and evidence:
 
 Conditional scope:
 
-- If the team still intends to deploy the older Capital/Reserve/AppRewardPool mainnet package, also audit `contracts/AdminMultisig.tact`, `contracts/CapitalRegistry.tact`, `contracts/ReserveVault.tact`, `contracts/AppRewardPool.tact`, `contracts/AlphaVault.tact`, `contracts/Treasury.tact`, and `scripts/plan-mainnet-tonconnect-deploy.ts`.
+- If the team still intends to deploy the older Capital/Reserve/AppRewardPool mainnet package, also audit `contracts/supporting/AdminMultisig.tact`, `contracts/supporting/CapitalRegistry.tact`, `contracts/supporting/ReserveVault.tact`, `contracts/supporting/AppRewardPool.tact`, `contracts/supporting/AlphaVault.tact`, `contracts/supporting/Treasury.tact`, and `scripts/plan-mainnet-tonconnect-deploy.ts`.
 - Do not mix the old package with the V2 tokenomics deployment unless the product owner explicitly approves that architecture.
 
 ## Critical Questions
@@ -189,8 +189,8 @@ Use TON Symbolic Analyzer if available:
 
 ```bash
 java -jar tsa-cli.jar tact --help
-java -jar tsa-cli.jar tact -o audit-artifacts/tsa-season-claim.sarif contracts/SeasonClaim.tact
-java -jar tsa-cli.jar tact -o audit-artifacts/tsa-presale-vault.sarif contracts/PresaleVault.tact
+java -jar tsa-cli.jar tact -o audit-artifacts/tsa-season-claim.sarif contracts/archive/v2/SeasonClaim.tact
+java -jar tsa-cli.jar tact -o audit-artifacts/tsa-presale-vault.sarif contracts/deployed/v3-core/PresaleVault.tact
 ```
 
 The TSA command shape is based on the public TSA documentation. The audit thread must verify the installed TSA release and flags before treating output as authoritative.

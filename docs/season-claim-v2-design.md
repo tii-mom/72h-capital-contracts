@@ -1,6 +1,6 @@
 # SeasonClaimV2 Design
 
-Status: SeasonClaimV2 implemented and previously testnet rehearsed; manual-forward legacy bridge passed local audit review and completed bridge-focused testnet rehearsal phase 1. The audit follow-up found no new P1/P2 blocker and permits draft-only mainnet runbook preparation. Final legacy pending cleanup remains a hard gate after the 72-hour bounce grace; no mainnet signing package, deployment, bridge transaction, or public V2 root publication is allowed until that gate is complete.
+Status: SeasonClaimV2 is deployed in the current V3 mainnet package at `EQDBwNs-eQSUbl0XISsd9b9g-RvaZ-XWDa-PIVoG-wtMsf4b`. The manual-forward legacy bridge material in this document is frozen V2 archive context and must not be used for current V3 signing, bridge transactions, or public roots.
 
 `SeasonClaimV2` addresses the proof-depth limit discovered during the `multi-millionaire` Season War exporter rehearsal. The deployed `SeasonClaim` reads all Merkle proof entries from a single cell. Because each entry is `siblingOnLeft bool + sibling uint256`, that format fits only three proof levels and roughly eight leaves.
 
@@ -115,16 +115,16 @@ Audit follow-up after phase 1 concluded:
 - no new P1/P2 blocker
 - manual-forward design removes the legacy notification P1
 - phase 1 evidence is sufficient for non-executable mainnet runbook preparation
-- legacy pending cleanup complete must remain a hard gate before any mainnet signing package, deployment, bridge transaction, or public V2 root publication
+- legacy pending cleanup was a V2 archive gate; do not use it to produce current V3 signing packages, bridge transactions, or public roots
 - local verification reported by the audit thread: `npm run build`, focused bridge tests, `npm run lint`, and Misti high severity passed
 
-## Mainnet Planning Caveat
+## Frozen V2 Planning Caveat
 
-The currently deployed mainnet `SeasonVault` is already funded and its route setter is locked once funding or allocation is non-zero. A standalone `SeasonClaimV2` deployment does not automatically redirect the existing 90B SeasonVault inventory. Before mainnet use, the deployment plan must explicitly define the funding route for `SeasonClaimV2` rather than assuming the deployed `SeasonVault` can be retargeted.
+This caveat applies to the frozen V2 line. Current V3 mainnet facts are in `docs/72H_MAINNET_FACTS.md`, with V3 `SeasonVault` and `SeasonClaimV2` deployed together. The V2 `SeasonVault` was already funded and its route setter locked once funding or allocation was non-zero, so a standalone `SeasonClaimV2` deployment could not automatically redirect the existing V2 90B SeasonVault inventory.
 
-## Legacy Bridge Candidate
+## Frozen Legacy Bridge Candidate
 
-`SeasonClaimV2LegacyBridge` is implemented as a migration candidate in `contracts/SeasonClaimV2LegacyBridge.tact`.
+`SeasonClaimV2LegacyBridge` is implemented as a migration candidate in `contracts/archive/v2/SeasonClaimV2LegacyBridge.tact`.
 
 The bridge avoids changing the already-funded mainnet `SeasonVault` route:
 
@@ -137,7 +137,7 @@ The bridge avoids changing the already-funded mainnet `SeasonVault` route:
 7. The bridge sends a Jetton transfer from its configured Jetton wallet to the fixed `SeasonClaimV2` address.
 8. `SeasonClaimV2` receives the real funding notification and sends `ConfirmSeasonClaimFunding` back to the bridge; the bridge finalizes forwarded accounting only on that authenticated confirmation.
 
-This gives an auditable route from the existing 90B inventory into `SeasonClaimV2` without retargeting `SeasonVault`. The current bridge is conservative: because `SeasonClaimV2` still requires a season to be fully funded before `RegisterSeasonClaim`, public V2 roots should be registered only after the bridge has delivered the full season amount. Supporting progressive 20/40/60/80/100 V2 public claims from partial bridge funding would require a separate audited `SeasonClaimV2` accounting change.
+This was a V2 archive route from the existing V2 90B inventory into `SeasonClaimV2` without retargeting `SeasonVault`. Do not use it as the current V3 funding route.
 
 Bridge hardening after audit review:
 

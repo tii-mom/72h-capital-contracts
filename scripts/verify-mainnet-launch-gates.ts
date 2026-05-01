@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, type Dirent } from 'node:fs';
 import { join } from 'node:path';
 
 type BridgeEvidence = {
@@ -10,9 +10,21 @@ const bridgeEvidencePath = join(deploymentsDir, 'season-claim-v2-legacy-bridge.t
 const bridgeEvidence = JSON.parse(readFileSync(bridgeEvidencePath, 'utf8')) as BridgeEvidence;
 const bridgeGateComplete = bridgeEvidence.status === 'complete';
 
-const mainnetPackageFiles = readdirSync(deploymentsDir)
-  .filter((name) => name.includes('mainnet') && (name.endsWith('.json') || name.endsWith('.html')))
-  .map((name) => join(deploymentsDir, name));
+function collectMainnetPackageFiles(directory: string): string[] {
+  const entries: Dirent[] = readdirSync(directory, { withFileTypes: true });
+  const files: string[] = [];
+  for (const entry of entries) {
+    const path = join(directory, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...collectMainnetPackageFiles(path));
+    } else if (entry.name.includes('mainnet') && (entry.name.endsWith('.json') || entry.name.endsWith('.html'))) {
+      files.push(path);
+    }
+  }
+  return files;
+}
+
+const mainnetPackageFiles = collectMainnetPackageFiles(deploymentsDir);
 
 const alwaysForbidden = [
   'SeasonClaimV2BounceMock',
@@ -60,16 +72,27 @@ const gatedPresaleActions = [
   '1913323525',
 ];
 
+const forbiddenV3ReuseTokens = [
+  'V2 Jetton master',
+  'REUSE',
+  'DO NOT REDEPLOY',
+  'Unchanged contracts',
+  'reuse V2',
+  'reusedContracts',
+  'deployments/jetton-v2.mainnet.plan.json',
+];
+
 const failures: string[] = [];
 
 for (const file of mainnetPackageFiles) {
   const content = readFileSync(file, 'utf8');
+  const isV3MainnetPackage = file.includes(`${deploymentsDir}/v3-mainnet/`);
   for (const token of alwaysForbidden) {
     if (content.includes(token)) {
       failures.push(`${file} contains testnet-only token ${token}`);
     }
   }
-  if (!bridgeGateComplete) {
+  if (!isV3MainnetPackage && !bridgeGateComplete) {
     for (const token of gatedBeforeLegacySettle) {
       if (content.includes(token)) {
         failures.push(`${file} contains gated token ${token} while bridge evidence status is ${bridgeEvidence.status ?? 'missing'}`);
@@ -81,10 +104,21 @@ for (const file of mainnetPackageFiles) {
       failures.push(`${file} contains gated presale action ${token}; presale activation is blocked`);
     }
   }
+  if (isV3MainnetPackage) {
+    for (const token of forbiddenV3ReuseTokens) {
+      if (content.includes(token)) {
+        failures.push(`${file} contains V3 reuse token ${token}; V3 must use a new Jetton master and new tokenomics addresses`);
+      }
+    }
+    if (file.endsWith('.tonconnect.json') && !content.includes('deploy-v3-jetton-master')) {
+      failures.push(`${file} does not include deploy-v3-jetton-master; V3 must deploy a new Jetton master`);
+    }
+  }
 }
 
 if (!bridgeGateComplete) {
-  console.log(`SeasonClaimV2 executable mainnet gate remains blocked: ${bridgeEvidence.status ?? 'missing status'}.`);
+  console.log(`Legacy V2 bridge mainnet gate remains blocked for non-V3 packages: ${bridgeEvidence.status ?? 'missing status'}.`);
+  console.log('V3 packages are checked as an independent new asset line and are not blocked by legacy bridge cleanup.');
   console.log('Checked existing mainnet package files for gated V2/bridge/mock content.');
 }
 

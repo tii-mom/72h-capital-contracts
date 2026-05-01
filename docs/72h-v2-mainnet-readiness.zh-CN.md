@@ -1,17 +1,23 @@
 # 72H V2 主网就绪状态
 
+状态：`冻结归档 - 已由 V3 替代`
+
+当前主网事实源：`docs/72H_MAINNET_FACTS.md`
+
+不要将本文档用于当前公开集成或签名决策。
+
 状态：owner 已通过 Tonkeeper 批准并完成主网部署，链上验收通过。fixed-supply Jetton 已一次性铸造，mint 权限已移除，7 个 V2 tokenomics 合约均为 active，最终分配余额与 refreshed mainnet plan 一致。
 
 日期：2026-04-28
 
 主网部署证据：`deployments/72h-v2-mainnet.deployed-2026-04-28.md`
 
-## 当前主网部署
+## 归档 V2 主网部署
 
-当前主网部署是 V2 fixed-supply Jetton 加 V2 tokenomics 合约：
+该归档主网部署是 V2 fixed-supply Jetton 加 V2 tokenomics 合约：
 
 - V2 Jetton Func 源码：`contracts/jetton-v2/*.fc`
-- V2 tokenomics Tact 合约：`contracts/SeasonVault.tact`、`contracts/SeasonClaim.tact`、`contracts/FundVesting.tact`、`contracts/DevelopmentFund.tact`、`contracts/PresaleVault.tact`、`contracts/EcosystemTreasury.tact`、`contracts/TeamVesting.tact`
+- V2 tokenomics Tact 合约：`contracts/deployed/v3-core/SeasonVault.tact`、`contracts/archive/v2/SeasonClaim.tact`、`contracts/deployed/v3-core/FundVesting.tact`、`contracts/deployed/v3-core/DevelopmentFund.tact`、`contracts/deployed/v3-core/PresaleVault.tact`、`contracts/deployed/v3-core/EcosystemTreasury.tact`、`contracts/deployed/v3-core/TeamVesting.tact`
 - V2 集成测试：`tests/jetton-v2.spec.ts`、`tests/72h-v2-tokenomics.spec.ts`
 - V2 testnet rehearsal 脚本：`scripts/rehearse-72h-v2-tokenomics-testnet.ts`
 - V2 mainnet dry-run plan 脚本：`scripts/plan-72h-v2-tokenomics-mainnet.ts`
@@ -86,11 +92,11 @@ TON_TESTNET_ALLOW_72H_V2_TOKENOMICS_REHEARSAL_SEND=true npm run rehearse:v2-toke
 - `deployments/72h-v2-mainnet-deploy.html`
 - 生成时间：`2026-04-28T04:02:13.986Z`
 
-当前计划中的 V2 mainnet Jetton master：
+归档计划中的 V2 mainnet Jetton master：
 
 - `EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg`
 
-当前计划中的 V2 tokenomics 合约地址：
+归档计划中的 V2 tokenomics 合约地址：
 
 - SeasonVault：`EQCdSSWPVbwh9zIzhF5pnxwRKw-I8xc4bS1iyiVcbXKfnWe-`
 - SeasonClaim：`EQCYvg-_oFE8q8cweVScna-WDRzDYol-FBwHKuTcAjcFGonS`

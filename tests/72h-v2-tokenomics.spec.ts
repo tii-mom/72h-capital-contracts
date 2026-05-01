@@ -11,7 +11,8 @@ const ROUND_LEADERBOARD_AMOUNT = 50_000_000n * ONE_72H;
 const PRESALE_STAGE_CAP = 1_500_000_000n * ONE_72H;
 const PRESALE_TOTAL = 4_500_000_000n * ONE_72H;
 const CLAIM_WINDOW_SECONDS = 60 * 24 * 60 * 60;
-const BOUNCE_GRACE_SECONDS = 72 * 60 * 60;
+const PRICE_HOLD_SECONDS = 60 * 60;
+const BOUNCE_GRACE_SECONDS = 15 * 60;
 const SEASON_CLAIM_SWEEP_QUERY_OFFSET = 7_207_000_600_000_000n;
 const PRICE_STAGE_ONE_USD9 = 10_000_000n;
 const PRICE_STAGE_TWO_USD9 = 30_000_000n;
@@ -540,7 +541,7 @@ describe('72H V2 tokenomics contracts', () => {
       },
     );
 
-    blockchain.now = 1_800_000_000 + 72 * 60 * 60;
+    blockchain.now = 1_800_000_000 + PRICE_HOLD_SECONDS;
     await claim.send(
       owner.getSender(),
       { value: toNano('0.2') },
@@ -612,7 +613,7 @@ describe('72H V2 tokenomics contracts', () => {
     await claim.send(claimantJettonWallet.getSender(), { value: toNano('0.05') }, { $$type: 'JettonExcesses', queryId: 101n });
     expect(await (claim.getGetClaimedByLeaf as (leaf: bigint) => Promise<bigint>)(leaf)).toBe(stageOneClaimAmount);
 
-    blockchain.now = 1_800_000_000 + 72 * 60 * 60 + BOUNCE_GRACE_SECONDS + 1;
+    blockchain.now = 1_800_000_000 + PRICE_HOLD_SECONDS + BOUNCE_GRACE_SECONDS + 1;
     await claim.send(
       owner.getSender(),
       { value: toNano('0.05') },
@@ -812,7 +813,7 @@ describe('72H V2 tokenomics contracts', () => {
         evidenceHash: 121n,
       },
     );
-    blockchain.now = 1_800_000_000 + 72 * 60 * 60;
+    blockchain.now = 1_800_000_000 + PRICE_HOLD_SECONDS;
     await claim.send(
       owner.getSender(),
       { value: toNano('0.2') },
@@ -894,7 +895,7 @@ describe('72H V2 tokenomics contracts', () => {
     );
     expect(() => findJettonTransfer(repeatSweepAfterWrongAmountBounce)).toThrow('Expected a JettonTransfer outbound message.');
 
-    const cleanupOpenAt = BigInt(blockchain.now - 72 * 60 * 60);
+    const cleanupOpenAt = BigInt(blockchain.now - PRICE_HOLD_SECONDS);
     const claim2 = await openTactContract(
       blockchain,
       '../build/tact/SeasonClaim/SeasonClaim_SeasonClaim.js',
@@ -980,7 +981,7 @@ describe('72H V2 tokenomics contracts', () => {
     expect(cleanupSweepTransfer.amount).toBe(ROUND_AMOUNT - claimAmount);
   });
 
-  it('locks failed-round fund rewards behind 0.01 / 0.03 / 0.05 / 0.07 / 0.10 USD stages held for 72 hours', async () => {
+  it('locks failed-round fund rewards behind 0.01 / 0.03 / 0.05 / 0.07 / 0.10 USD stages held for 1 hour', async () => {
     const blockchain = await Blockchain.create();
     blockchain.now = 1_800_000_000;
 
@@ -1041,7 +1042,7 @@ describe('72H V2 tokenomics contracts', () => {
     );
     expect(await (fund.getGetFunded72H as () => Promise<bigint>)()).toBe(ROUND_AMOUNT);
 
-    blockchain.now = 1_800_000_000 + 72 * 60 * 60;
+    blockchain.now = 1_800_000_000 + PRICE_HOLD_SECONDS;
     await fund.send(
       owner.getSender(),
       { value: toNano('0.2') },
@@ -1200,7 +1201,7 @@ describe('72H V2 tokenomics contracts', () => {
       },
     );
 
-    blockchain.now = 1_800_000_000 + 72 * 60 * 60;
+    blockchain.now = 1_800_000_000 + PRICE_HOLD_SECONDS;
     await fund.send(
       owner.getSender(),
       { value: toNano('0.2') },
@@ -1567,7 +1568,7 @@ describe('72H V2 tokenomics contracts', () => {
     expect(await (developmentFund.getGetWithdrawalAmount as (queryId: bigint) => Promise<bigint>)(701n)).toBe(10_000_000n * ONE_72H);
   });
 
-  it('releases team reserve only to the configured team wallet after a 72-hour price hold', async () => {
+  it('releases team reserve only to the configured team wallet after a 1-hour price hold', async () => {
     const blockchain = await Blockchain.create();
     blockchain.now = 1_800_000_000;
 
@@ -1597,7 +1598,7 @@ describe('72H V2 tokenomics contracts', () => {
       },
     );
 
-    blockchain.now = 1_800_000_000 + 72 * 60 * 60;
+    blockchain.now = 1_800_000_000 + PRICE_HOLD_SECONDS;
     const unlock = await teamVesting.send(
       owner.getSender(),
       { value: toNano('0.2') },

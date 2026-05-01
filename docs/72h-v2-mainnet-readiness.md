@@ -1,17 +1,23 @@
 # 72H V2 Mainnet Readiness
 
+Status: `FROZEN ARCHIVE - REPLACED BY V3`
+
+Current mainnet facts: `docs/72H_MAINNET_FACTS.md`
+
+Do not use this V2 readiness document for current public integrations or signing decisions.
+
 Status: deployed and verified on mainnet after owner Tonkeeper approval. The fixed-supply Jetton was minted once, mint authority was dropped, all 7 V2 tokenomics contracts are active, and final allocation balances match the refreshed mainnet plan.
 
 Date: 2026-04-28
 
 Mainnet deployment evidence: `deployments/72h-v2-mainnet.deployed-2026-04-28.md`
 
-## Current Deployment
+## Archived V2 Deployment
 
-The current mainnet deployment is the V2 fixed-supply Jetton plus V2 tokenomics contracts:
+This archived mainnet deployment is the V2 fixed-supply Jetton plus V2 tokenomics contracts:
 
 - V2 Jetton Func sources: `contracts/jetton-v2/*.fc`
-- V2 tokenomics Tact contracts: `contracts/SeasonVault.tact`, `contracts/SeasonClaim.tact`, `contracts/FundVesting.tact`, `contracts/DevelopmentFund.tact`, `contracts/PresaleVault.tact`, `contracts/EcosystemTreasury.tact`, `contracts/TeamVesting.tact`
+- V2 tokenomics Tact contracts: `contracts/deployed/v3-core/SeasonVault.tact`, `contracts/archive/v2/SeasonClaim.tact`, `contracts/deployed/v3-core/FundVesting.tact`, `contracts/deployed/v3-core/DevelopmentFund.tact`, `contracts/deployed/v3-core/PresaleVault.tact`, `contracts/deployed/v3-core/EcosystemTreasury.tact`, `contracts/deployed/v3-core/TeamVesting.tact`
 - V2 integration tests: `tests/jetton-v2.spec.ts`, `tests/72h-v2-tokenomics.spec.ts`
 - V2 testnet rehearsal script: `scripts/rehearse-72h-v2-tokenomics-testnet.ts`
 - V2 mainnet dry-run plan script: `scripts/plan-72h-v2-tokenomics-mainnet.ts`
@@ -86,11 +92,11 @@ The V2 TonConnect package used for mainnet deployment:
 - `deployments/72h-v2-mainnet-deploy.html`
 - Generated at: `2026-04-28T04:02:13.986Z`
 
-Current planned V2 mainnet Jetton master:
+Archived planned V2 mainnet Jetton master:
 
 - `EQBGIzEDvvKObStrcVb6i5Z1-8uYZYtUrYzF2rFZU7xUAXVg`
 
-Current planned V2 tokenomics contract addresses:
+Archived planned V2 tokenomics contract addresses:
 
 - SeasonVault: `EQCdSSWPVbwh9zIzhF5pnxwRKw-I8xc4bS1iyiVcbXKfnWe-`
 - SeasonClaim: `EQCYvg-_oFE8q8cweVScna-WDRzDYol-FBwHKuTcAjcFGonS`

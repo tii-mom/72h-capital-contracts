@@ -1,4 +1,4 @@
-import "./TestJetton.tact";
+import "../../supporting/TestJetton.tact";
 
 message(0x720c0001) SetDevelopmentFundJettonWallet {
     wallet: Address;

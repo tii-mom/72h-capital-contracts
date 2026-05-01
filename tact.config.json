@@ -3,67 +3,67 @@
   "projects": [
     {
       "name": "CapitalRegistry",
-      "path": "./contracts/CapitalRegistry.tact",
+      "path": "./contracts/supporting/CapitalRegistry.tact",
       "output": "./build/tact/CapitalRegistry",
       "mode": "full"
     },
     {
       "name": "ReserveVault",
-      "path": "./contracts/ReserveVault.tact",
+      "path": "./contracts/supporting/ReserveVault.tact",
       "output": "./build/tact/ReserveVault",
       "mode": "full"
     },
     {
       "name": "AlphaVault",
-      "path": "./contracts/AlphaVault.tact",
+      "path": "./contracts/supporting/AlphaVault.tact",
       "output": "./build/tact/AlphaVault",
       "mode": "full"
     },
     {
       "name": "AppRewardPool",
-      "path": "./contracts/AppRewardPool.tact",
+      "path": "./contracts/supporting/AppRewardPool.tact",
       "output": "./build/tact/AppRewardPool",
       "mode": "full"
     },
     {
       "name": "Treasury",
-      "path": "./contracts/Treasury.tact",
+      "path": "./contracts/supporting/Treasury.tact",
       "output": "./build/tact/Treasury",
       "mode": "full"
     },
     {
       "name": "AdminMultisig",
-      "path": "./contracts/AdminMultisig.tact",
+      "path": "./contracts/supporting/AdminMultisig.tact",
       "output": "./build/tact/AdminMultisig",
       "mode": "full"
     },
     {
       "name": "TestJetton72H",
-      "path": "./contracts/TestJetton.tact",
+      "path": "./contracts/supporting/TestJetton.tact",
       "output": "./build/tact/TestJetton72H",
       "mode": "full"
     },
     {
       "name": "SeasonVault",
-      "path": "./contracts/SeasonVault.tact",
+      "path": "./contracts/deployed/v3-core/SeasonVault.tact",
       "output": "./build/tact/SeasonVault",
       "mode": "full"
     },
     {
       "name": "SeasonClaim",
-      "path": "./contracts/SeasonClaim.tact",
+      "path": "./contracts/archive/v2/SeasonClaim.tact",
       "output": "./build/tact/SeasonClaim",
       "mode": "full"
     },
     {
       "name": "SeasonClaimV2",
-      "path": "./contracts/SeasonClaimV2.tact",
+      "path": "./contracts/deployed/v3-core/SeasonClaimV2.tact",
       "output": "./build/tact/SeasonClaimV2",
       "mode": "full"
     },
     {
       "name": "SeasonClaimV2LegacyBridge",
-      "path": "./contracts/SeasonClaimV2LegacyBridge.tact",
+      "path": "./contracts/archive/v2/SeasonClaimV2LegacyBridge.tact",
       "output": "./build/tact/SeasonClaimV2LegacyBridge",
       "mode": "full"
     },
@@ -75,32 +75,38 @@
     },
     {
       "name": "FundVesting",
-      "path": "./contracts/FundVesting.tact",
+      "path": "./contracts/deployed/v3-core/FundVesting.tact",
       "output": "./build/tact/FundVesting",
       "mode": "full"
     },
     {
       "name": "DevelopmentFund",
-      "path": "./contracts/DevelopmentFund.tact",
+      "path": "./contracts/deployed/v3-core/DevelopmentFund.tact",
       "output": "./build/tact/DevelopmentFund",
       "mode": "full"
     },
     {
       "name": "TeamVesting",
-      "path": "./contracts/TeamVesting.tact",
+      "path": "./contracts/deployed/v3-core/TeamVesting.tact",
       "output": "./build/tact/TeamVesting",
       "mode": "full"
     },
     {
       "name": "EcosystemTreasury",
-      "path": "./contracts/EcosystemTreasury.tact",
+      "path": "./contracts/deployed/v3-core/EcosystemTreasury.tact",
       "output": "./build/tact/EcosystemTreasury",
       "mode": "full"
     },
     {
       "name": "PresaleVault",
-      "path": "./contracts/PresaleVault.tact",
+      "path": "./contracts/deployed/v3-core/PresaleVault.tact",
       "output": "./build/tact/PresaleVault",
+      "mode": "full"
+    },
+    {
+      "name": "MultiMillionaireDepositVault",
+      "path": "./contracts/apps/multi-millionaire/v3/MultiMillionaireDepositVault.tact",
+      "output": "./build/tact/MultiMillionaireDepositVault",
       "mode": "full"
     }
   ]

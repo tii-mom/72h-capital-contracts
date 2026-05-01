@@ -23,7 +23,7 @@ type Abi = {
 };
 
 const expectedCodeHashes = {
-  seasonClaimV2: '99b63712844f6032a34b10e52b2e8daa0eebc2e265603cc2176a5df7f6e02c26',
+  seasonClaimV2: '53e2e08467bbe2bf95936abf308f346f8b9f82b3a0ef4465282bef643b453cef',
   bridge: '86f767f5d56675c0b9c11c76f949022e4ddc1b12cb318a3c5f0a1105c3b83c76',
 };
 
