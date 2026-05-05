@@ -1,0 +1,36 @@
+{
+  "network": "testnet",
+  "createdAt": "2026-05-02T08:30:48.234Z",
+  "sent": true,
+  "loadedEnvFiles": [
+    ".env.local"
+  ],
+  "rpcUrl": "https:...sonRPC",
+  "deployer": {
+    "configuredAddress": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+    "derivedWalletV4": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+    "walletMatchesConfigured": true,
+    "balanceTon": "4939.083389949"
+  },
+  "contracts": {
+    "TestJetton72H": "kQCxm_w2ynPHIm0k4NyFpfxj1rUlnwGgejBiI0m9Q7R10mYi",
+    "MultiMillionaireDepositVault": "kQB7_-IQNkqnP-s7VkrcH0HyMBGc20Ap6MMIZUlzKoULv3kq",
+    "MultiMillionaireDepositVaultJettonWallet": "kQDbtH6a6LXTOKObelaEtkTVuZ9z76HBzbXvBFOWZ4WZZYzr"
+  },
+  "states": {
+    "MultiMillionaireDepositVault": {
+      "address": "kQB7_-IQNkqnP-s7VkrcH0HyMBGc20Ap6MMIZUlzKoULv3kq",
+      "state": "active",
+      "balanceTon": "0.107795862"
+    },
+    "MultiMillionaireDepositVaultJettonWallet": {
+      "address": "kQDbtH6a6LXTOKObelaEtkTVuZ9z76HBzbXvBFOWZ4WZZYzr",
+      "state": "uninitialized",
+      "balanceTon": "0"
+    }
+  },
+  "apiEnv": {
+    "TON_TESTNET_MULTI_MILLIONAIRE_DEPOSIT_VAULT_ADDRESS": "kQB7_-IQNkqnP-s7VkrcH0HyMBGc20Ap6MMIZUlzKoULv3kq",
+    "TON_TESTNET_MULTI_MILLIONAIRE_DEPOSIT_VAULT_JETTON_WALLET_ADDRESS": "kQDbtH6a6LXTOKObelaEtkTVuZ9z76HBzbXvBFOWZ4WZZYzr"
+  }
+}

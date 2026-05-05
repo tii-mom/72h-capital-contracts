@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-05-01T16:30:07.511Z",
+  "checkedAt": "2026-05-05T03:17:32.087Z",
   "network": "mainnet",
   "status": "deployed-and-postdeploy-verified",
   "loadedEnvFiles": [
@@ -92,7 +92,12 @@
   "earlyUsers": {
     "owner": "EQDqA19b4tBQKi7Z_0NS08eWzq-FZ-wsRU4QfzEEKwcouZUQ",
     "jettonWallet": "EQD-9WsEEJFTo9yMw2cLOkbN_tnFQuizMRMZzeWOv2E2Zq01",
-    "balanceRaw": "200000000000000000"
+    "initialAllocationRaw": "200000000000000000",
+    "currentBalanceRaw": "199999998455000000",
+    "recordedOperationsOutRaw": "1545000000",
+    "recordedOperationsOut72H": "1.545",
+    "mutableOpsWallet": true,
+    "reconciliationStatus": "pass"
   },
   "failures": []
 }

@@ -68,7 +68,9 @@
     },
     "earlyUsersOperations": {
       "wallet": "EQD-9WsEEJFTo9yMw2cLOkbN_tnFQuizMRMZzeWOv2E2Zq01",
-      "balanceRaw": "200000000000000000"
+      "balanceRaw": "200000000000000000",
+      "mutableOpsWallet": true,
+      "balanceVerification": "initial allocation is reconciled against current balance plus recorded operations out"
     }
   },
   "evidence": {

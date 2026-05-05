@@ -55,6 +55,8 @@ Use this note for website, WAN, Terminal, and `multi-millionaire` integration up
 | TeamVesting | `EQABKzYV7XtCAi9RcKGWRL8OAHWEr0lYvNXW_h-W9kJ7sO9X` | `300000000000000000` |
 | Early users / operations | `EQD-9WsEEJFTo9yMw2cLOkbN_tnFQuizMRMZzeWOv2E2Zq01` | `200000000000000000` |
 
+Note: Early users / operations is an operations wallet, not a locked vesting contract. Live post-deploy verification reconciles its initial allocation against current balance plus recorded operations out.
+
 ## Forbidden Boundaries
 
 - V2 is frozen archive only. Do not use V2 addresses in current website, wallet, exchange, app, or Terminal integrations.

@@ -1,3 +1,5 @@
+// ARCHIVE / LEGACY SUPPORTING SOURCE. Not part of the current deployed V3 core.
+// Current V3 deployed sources live in contracts/deployed/v3-core/.
 import "./TestJetton.tact";
 
 const PRESALE_STAGE_CAP_72H: Int = 1500000000 * 1000000000;

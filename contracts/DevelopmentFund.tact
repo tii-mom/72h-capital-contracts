@@ -1,3 +1,5 @@
+// ARCHIVE / LEGACY SUPPORTING SOURCE. Not part of the current deployed V3 core.
+// Current V3 deployed sources live in contracts/deployed/v3-core/.
 import "./TestJetton.tact";
 
 message(0x720c0001) SetDevelopmentFundJettonWallet {

@@ -105,11 +105,10 @@ contracts/apps/multi-millionaire/
 
 The app repo may keep frontend, backend, indexer, and export logic. Chain source code, wrappers, deployment scripts, and evidence should live in this repository once the contracts are production candidates.
 
-The existing app contracts in `/Users/yudeyou/Desktop/multi-millionaire/contracts/` are not part of the deployed 72H V2 core package and should not be deployed to mainnet until they are migrated, hardened, tested, and audited here.
+The existing app contracts in `/Users/yudeyou/Desktop/multi-millionaire/contracts/` are not part of the deployed 72H V3 core package and should not be deployed to mainnet until they are migrated, hardened, tested, and audited here.
 
 Known hardening requirement before any app-contract deployment:
 
 - outbound JettonTransfer success and bounce flows must authenticate the configured Jetton wallet sender
 - bounce rollback must verify the bounced amount equals the pending amount
 - forged success/finalize messages must not clear pending state or mutate accounting
-

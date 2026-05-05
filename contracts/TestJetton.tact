@@ -1,3 +1,5 @@
+// ARCHIVE / LEGACY SUPPORTING SOURCE. Current compilation uses contracts/supporting/TestJetton.tact.
+// Current V3 deployed sources live in contracts/deployed/v3-core/.
 // TestJetton72H standard-compatible testnet Jetton boundary.
 //
 // Scope:

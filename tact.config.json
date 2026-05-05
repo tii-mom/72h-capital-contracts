@@ -48,6 +48,12 @@
       "path": "./contracts/deployed/v3-core/PresaleVault.tact",
       "output": "./build/tact/PresaleVault",
       "mode": "full"
+    },
+    {
+      "name": "MultiMillionaireDepositVault",
+      "path": "./contracts/apps/multi-millionaire/v3/MultiMillionaireDepositVault.tact",
+      "output": "./build/tact/MultiMillionaireDepositVault",
+      "mode": "full"
     }
   ]
 }

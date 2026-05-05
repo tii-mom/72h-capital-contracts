@@ -2,7 +2,7 @@
 
 Status: current V3 facts source; V2 is frozen archive.
 
-Last aligned: `2026-05-01`
+Last aligned: `2026-05-05`
 
 ## Authority and Scope
 
@@ -20,7 +20,7 @@ Do not treat V2 documents or V2 signing packages as current public facts. V2 is 
 
 ## Current Deployed Mainnet Facts
 
-Verified at: `2026-05-01T16:30:07.511Z`
+Verified at: `2026-05-05T03:17:32.087Z`
 
 Network: TON mainnet
 
@@ -57,7 +57,7 @@ Frozen archive identifiers:
 
 ### Allocation Balances
 
-| Recipient | Owner / contract | Jetton wallet | Verified raw balance | Human amount |
+| Recipient | Owner / contract | Jetton wallet | Initial raw allocation | Human amount |
 | --- | --- | --- | ---: | ---: |
 | SeasonVault | `EQCkI1atYYWN-2cnJJASJ1nKsu0ZbvCd_EVZQ61KcoIW-13l` | `EQClq_b3CeBTPUtjsQWgaIg4dfrjIP2GyTPcYkIMf352BSbt` | `90000000000000000000` | `90,000,000,000 72H` |
 | PresaleVault | `EQDHSwsiQtB3sdoAaOdJi4kCu32GIHM4BtXd-_EtpE96EYXy` | `EQBeIBmsLzSkfVwcGl4Donf3Hca2nfta__S3x2n1TMO1g9Vx` | `4500000000000000000` | `4,500,000,000 72H` |
@@ -65,6 +65,8 @@ Frozen archive identifiers:
 | DevelopmentFund | `EQBbRZQj_VJU2r-DAtQcHoDngRC9EBvUHFg4LoB5HXLBv1Yh` | `EQAmfNJcT0-DZlc1pLWURIJrQKR2xRJQaBjadpSB9wVcYx8T` | `500000000000000000` | `500,000,000 72H` |
 | TeamVesting | `EQC3pNoWZHNmbcazxJV7lzcQH05Zewjl5w1KJhA4OfIPM6cy` | `EQABKzYV7XtCAi9RcKGWRL8OAHWEr0lYvNXW_h-W9kJ7sO9X` | `300000000000000000` | `300,000,000 72H` |
 | Early users / operations | `EQDqA19b4tBQKi7Z_0NS08eWzq-FZ-wsRU4QfzEEKwcouZUQ` | `EQD-9WsEEJFTo9yMw2cLOkbN_tnFQuizMRMZzeWOv2E2Zq01` | `200000000000000000` | `200,000,000 72H` |
+
+Early users / operations is a mutable operations wallet. Live verification reconciles its initial allocation against current wallet balance plus recorded operations out.
 
 Zero-initial tokenomics wallets:
 

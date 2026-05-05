@@ -7,6 +7,7 @@ This directory contains the TON smart contract sources for 72H.
 - `jetton-v2/`: production Func Jetton master and wallet implementation used by the current V3 token.
 - `deployed/v3-core/`: Tact sources for the currently deployed V3 mainnet tokenomics package.
 - `supporting/TestJetton.tact`: compile-time Jetton message definitions reused by the V3 Tact contracts.
+- root-level `*.tact`: archived legacy/supporting sources retained for historical reference only. They are not the current V3 deployed source path and are not included in `tact.config.json`.
 
 ## Mainnet V3 Contracts
 

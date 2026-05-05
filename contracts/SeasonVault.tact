@@ -1,3 +1,5 @@
+// ARCHIVE / LEGACY SUPPORTING SOURCE. Not part of the current deployed V3 core.
+// Current V3 deployed sources live in contracts/deployed/v3-core/.
 import "./TestJetton.tact";
 
 const SEASON_VAULT_ROUND_AMOUNT_72H: Int = 500000000 * 1000000000;
