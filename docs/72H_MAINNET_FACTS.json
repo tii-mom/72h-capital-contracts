@@ -1,18 +1,19 @@
 {
   "schema": "72h-mainnet-facts-v3",
   "status": "current-v3-facts-source",
-  "lastAligned": "2026-05-01",
+  "lastAligned": "2026-05-05",
   "network": "mainnet",
   "sourceEvidence": {
     "mainnetPlan": "deployments/v3-mainnet/72h-v3-tokenomics.mainnet.plan.json",
     "tonconnectPackage": "deployments/v3-mainnet/72h-v3-mainnet.tonconnect.json",
     "postDeployEvidence": "deployments/v3-mainnet/72h-v3-mainnet.postdeploy.latest.json",
-    "verifiedAt": "2026-05-01T16:30:07.511Z"
+    "verifiedAt": "2026-05-05T03:17:32.087Z"
   },
   "warnings": [
     "Use V3 addresses for current public integrations.",
     "V2 addresses are frozen archive only.",
     "Presale remains inactive unless a separate audited launch route is approved.",
+    "Early users / operations is a mutable operations wallet; live verification reconciles current balance plus recorded operations out.",
     "contracts/apps/multi-millionaire/v3 is a reserved production-candidate workspace only, not a deployed contract set."
   ],
   "jetton": {
@@ -108,7 +109,9 @@
       "ownerOrContract": "EQDqA19b4tBQKi7Z_0NS08eWzq-FZ-wsRU4QfzEEKwcouZUQ",
       "jettonWallet": "EQD-9WsEEJFTo9yMw2cLOkbN_tnFQuizMRMZzeWOv2E2Zq01",
       "verifiedRawBalance": "200000000000000000",
-      "humanAmount": "200,000,000 72H"
+      "humanAmount": "200,000,000 72H",
+      "mutableOpsWallet": true,
+      "balanceVerification": "initial allocation is reconciled against current balance plus recorded operations out"
     }
   },
   "zeroInitialWallets": {

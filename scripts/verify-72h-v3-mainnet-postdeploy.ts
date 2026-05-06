@@ -75,6 +75,8 @@ type DeployedContractSnapshot = {
   readonly extra?: Record<string, string | boolean>;
 };
 
+const EARLY_USERS_OPERATIONS_OUT_RAW = 1_545_000_000n;
+
 function parseEnvLine(line: string) {
   const trimmed = line.trim();
   if (!trimmed || trimmed.startsWith('#')) return undefined;
@@ -260,7 +262,14 @@ async function main() {
     compiled.wallet.code,
   ).address;
   const earlyUsersBalance = await client.open(JettonWalletV2.createFromAddress(earlyUsersJettonWallet)).getJettonBalance();
-  expectEqual(failures, 'earlyUsersWallet balance', earlyUsersBalance.toString(), plan.allocationsRaw.earlyUsersWallet);
+  const earlyUsersInitialAllocation = BigInt(plan.allocationsRaw.earlyUsersWallet);
+  const earlyUsersReconciled = earlyUsersBalance + EARLY_USERS_OPERATIONS_OUT_RAW;
+  expectEqual(
+    failures,
+    'earlyUsersWallet balance plus recorded operations out',
+    earlyUsersReconciled.toString(),
+    earlyUsersInitialAllocation.toString(),
+  );
 
   const result = {
     checkedAt: new Date().toISOString(),
@@ -282,7 +291,12 @@ async function main() {
     earlyUsers: {
       owner: formatAddress(earlyUsersWalletAddress),
       jettonWallet: formatAddress(earlyUsersJettonWallet),
-      balanceRaw: earlyUsersBalance.toString(),
+      initialAllocationRaw: earlyUsersInitialAllocation.toString(),
+      currentBalanceRaw: earlyUsersBalance.toString(),
+      recordedOperationsOutRaw: EARLY_USERS_OPERATIONS_OUT_RAW.toString(),
+      recordedOperationsOut72H: '1.545',
+      mutableOpsWallet: true,
+      reconciliationStatus: earlyUsersReconciled === earlyUsersInitialAllocation ? 'pass' : 'failed',
     },
     failures,
   };

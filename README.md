@@ -82,6 +82,7 @@ Mainnet V3 verification completed:
 - Jetton `mintable=0`.
 - PresaleVault funded accounting and Jetton wallet balance both equal `4,500,000,000 72H`.
 - Final allocation balances match `deployments/v3-mainnet/72h-v3-tokenomics.mainnet.plan.json`.
+- Early users / operations is a mutable operations wallet. Its verifier reconciles initial allocation against current balance plus recorded operations out.
 
 Current restrictions:
 
@@ -97,7 +98,10 @@ npm run lint
 npm run build
 npm run verify:mainnet-launch-gates
 npm run verify:v3-mainnet-postdeploy
+npm run verify:multi-millionaire-v3-gates
 ```
+
+Generic `plan:mainnet` commands now point to V3 planning. Legacy Capital/Reserve/AppRewardPool and V2 planning commands remain explicit archive tools only.
 
 ## Metadata
 

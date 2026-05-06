@@ -1,0 +1,41 @@
+{
+  "status": "pass",
+  "mode": "read_only",
+  "evidence_type": "multi-millionaire-v3-testnet-rehearsal",
+  "generated_at": "2026-05-04T14:44:39.211Z",
+  "loaded_env": [
+    ".env.local"
+  ],
+  "endpoint": "https:...sonRPC",
+  "manifest": "deployments/multi-millionaire-deposit-vault.testnet.latest.json",
+  "test_jetton_master": "kQCxm_w2ynPHIm0k4NyFpfxj1rUlnwGgejBiI0m9Q7R10mYi",
+  "deposit_vault": "kQBVPw0NNVbSxlccTxN35sayy6nb-T_EFQ3J6up6hY7gKIRU",
+  "rehearsal_wallet": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+  "manifest_vault_jetton_wallet": "kQDm6ecgz1TRzndCPD64Y-m3V1eL0S8BC0k_binEbK5MqS4L",
+  "vault_contract_state": "active",
+  "vault_jetton_wallet_state": "active",
+  "real_canary_complete": true,
+  "canary_status": "testnet canary deposit observed",
+  "target_usd9": "100000000000000",
+  "query_id": "1",
+  "supported_target": true,
+  "derived_deposit_key": "99271139154104099907147653371592516515745084768331869030941118580890420530476",
+  "vault_state": {
+    "vault_jetton_wallet": "kQDm6ecgz1TRzndCPD64Y-m3V1eL0S8BC0k_binEbK5MqS4L",
+    "total_deposited_raw": "1000000000000",
+    "deposit_count": "1",
+    "last_depositor": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+    "last_season_id": "1",
+    "last_wave_id": "1",
+    "last_amount_raw": "1000000000000",
+    "last_target_usd9": "100000000000000"
+  },
+  "user_state": {
+    "active_raw": "1000000000000",
+    "target_usd9": "100000000000000",
+    "season_id": "1",
+    "wave_id": "1",
+    "goal_reached": false,
+    "pending_withdrawal": false
+  }
+}

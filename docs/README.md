@@ -35,7 +35,7 @@ Start here when reviewing, auditing, integrating, or submitting current 72H V3 c
 - `apps/multi-millionaire-900b-reward-integration.md`: 90B reward integration plan.
 - `apps/multi-millionaire-seasonclaim-v2-exporter-config-checklist.md`: draft-only exporter and config gates for future SeasonClaimV2 roots.
 - `architecture.md`: broader system architecture.
-- `deployment.md`: older deployment and rehearsal notes for supporting contracts.
+- `deployment.md`: current V3-safe verification and dry-run planning notes.
 - `rules.md`: product rules and invariants.
 - `transaction-payload-scaffolds.md`: payload helper notes for integration work.
 

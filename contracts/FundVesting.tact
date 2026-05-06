@@ -1,3 +1,5 @@
+// ARCHIVE / LEGACY SUPPORTING SOURCE. Not part of the current deployed V3 core.
+// Current V3 deployed sources live in contracts/deployed/v3-core/.
 import "./TestJetton.tact";
 
 const FUND_VESTING_BPS_DENOMINATOR: Int = 10000;

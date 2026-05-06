@@ -1,0 +1,56 @@
+{
+  "evidence_type": "multi-millionaire-v3-testnet-canary",
+  "generated_at": "2026-05-04T14:45:39.315Z",
+  "mode": "dry-run",
+  "loaded_env": [
+    ".env.local"
+  ],
+  "endpoint": "https:...sonRPC",
+  "deployer": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+  "rehearsal_wallet": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+  "test_jetton_master": "kQCxm_w2ynPHIm0k4NyFpfxj1rUlnwGgejBiI0m9Q7R10mYi",
+  "deposit_vault": "kQBVPw0NNVbSxlccTxN35sayy6nb-T_EFQ3J6up6hY7gKIRU",
+  "user_jetton_wallet": "kQDWL197Ptd4iZ_Fsv3nHxFTOhknf9jrIbDf8i1p74RW_8hV",
+  "user_jetton_wallet_state_before": "active",
+  "deposit_vault_contract_state": "active",
+  "deposit_vault_jetton_wallet": "kQDm6ecgz1TRzndCPD64Y-m3V1eL0S8BC0k_binEbK5MqS4L",
+  "deposit_vault_jetton_wallet_state_before": "active",
+  "amount_72h": "1000",
+  "amount_raw": "1000000000000",
+  "target_usd9": "100000000000000",
+  "season_id": 1,
+  "wave_id": 1,
+  "query_id": "1777905903055",
+  "derived_deposit_key": "50420688598312831439703705138214695995565897897608499132739642705945465476328",
+  "supported_target": true,
+  "before": {
+    "total_supply_raw": "3584000000000",
+    "user_jetton_balance_raw": "72000000000",
+    "vault_jetton_balance_raw": "1000000000000",
+    "user_state": {
+      "active_raw": "1000000000000",
+      "target_usd9": "100000000000000",
+      "season_id": "1",
+      "wave_id": "1",
+      "goal_reached": false,
+      "pending_withdrawal": false
+    },
+    "vault_state": {
+      "total_deposited_raw": "1000000000000",
+      "deposit_count": "1",
+      "last_depositor": "kQCxJ05yeawVWlsN5SfJ-obajgh2lFffR-O7ebH_s_wqQRIl",
+      "last_season_id": "1",
+      "last_wave_id": "1",
+      "last_amount_raw": "1000000000000",
+      "last_target_usd9": "100000000000000"
+    }
+  },
+  "planned_messages": {
+    "mint_payload_base64": "te6cckEBAQEALQAAVXIAAAGAFiTpzk81gqtLYbyk+T9Q21HBDtKK++j8d282P/Z/hUgr0alKIAFjDYZg",
+    "jetton_transfer_payload_base64": "te6cckEBAQEAcAAA3A+KfqUAAAGd83Mlz16NSlEACACqfhoaaq2ljK44nibvzY1ll1O38n+IKhuT1dT1Cx3AUQAsSdOcnmsFVpbDeUnyfqG2o4IdpRX30fju3mx/7P8KkEgCYloAAQAAAAEAAAAAAAAAAAAAWvMQekAAU0vbMA=="
+  },
+  "status": "pass",
+  "canary_sent": false,
+  "real_canary_complete": true,
+  "note": "No transactions sent. This dry-run only verifies state, addresses, supported target, derived key, and planned payloads."
+}
